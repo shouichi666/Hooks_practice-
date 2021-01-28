@@ -1,0 +1,25 @@
+|-- ネットフリックスのパクリのようなもの --|
+
+*react 
+*firebase firestore 
+*materiaru UI
+
+
+// ログイン認証機能
+・ツイッター
+・google
+・github
+// お気に入り機能    -----> user
+// お気に入りリスト  -----> user
+// ★機能            -----> user
+// 感想書き込み      -----> user
+// 検索機能          -----> all 
+// ジャンル絞り込み  -----> all
+// TOP10             -----> all
+
+
+
+login
+home
+favorite
+search
