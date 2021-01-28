@@ -1,0 +1,32 @@
+/* 
+variable list
+*/
+
+////////////
+// -> color <-
+//            background
+$baseBkColor: #000;
+$headerBkColor: #0c0c0c;
+$footerBkColor: #0c161c;
+$boxShadowCoor: #79797950;
+
+//            font
+$primaryColor: #fc1717;
+// $titleColor               : ;
+// $textColor                : ;
+// $headerFontColor          : ;
+// $footerFontCOlor           : ;
+
+//            border
+$primaryBorderColor: #363636;
+
+////////////////
+// -> fontStyle <-
+$baseFont: "Helvetica Neue", helvetica, arial, sans-serif;
+$specialFont: "Roboto Condensed", sans-serif;
+$Font: "Nanum Gothic", sans-serif;
+$logoFont: "Russo One", sans-serif;
+
+////////////////
+// -> transitin <-
+$changeTime: 0.5s;

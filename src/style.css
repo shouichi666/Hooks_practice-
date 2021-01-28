@@ -1,3 +1,54 @@
+/* 
+variable list
+*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 body {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
   background: black;
-  color: white; }
+  color: white;
+  font-family: "Roboto Condensed", sans-serif; }
+
+/*
+header style
+*/
+.header {
+  background-color: #0c0c0c;
+  border-bottom: #363636 solid 0.5px;
+  box-shadow: 0px 1px 10px #79797950;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  padding: 13px 20px;
+  top: 0;
+  width: 100%; }
+  .header__logoWrap {
+    align-items: center;
+    display: grid;
+    justify-content: center;
+    user-select: none; }
+    .header__logoWrap--logo {
+      color: #fc1717;
+      font-family: "Russo One", sans-serif;
+      font-size: 33px;
+      font-weight: 700;
+      padding: 0 0 0 19px; }
+  .header__nav {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 0 auto;
+    width: 20%;
+    min-width: 300px; }
+    .header__nav--btn {
+      border-radius: 4px;
+      border: white 0.7px solid;
+      display: inline-block;
+      padding: 0.5em 1em; }
+      .header__nav--btn:hover {
+        background-color: #e7dada1f;
+        box-shadow: 0px 1px 10px #6e6e6ea6;
+        transition: 0.5s; }

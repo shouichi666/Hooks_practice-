@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./reset.css";
 import "./style.css";
-import App from "./components/App";
+import AppTop from './AppTop';
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppTop />
   </React.StrictMode>,
   document.getElementById("root")
 );

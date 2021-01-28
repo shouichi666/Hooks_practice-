@@ -1,0 +1,17 @@
+@import "variable";
+
+// google fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+body {
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  background: rgb(0, 0, 0);
+  color: white;
+  font-family: $specialFont;
+}
+
+@import "./componentStyle/Header";
