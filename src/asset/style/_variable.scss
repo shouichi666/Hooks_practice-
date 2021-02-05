@@ -7,8 +7,9 @@ variable list
 //            background
 $baseBkColor: #000;
 $headerBkColor: #0c0c0c;
-$footerBkColor: #0c161c;
-$boxShadowCoor: #79797950;
+$footerBkColor: #df0c0c1c;
+$boxShadowColor: #ebbbbb85;
+$headerSearchBkColor: #333333ee;
 
 //            font
 $primaryColor: #fc1717;
@@ -29,4 +30,4 @@ $logoFont: "Russo One", sans-serif;
 
 ////////////////
 // -> transitin <-
-$changeTime: 0.5s;
+$changeTime: 0.2s;

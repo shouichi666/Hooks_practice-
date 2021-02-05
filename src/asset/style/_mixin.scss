@@ -1,0 +1,20 @@
+/* スクロールの幅の設定 */
+
+@mixin scrollBer {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* スクロールの背景の設定 */
+  ::-webkit-scrollbar-track {
+    border-radius: 1px;
+    box-shadow: 0 0 4px rgb(209, 208, 208) inset;
+  }
+
+  /* スクロールのつまみ部分の設定 */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #4473ada1;
+  }
+}

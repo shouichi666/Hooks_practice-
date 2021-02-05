@@ -1,5 +1,8 @@
 |-- ネットフリックスのパクリのようなもの --|
 
+
+API : 69317ba737cb0ea86a59398a6bbc2973
+
 *react 
 *firebase firestore 
 *materiaru UI
@@ -23,3 +26,7 @@ login
 home
 favorite
 search
+
+
+・映画情報、ログイン状況はglobal-state
+・モーダル、クラスの付け替えによるイベントは各コンポーネントでstateを持つ

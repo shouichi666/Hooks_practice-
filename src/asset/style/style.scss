@@ -1,4 +1,5 @@
 @import "variable";
+@import "mixin";
 
 // google fonts
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
@@ -7,11 +8,29 @@
 
 body {
   width: 100%;
-  max-width: 1400px;
-  height: auto;
-  background: rgb(0, 0, 0);
+  background: $baseBkColor;
   color: white;
   font-family: $specialFont;
+  margin: 0 auto;
+}
+
+#container {
+  position: relative;
+  height: 100%;
+  padding: 60px 0 250px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 @import "./componentStyle/Header";
+@import "./componentStyle/footer";
+@import "./componentStyle/Home";
+@import "./componentStyle/form";
+@import "./componentStyle/Sign";
+@import "./componentStyle/Movie";
+@import "animation";

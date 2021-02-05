@@ -1,0 +1,39 @@
+/*
+  SignIn,SignUp form style
+*/
+
+.form {
+  width: 100%;
+  padding: 30px 20px 20px;
+
+  &__button {
+    display: block;
+    margin: 40px auto;
+    width: 200px;
+    background-color: $primaryColor;
+    text-align: center;
+    padding: 1.1em;
+    border-radius: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    min-width: 250px;
+    padding: 0.7em 1em;
+    color: white;
+  }
+
+  .MuiFormLabel-root {
+    color: white;
+    margin: 0 0 1em 0;
+  }
+
+  .MuiInput-root {
+    width: 100%;
+    margin: 0 0 30px 0;
+    border-radius: 5px;
+    background-color: rgba(199, 199, 199, 0.082);
+  }
+}
