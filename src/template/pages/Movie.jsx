@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
 import CastSlider from "../components/CastSlider";
-import RecommendSlider from "../components/RecommendSlider";
+import RecommendSlider from "../components/SimilarSlider";
 import AppContext from "../../hooks/contexts/AppContext";
 
 const Movie = () => {
   const { state } = useContext(AppContext);
-  // const [keyword, setKeyWord] = useState([]);
   const data = state.movie.viewItem;
   const keywords = state.movie.keyword;
   const imgPath = theMovieDb.common.images_uri;
@@ -35,7 +34,7 @@ const Movie = () => {
     }
     const genres = data.genres.map((genre, i) => {
       return (
-        <Link to={genre.id} key={i} id={genre.id}>
+        <Link to={`/${genre.id}`} key={i} id={genre.id}>
           <span>{genre.name},</span>
         </Link>
       );

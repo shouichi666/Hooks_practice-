@@ -33,22 +33,18 @@ const XsliderBox = (props) => {
 
   return (
     <Link
-      className="Xslider__list--item"
+      className="XsliderBox"
       to={`/movie/${data.id}`}
       id={data.id}
       onClick={onClick}
     >
-      <div className="Xslider__list--item--top">
-        <img
-          src={theMovieDb.common.images_uri + "w185" + data.poster_path}
-          alt={data.poster_path}
-          className="Xslider__list--item--img"
-        />
-      </div>
-      <div className="Xslider__list--item--bottom">
-        <p>{data.title}</p>
-        <p>{data.release_date}</p>
-      </div>
+      <img
+        src={theMovieDb.common.images_uri + "w185" + data.poster_path}
+        alt={data.poster_path}
+        className="XsliderBox__img"
+      />
+      <p className="XsliderBox__title">{data.title}</p>
+      <p className="XsliderBox__date">{data.release_date}</p>
     </Link>
   );
 };

@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
+import AppContext from "../../hooks/contexts/AppContext";
 import CastSliderBox from "./CastSliderBox";
 import theMovieDb from "themoviedb-javascript-library";
-import AppContext from "../../hooks/contexts/AppContext";
 
 const CastSlider = () => {
   const { state } = useContext(AppContext);
-  console.log(state);
   const [casts, setCasts] = useState(null);
 
-  
-  const cast = () => {
+  if (casts === null) {
     theMovieDb.movies.getCredits(
       { id: state.movie.viewItem.id },
       (movie) => {
@@ -20,10 +18,9 @@ const CastSlider = () => {
         console.log(error);
       }
     );
-  };
+  }
 
   if (casts !== null) {
-    cast();
     const mapCasts = casts.map((cast, i) => {
       return <CastSliderBox cast={cast} />;
     });

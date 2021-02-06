@@ -4,47 +4,164 @@ Home style
 
 .Home {
   width: 100%;
+  overflow: hidden;
 } //Home
 
 .Home__firstView {
   align-items: center;
   display: flex;
   justify-content: center;
-  min-height: 70vh;
-  overflow: hidden;
-  position: relative;
+  min-height: 75vh;
   width: 100%;
-  // border: 1px solid aliceblue;
-
-  &--thumbnail {
-    height: auto;
-    left: 0;
-    top: 0;
-    object-fit: cover;
+  position: relative;
+  &::before {
     position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
     width: 100%;
-    z-index: -1;
+    height: 100%;
+    background: rgb(1, 7, 40);
+    background: linear-gradient(
+      27deg,
+      rgba(0, 3, 20, 0.582) 0%,
+      rgba(181, 191, 247, 0.267) 35%,
+      rgba(0, 0, 0, 0.137) 52%,
+      rgba(4, 12, 23, 1) 96%
+    );
+    z-index: 1;
   }
+} //__firstView
 
-  &--form {
-    display: flex;
-    margin: auto;
-    width: 90%;
+.SlideShow {
+  padding: 7px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  width: 100%;
+
+  img {
+    margin: 20px 0 0 0;
+    position: relative;
+    border-radius: 5px;
+    max-width: 380px;
+    z-index: 1;
+    filter: drop-shadow(0px 0px 10px #050a5570);
+    transition: $changeTime;
+
+    &:hover {
+      transition: $changeTime;
+      transform: scale(1.04,1.04) rotateX(4deg);
+    }
   }
+}
+
+.SearchForm {
+  position: absolute;
+  padding: 5px;
+  background: #000000ad;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 80%;
+  z-index: 50;
+  transition: $changeTime;
 
   &--input {
-    background-color: white;
-    border-radius: 10px 0px 0px 10px;
-    color: black;
+    position: relative;
     font-size: 18px;
     padding: 0.9em 1.9em;
     width: 95%;
+
+    &:focus {
+      color: rgb(180, 180, 180);
+      background: rgba(1, 1, 26, 0.452);
+    }
+
+    &:focus + .SearchForm--underBorder::before,
+    &:focus + .SearchForm--underBorder::after {
+      width: 99.5%;
+      transition: $changeTime;
+    }
+    &:focus ~ .SearchForm--sideBorder::before,
+    &:focus ~ .SearchForm--sideBorder::after {
+      height: 98%;
+      transition: $changeTime;
+    }
+  }
+
+  &--underBorder::before,
+  &--underBorder::after {
+    transition: $changeTime;
+    position: absolute;
+    box-shadow: 0px 0px 2px #ffffff96;
+    content: "";
+    width: 0%;
+    height: 2px;
+  }
+
+  &--underBorder::before {
+    top: 0px;
+    left: 1.9px;
+    background: rgb(50, 69, 177);
+    background: linear-gradient(
+      27deg,
+      rgba(9, 35, 184, 0.568) 0%,
+      rgba(34, 94, 143, 0.83) 42%,
+      rgba(141, 156, 243, 0.163) 100%
+    );
+  }
+
+  &--underBorder::after {
+    bottom: 0px;
+    right: 1.9px;
+    background: rgb(50, 69, 177);
+    background: linear-gradient(
+      27deg,
+      rgba(9, 35, 184, 0.459) 100%,
+      rgba(34, 94, 143, 0.83) 42%,
+      rgba(141, 156, 243, 0.163) 0%
+    );
+  }
+
+  &--sideBorder::before,
+  &--sideBorder::after {
+    transition: $changeTime;
+    position: absolute;
+    box-shadow: 0px 0px 7px #ffffff96;
+    content: "";
+    width: 2px;
+    height: 0%;
+  }
+
+  &--sideBorder::before {
+    bottom: 0px;
+    right: 0px;
+    background: linear-gradient(
+      27deg,
+      rgba(54, 80, 228, 0.568) 0%,
+      rgba(34, 94, 143, 0.83) 42%,
+      rgba(141, 156, 243, 0.163) 100%
+    );
+  }
+
+  &--sideBorder::after {
+    top: 0px;
+    left: 0px;
+    background: linear-gradient(
+      27deg,
+      rgba(0, 47, 255, 0.459) 100%,
+      rgba(34, 94, 143, 0.83) 42%,
+      rgba(141, 156, 243, 0.163) 0%
+    );
   }
 
   &--submit {
-    background-color: $baseBkColor;
-    border-radius: 0px 10px 10px 0px;
-    border: white solid 0.5px;
+    border: rgba(255, 255, 255, 0.493) solid 0.5px;
     min-width: 50px;
     text-align: center;
     width: 5%;
@@ -54,7 +171,43 @@ Home style
       color: $baseBkColor;
     }
   }
-} //__firstView
+} //SearchForm
+
+.swiper-container {
+  text-align: center !important;
+  overflow: visible !important;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 90% !important;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 27px;
+    color: rgba(228, 228, 228, 0.418);
+    text-shadow: 0px 0px 2px #1d1f97e0;
+  }
+
+  .swiper-pagination-progressbar {
+    height: 1.5px !important;
+    top: 102% !important;
+  }
+
+  .swiper-pagination-progressbar-fill {
+    background: rgba(183, 173, 230, 0.39) !important;
+  }
+
+  .swiper-pagination-fraction {
+    display: inline-block;
+    width: auto;
+    color: rgba(228, 228, 228, 0.418);
+    text-shadow: 0px 0px 2px #1d1f97e0;
+    padding: 0 0 0 2em;
+    text-align: left;
+    font-size: 10px;
+  }
+} //swiper-container
 
 .Xslider {
   padding: 45px 0px 50px 0px;
@@ -81,47 +234,46 @@ Home style
     padding: 0 0 30px 3%;
     scroll-behavior: smooth;
     width: auto;
-
-    &--item {
-      position: relative;
-      flex-direction: column;
-      display: flex;
-      min-width: 140px;
-      min-height: 200px;
-      margin: 20px;
-      text-align: center;
-
-      &::before{
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: '';
-        width: 100%;
-        height: 100%;
-      }
-
-
-      &--top {
-        height: 90%;
-        width: 100%;
-      }
-
-      &--bottom {
-        height: 10%;
-        width: 100%;
-      }
-
-      &--img {
-        box-shadow: 0px 0px 10px $boxShadowColor;
-        border-radius: 10px;
-        display: inline-block;
-        height: 220px;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
   }
-} // Home__XslideWrap
+} // XslideWrap
+
+.XsliderBox {
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  min-width: 140px;
+  min-height: 200px;
+  margin: 20px;
+  text-align: center;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    box-shadow: 0px 0px 10px $boxShadowColor;
+    border-radius: 10px;
+    display: inline-block;
+    height: 220px;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: $baseFont;
+    margin: 1em 0 0.5em 0;
+  }
+
+  &__data {
+    font-size: 14px;
+  }
+} //XsliderBox
 
 .Xslider__shadow {
   background: rgba(255, 255, 255, 0);
@@ -132,6 +284,7 @@ Home style
   );
   border-radius: 80px 0 0 80px;
   content: "";
+  cursor: pointer;
   position: absolute;
   right: 0px;
   top: 0;
