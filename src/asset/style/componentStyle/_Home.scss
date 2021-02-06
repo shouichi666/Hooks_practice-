@@ -34,12 +34,22 @@ Home style
 } //__firstView
 
 .SlideShow {
+  position: relative;
   padding: 7px;
   height: 100%;
   left: 0;
   top: 0;
   object-fit: cover;
   width: 100%;
+
+
+  &__movieTitle{
+    position: absolute;
+    bottom: 2%;
+    left: 4%;
+    color: rgba(228, 228, 228, 0.418);
+    text-shadow: 0px 0px 2px #1d1f97e0;
+  }
 
   img {
     margin: 20px 0 0 0;
@@ -55,6 +65,8 @@ Home style
       transform: scale(1.04,1.04) rotateX(4deg);
     }
   }
+
+
 }
 
 .SearchForm {
@@ -180,7 +192,7 @@ Home style
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
-    top: 90% !important;
+    top: 96.5% !important;
   }
   .swiper-button-prev::after,
   .swiper-button-next::after {

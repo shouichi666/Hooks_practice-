@@ -61,20 +61,7 @@ const SlidShow = () => {
   });
 
   const isSetCount = (swiper) => {
-    let n = swiper.activeIndex;
-    if (n === 21) {
-      setCount(swiper.activeIndex - 6);
-    } else if (n === 22) {
-      setCount(swiper.activeIndex - 5);
-    } else if (n === 23) {
-      setCount(swiper.activeIndex - 4);
-    } else if (n === 3) {
-      setCount(swiper.activeIndex - 3);
-    } else if (n === 1) {
-      setCount(swiper.activeIndex - 1);
-    } else {
-      setCount(swiper.activeIndex - 3);
-    }
+    setCount(swiper.realIndex);
   };
 
   const style =
@@ -84,16 +71,18 @@ const SlidShow = () => {
             imgPath + "w780/" + gStateTopItem[count]["backdrop_path"]
           })`,
           backgroundSize: "cover",
-          // backgroundPosition: "right -200px top",
-          backgroundPosition: "center",
+          backgroundPosition: "right top",
+          // backgroundPosition: "center",
         }
       : { display: "block" };
+
+  const movieTitle = gStateTopItem.length > 0 ? gStateTopItem[count].title : "";
 
   return (
     <div className="SlideShow Home__firstView--thumbnail" style={style}>
       <Swiper
         effect="coverflow"
-        grabCursor={true}
+        // grabCursor={true}
         centeredSlides={true}
         navigation
         spaceBetween={0}
@@ -114,6 +103,7 @@ const SlidShow = () => {
         }}
         onActiveIndexChange={isSetCount}
       >
+        <p className="SlideShow__movieTitle">{movieTitle}</p>
         {isMapImgs}
       </Swiper>
     </div>

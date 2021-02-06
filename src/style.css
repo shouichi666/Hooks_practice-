@@ -159,12 +159,19 @@ Home style
     z-index: 1; }
 
 .SlideShow {
+  position: relative;
   padding: 7px;
   height: 100%;
   left: 0;
   top: 0;
   object-fit: cover;
   width: 100%; }
+  .SlideShow__movieTitle {
+    position: absolute;
+    bottom: 2%;
+    left: 4%;
+    color: rgba(228, 228, 228, 0.418);
+    text-shadow: 0px 0px 2px #1d1f97e0; }
   .SlideShow img {
     margin: 20px 0 0 0;
     position: relative;
@@ -253,7 +260,7 @@ Home style
   .swiper-container .swiper-button-prev,
   .swiper-container .swiper-button-next {
     position: absolute;
-    top: 90% !important; }
+    top: 96.5% !important; }
   .swiper-container .swiper-button-prev::after,
   .swiper-container .swiper-button-next::after {
     font-size: 27px;
