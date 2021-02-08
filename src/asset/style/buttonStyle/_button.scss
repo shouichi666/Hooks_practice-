@@ -1,0 +1,33 @@
+.SliderBackButton,
+.SliderNextButton {
+  color: #2067b893;
+  display: inline-block;
+  font-size: xx-large;
+  padding: 0;
+  margin: 0 10px;
+  &:hover {
+    color: #afa5caee;
+    text-shadow: 0px 0px 10px #dedef7c7;
+  }
+}
+
+.SliderBackButton {
+  &:active {
+    transform: translateX(-1px);
+  }
+}
+
+.SliderNextButton {
+  &:active {
+    transform: translateX(1px);
+  }
+}
+
+
+.buttonOFF{
+  opacity: 0.5;
+}
+
+.buttonON{
+  opacity: 1;
+}

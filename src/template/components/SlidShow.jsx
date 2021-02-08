@@ -71,8 +71,7 @@ const SlidShow = () => {
             imgPath + "w780/" + gStateTopItem[count]["backdrop_path"]
           })`,
           backgroundSize: "cover",
-          backgroundPosition: "right top",
-          // backgroundPosition: "center",
+          backgroundPosition: "center",
         }
       : { display: "block" };
 
@@ -81,27 +80,26 @@ const SlidShow = () => {
   return (
     <div className="SlideShow Home__firstView--thumbnail" style={style}>
       <Swiper
-        effect="coverflow"
         // grabCursor={true}
-        centeredSlides={true}
-        navigation
-        spaceBetween={0}
-        slidesPerView={2.5}
-        loop={true}
         autoplay={{ delay: 5500, disableOnInteraction: false }}
+        centeredSlides={true}
         coverflowEffect={{
           rotate: 15,
           stretch: 10,
           depth: 300,
-          modifier: 3,
+          modifier: 2.5,
           slideShadows: false,
         }}
+        effect="coverflow"
+        loop={true}
+        navigation
+        onActiveIndexChange={isSetCount}
         pagination={{
           clickable: true,
-          // el: ".swiper-pagination",
           type: "progressbar",
         }}
-        onActiveIndexChange={isSetCount}
+        spaceBetween={95}
+        slidesPerView={2.5}
       >
         <p className="SlideShow__movieTitle">{movieTitle}</p>
         {isMapImgs}

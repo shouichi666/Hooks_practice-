@@ -7,7 +7,6 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SlidShow from "./SlidShow";
 import SearchForm from "./SearchForm";
-import Xslider from './Xslider';
 
 export {
   Header,
@@ -19,5 +18,4 @@ export {
   SignIn,
   SignUp,
   SlidShow,
-  Xslider
 };

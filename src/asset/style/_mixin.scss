@@ -2,20 +2,19 @@
 
 @mixin scrollBer {
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    margin: 2px;
+    width: 5px;
+    height: 9px;
   }
 
   /* スクロールの背景の設定 */
   ::-webkit-scrollbar-track {
     border-radius: 1px;
-    box-shadow: 0 0 4px #ab9ef87e inset;
+    // box-shadow: 0 0 1px #ac9ef850 inset;
   }
 
   /* スクロールのつまみ部分の設定 */
   ::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #4473ad46;
+    border-radius: 1px;
+    background: #2e4d7486;
   }
 }

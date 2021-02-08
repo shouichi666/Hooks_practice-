@@ -1,10 +1,10 @@
 /*
-Home style
+/Home style
 */
 
 .Home {
-  width: 100%;
   overflow: hidden;
+  width: 100%;
 } //Home
 
 .Home__firstView {
@@ -15,83 +15,88 @@ Home style
   width: 100%;
   position: relative;
   &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    width: 100%;
-    height: 100%;
     background: rgb(1, 7, 40);
     background: linear-gradient(
       27deg,
-      rgba(0, 3, 20, 0.582) 0%,
+      rgba(0, 3, 20, 0.788) 0%,
       rgba(181, 191, 247, 0.267) 35%,
       rgba(0, 0, 0, 0.137) 52%,
       rgba(4, 12, 23, 1) 96%
     );
+    content: "";
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
     z-index: 1;
   }
-} //__firstView
+} //.Home__firstView
 
 .SlideShow {
+  left: 0;
+  height: 100%;
+  object-fit: cover;
   position: relative;
   padding: 7px;
-  height: 100%;
-  left: 0;
   top: 0;
-  object-fit: cover;
   width: 100%;
 
-
-  &__movieTitle{
-    position: absolute;
+  &__movieTitle {
     bottom: 2%;
-    left: 4%;
     color: rgba(228, 228, 228, 0.418);
-    text-shadow: 0px 0px 2px #1d1f97e0;
+    left: 4%;
+    text-shadow: 1px 1px 1px #01010fe0;
+    position: absolute;
   }
 
   img {
-    margin: 20px 0 0 0;
-    position: relative;
     border-radius: 5px;
-    max-width: 380px;
-    z-index: 1;
     filter: drop-shadow(0px 0px 10px #050a5570);
+    margin: 20px 0 0 0;
+    max-width: 380px;
+    position: relative;
     transition: $changeTime;
+    z-index: 1;
 
     &:hover {
       transition: $changeTime;
-      transform: scale(1.04,1.04) rotateX(4deg);
+      transform: scale(1.04, 1.04) rotateX(4deg);
     }
   }
-
-
-}
+} //SlideShow
 
 .SearchForm {
-  position: absolute;
-  padding: 5px;
-  background: #000000ad;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  background: #000000be;
   display: flex;
   justify-content: space-between;
+  left: 50%;
   margin: auto;
+  position: absolute;
+  padding: 9px;
+  top: 50%;
+  transition: $changeTime;
+  transform: translate(-50%, -50%);
   width: 80%;
   z-index: 50;
-  transition: $changeTime;
 
   &--input {
-    position: relative;
+    color: rgb(227, 205, 255);
     font-size: 18px;
+    transition: $changeTime;
+    position: relative;
     padding: 0.9em 1.9em;
     width: 95%;
 
+    &::placeholder {
+      color: rgb(174, 166, 185);
+    }
+
     &:focus {
-      color: rgb(180, 180, 180);
-      background: rgba(1, 1, 26, 0.452);
+      background: rgba(2, 2, 39, 0.719);
+      padding: 1em 2em;
+      transition: $changeTime;
     }
 
     &:focus + .SearchForm--underBorder::before,
@@ -104,16 +109,32 @@ Home style
       height: 98%;
       transition: $changeTime;
     }
+
+    &:focus ~ .SearchForm--deleteButton {
+      display: block;
+    }
+    &:focus ~ .SearchForm--submit {
+      background: #000;
+      border: rgb(180, 175, 175) solid 0.5px;
+    }
+  }
+
+  &--deleteButton {
+    display: none;
+    right: 110px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &--underBorder::before,
   &--underBorder::after {
-    transition: $changeTime;
-    position: absolute;
     box-shadow: 0px 0px 2px #ffffff96;
     content: "";
-    width: 0%;
+    transition: $changeTime;
+    position: absolute;
     height: 2px;
+    width: 0%;
   }
 
   &--underBorder::before {
@@ -131,12 +152,12 @@ Home style
   &--underBorder::after {
     bottom: 0px;
     right: 1.9px;
-    background: rgb(50, 69, 177);
+    background: rgb(134, 137, 153);
     background: linear-gradient(
       27deg,
-      rgba(9, 35, 184, 0.459) 100%,
-      rgba(34, 94, 143, 0.83) 42%,
-      rgba(141, 156, 243, 0.163) 0%
+      rgba(117, 129, 194, 0.459) 100%,
+      rgba(34, 94, 143, 0.938) 42%,
+      rgba(141, 156, 243, 0.966) 0%
     );
   }
 
@@ -173,11 +194,14 @@ Home style
   }
 
   &--submit {
-    border: rgba(255, 255, 255, 0.493) solid 0.5px;
-    min-width: 50px;
+    border-radius: 30px;
+    color: #d4d4d4;
+    font-family: $logoFont;
+    min-width: 70px;
+    position: relative;
+    padding: 0.5em;
     text-align: center;
     width: 5%;
-
     &:active {
       background-color: white;
       color: $baseBkColor;
@@ -185,6 +209,7 @@ Home style
   }
 } //SearchForm
 
+//swiper re-style
 .swiper-container {
   text-align: center !important;
   overflow: visible !important;
@@ -194,15 +219,22 @@ Home style
     position: absolute;
     top: 96.5% !important;
   }
+  .swiper-button-prev:active::after,
+  .swiper-button-next:active::after {
+    font-size: 26px;
+    transition: $changeTime;
+    padding: 0 0 0.2em 0;
+  }
   .swiper-button-prev::after,
   .swiper-button-next::after {
-    font-size: 27px;
     color: rgba(228, 228, 228, 0.418);
-    text-shadow: 0px 0px 2px #1d1f97e0;
+    font-size: 27px;
+    text-shadow: 0px 0px 3px #01011be0;
+    transition: $changeTime;
   }
 
   .swiper-pagination-progressbar {
-    height: 1.5px !important;
+    height: 1.9px !important;
     top: 102% !important;
   }
 
@@ -211,95 +243,12 @@ Home style
   }
 
   .swiper-pagination-fraction {
-    display: inline-block;
-    width: auto;
     color: rgba(228, 228, 228, 0.418);
-    text-shadow: 0px 0px 2px #1d1f97e0;
+    display: inline-block;
+    font-size: 10px;
     padding: 0 0 0 2em;
     text-align: left;
-    font-size: 10px;
+    text-shadow: 0px 0px 2px #1d1f97e0;
+    width: auto;
   }
 } //swiper-container
-
-.Xslider {
-  padding: 45px 0px 50px 0px;
-  width: 100%;
-  @include scrollBer;
-
-  &__heading {
-    font-size: 38px;
-    font-family: $logoFont;
-    padding: 0 0 0 3em;
-  }
-
-  &__slider {
-    padding: 20px 0 0 0;
-    position: relative;
-    width: auto;
-  }
-
-  &__list {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding: 0 0 30px 3%;
-    scroll-behavior: smooth;
-    width: auto;
-  }
-} // XslideWrap
-
-.XsliderBox {
-  position: relative;
-  flex-direction: column;
-  display: flex;
-  min-width: 140px;
-  min-height: 200px;
-  margin: 20px;
-  text-align: center;
-
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    width: 100%;
-    height: 100%;
-  }
-
-  &__img {
-    box-shadow: 0px 0px 10px $boxShadowColor;
-    border-radius: 10px;
-    display: inline-block;
-    height: 220px;
-    width: 100%;
-  }
-
-  &__title {
-    font-size: 15px;
-    font-weight: 600;
-    font-family: $baseFont;
-    margin: 1em 0 0.5em 0;
-  }
-
-  &__data {
-    font-size: 14px;
-  }
-} //XsliderBox
-
-.Xslider__shadow {
-  background: rgba(255, 255, 255, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(202, 200, 200, 0.178) 100%
-  );
-  border-radius: 80px 0 0 80px;
-  content: "";
-  cursor: pointer;
-  position: absolute;
-  right: 0px;
-  top: 0;
-  height: 100%;
-  width: 105px;
-}

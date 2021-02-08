@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
-import AppContext from "../../hooks/contexts/AppContext";
+import AppContext from "../../../hooks/contexts/AppContext";
 
 const XsliderBox = (props) => {
   const { dispatch } = useContext(AppContext);
@@ -33,7 +33,7 @@ const XsliderBox = (props) => {
 
   return (
     <Link
-      className="XsliderBox"
+      className="sliderBox"
       to={`/movie/${data.id}`}
       id={data.id}
       onClick={onClick}
@@ -41,10 +41,10 @@ const XsliderBox = (props) => {
       <img
         src={theMovieDb.common.images_uri + "w185" + data.poster_path}
         alt={data.poster_path}
-        className="XsliderBox__img"
+        className="sliderBox__img"
       />
-      <p className="XsliderBox__title">{data.title}</p>
-      <p className="XsliderBox__date">{data.release_date}</p>
+      <p className="sliderBox__title">{data.title}</p>
+      <p className="sliderBox__date">{data.release_date}</p>
     </Link>
   );
 };

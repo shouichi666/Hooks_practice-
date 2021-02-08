@@ -5,6 +5,12 @@ const SearchForm = () => {
   const [focus, setFocus] = useState(false);
   const handleChangeText = (e) => setText(e.target.value);
   let changeClassName = focus ? "on" : "off";
+
+  const isClerField = (e) => {
+    e.preventDefault();
+    setText("");
+  };
+
   return (
     <form
       action="/"
@@ -20,11 +26,15 @@ const SearchForm = () => {
         id="firstViewInput"
         value={text}
         name="firstViewInput"
+        tabIndex="1"
         onChange={handleChangeText}
         placeholder="movie or acter ..."
       />
       <span className="SearchForm--underBorder"></span>
       <span className="SearchForm--sideBorder"></span>
+      <button className="SearchForm--deleteButton" onClick={isClerField}>
+        <span className="SearchForm--boder">del</span>
+      </button>
       <input className="SearchForm--submit" type="submit" value="Search" />
     </form>
   );

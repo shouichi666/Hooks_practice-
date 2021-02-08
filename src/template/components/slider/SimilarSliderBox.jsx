@@ -7,15 +7,15 @@ const SimilarSliderBox = (props) => {
 
   return (
     <Link to={`/movie/${data.id}`} id={data.title}>
-      <div className="SimilarSlider__list--item">
-        <div className="SimilarSlider__list--item--top">
+      <div className="similarSliderBox">
+        <div className="similarSliderBox--top">
           <img
             src={theMovieDb.common.images_uri + "w185" + data.poster_path}
             alt={data.poster_path}
-            className="SimilarSlider__list--item--img"
+            className="similarSliderBox--img"
           />
         </div>
-        <div className="SimilarSlider__list--item--bottom">
+        <div className="similarSliderBox--bottom">
           <p>{data.title}</p>
           {/* <p>{data.character}</p> */}
         </div>
