@@ -444,8 +444,6 @@ Footer style
     align-items: center; }
     .Movie__discriptionWrap--mid--score {
       position: relative;
-      width: 60px;
-      height: 60px;
       margin: 1em;
       background-color: black;
       border-radius: 50%; }
@@ -465,12 +463,11 @@ Footer style
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 75px;
+  height: 75px;
   display: inline-block;
-  background-color: #adadad;
   text-align: center;
-  line-height: 55px;
+  line-height: 73px;
   font-size: 20px; }
   .scoreCircle__amount {
     font-size: 10px; }

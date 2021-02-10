@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link ,useHistory} from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
-import {PieChart} from '../component/'
-import { CastSliderBox, Xslider,XsliderBox } from "../components/slider";
+import { PieChart } from "../components";
+import { CastSliderBox, Xslider, XsliderBox } from "../components/slider";
 import AppContext from "../../hooks/contexts/AppContext";
 
 const Movie = () => {
+  const history = useHistory()
   const { state } = useContext(AppContext);
   const [movies, setMovie] = useState(null);
   const [casts, setCasts] = useState(null);
@@ -13,7 +14,7 @@ const Movie = () => {
   const keywords = state.movie.keyword;
   const imgPath = theMovieDb.common.images_uri;
 
-  if (casts === null) {
+  useEffect(() => {
     theMovieDb.movies.getCredits(
       { id: state.movie.viewItem.id },
       (movie) => {
@@ -22,11 +23,9 @@ const Movie = () => {
       },
       (error) => {
         console.log(error);
+        history.push('/')
       }
     );
-  }
-
-  if (movies === null) {
     theMovieDb.movies.getSimilarMovies(
       { id: state.movie.viewItem.id },
       (movie) => {
@@ -35,9 +34,10 @@ const Movie = () => {
       },
       (error) => {
         console.log(error);
+        history.push('/')
       }
     );
-  }
+  }, [state]);
 
   if (Object.keys(data).length !== 0 && movies !== null && casts !== null) {
     const lang = data.original_language;
@@ -72,7 +72,6 @@ const Movie = () => {
             <div className='Movie__discriptionWrap--top'>
               <h2 className='Movie__discriptionWrap--top--title'>{data.title}</h2>
               <div className='Movie__discriptionWrap--top--flex'>
-                <PieChart/>
                 <span>{data.release_date}</span>
                 {data.genres.map((genre, i) => (
                   <Link to={`/${genre.id}`} key={i} id={genre.id}>
@@ -85,6 +84,13 @@ const Movie = () => {
 
             <div className='Movie__discriptionWrap--mid'>
               <div className='Movie__discriptionWrap--mid--score score'>
+                <PieChart
+                  width={73}
+                  height={73}
+                  inner={30}
+                  outer={33}
+                  review={data.vote_average}
+                />
                 <div className='scoreCircle' data-percent={data.vote_average * 10}>
                   {data.vote_average * 10}
                   <spna className='scoreCircle__amount'>%</spna>

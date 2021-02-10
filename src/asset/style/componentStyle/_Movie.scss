@@ -84,10 +84,10 @@
     padding: 0 10px;
     display: flex;
     align-items: center;
+
+
     &--score {
       position: relative;
-      width: 60px;
-      height: 60px;
       margin: 1em;
       background-color: rgb(0, 0, 0);
       border-radius: 50%;
@@ -114,12 +114,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 75px;
+  height: 75px;
   display: inline-block;
-  background-color: rgb(173, 173, 173);
   text-align: center;
-  line-height: 55px;
+  line-height: 73px;
   font-size: 20px;
 
   &__amount {
