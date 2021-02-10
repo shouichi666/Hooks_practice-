@@ -7,6 +7,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SlidShow from "./SlidShow";
 import SearchForm from "./SearchForm";
+import PieChart from "./PieChart";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   SignIn,
   SignUp,
   SlidShow,
+  PieChart,
 };

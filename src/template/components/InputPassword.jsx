@@ -26,16 +26,16 @@ export default function InputAdornments(props) {
 
   return (
     <>
-      <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+      <InputLabel htmlFor='standard-adornment-password'>Password</InputLabel>
       <Input
-        id="standard-adornment-password"
+        id='standard-adornment-password'
         type={props.value ? "text" : "password"}
         value={props.password}
         onChange={props.onChange}
         endAdornment={
-          <InputAdornment position="end">
+          <InputAdornment position='end'>
             <IconButton
-              aria-label="toggle password visibility"
+              aria-label='toggle password visibility'
               onClick={props.handleClickShowPassword}
               onMouseDown={props.handleMouseDownPassword}
             >

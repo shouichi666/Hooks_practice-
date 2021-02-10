@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { SlidShow, SearchForm } from "../components/";
 import { Xslider, XsliderBox } from "../components/slider";
 import AppContext from "../../hooks/contexts/AppContext";
+import ToggleSlider from "../components/slider/ToggleSlider";
 
 const Home = () => {
   const { state } = useContext(AppContext);
@@ -12,24 +13,13 @@ const Home = () => {
         <SearchForm />
         <SlidShow />
       </section>
-
       <Xslider heading='評価の高い'>
         {state.movie.topMovies.map((data, i) => (
           <XsliderBox key={i} data={data} />
         ))}
       </Xslider>
 
-      <Xslider heading='トレンド'>
-        {state.movie.week.map((data, i) => (
-          <XsliderBox key={i} data={data} />
-        ))}
-      </Xslider>
-
-      <Xslider heading='トレンド'>
-        {state.movie.day.map((data, i) => {
-          return <XsliderBox key={i} data={data} />;
-        })}
-      </Xslider>
+      <ToggleSlider heading='TRENDO' />
     </main>
   );
 };

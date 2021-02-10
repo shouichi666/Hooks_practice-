@@ -31,8 +31,10 @@ const Xslider = (props) => {
 
   return (
     <section className='slider'>
-      <h2 className='slider__heading'>{props.heading}</h2>
-
+      <div className='slider__top'>
+        <h2 className='slider__heading'>{props.heading}</h2>
+        {props.tab}
+      </div>
       <div className='slider__slider'>
         <div className='slider__list' onScroll={XsliderScrollEvent} ref={slider}>
           <div ref={startPosition}></div>
@@ -40,11 +42,10 @@ const Xslider = (props) => {
           {props.children}
 
           <div ref={endPosition}></div>
-
-          <div className='slider__arrows'>
-            <SliderBackButton onClick={backScroll} disabled={backDisabled} />
-            <SliderNextButton onClick={nextScroll} disabled={nextDisabled} />
-          </div>
+        </div>
+        <div className='slider__arrows'>
+          <SliderBackButton onClick={backScroll} disabled={backDisabled} />
+          <SliderNextButton onClick={nextScroll} disabled={nextDisabled} />
         </div>
       </div>
     </section>

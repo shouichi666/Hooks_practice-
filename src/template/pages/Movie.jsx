@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
-import { CastSliderBox, SimilarSliderBox, Xslider } from "../components/slider";
+import {PieChart} from '../component/'
+import { CastSliderBox, Xslider,XsliderBox } from "../components/slider";
 import AppContext from "../../hooks/contexts/AppContext";
 
 const Movie = () => {
@@ -71,6 +72,7 @@ const Movie = () => {
             <div className='Movie__discriptionWrap--top'>
               <h2 className='Movie__discriptionWrap--top--title'>{data.title}</h2>
               <div className='Movie__discriptionWrap--top--flex'>
+                <PieChart/>
                 <span>{data.release_date}</span>
                 {data.genres.map((genre, i) => (
                   <Link to={`/${genre.id}`} key={i} id={genre.id}>
@@ -108,7 +110,7 @@ const Movie = () => {
             </Xslider>
             <Xslider heading={`同ジャンル ${movies.length} 作品`}>
               {movies.map((movie, i) => {
-                return <SimilarSliderBox data={movie} />;
+                return <XsliderBox data={movie} />;
               })}
             </Xslider>
           </div>
