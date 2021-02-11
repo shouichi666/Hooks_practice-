@@ -7,6 +7,7 @@ const Xslider = (props) => {
   const startPosition = useRef(null);
   const endPosition = useRef(null);
   const slider = useRef(null);
+  
 
   //scroll event
   const XsliderScrollEvent = () => {

@@ -70,6 +70,7 @@ HeaderSearch style
   background-color: $headerSearchBkColor;
   box-shadow: 0px 0px 30px $boxShadowColor;
   border: $primaryBorderColor solid;
+  z-index: 100;
 
   &__form {
     align-items: center;
@@ -96,8 +97,9 @@ HeaderSearch style
 
     &::placeholder {
       position: absolute;
-      color: #ffffffb7;
+      color: #ffffff96;
       transition: $changeTime;
+      font-size: 15px;
     }
 
     &:focus::placeholder {
@@ -118,6 +120,14 @@ HeaderSearch style
   }
 } //HeaderSearch
 
+.HeaderSearch__candidateList li {
+  padding: 0.4em 2em;
+  text-align: left;
+  border-bottom: 0.1px solid rgba(238, 238, 238, 0.26);
+  &:hover {
+    background: rgb(190, 190, 190);
+  }
+}
 // .MuiSvgIcon-root {
 //   font-size: 30px !important;
 // }

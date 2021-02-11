@@ -1,5 +1,5 @@
 //
-// movieに関する情報
+// getItemに関する情報
 //
 //
 import initialState from "../initalState";
@@ -17,17 +17,15 @@ const movie = (state = movieState, action) => {
       const week = action.weekData[0];
       return { ...state, week };
 
-    case "GET_TOP_ROTED":
+    case "GET_TOP_ROTED_MOVIE":
       const topMovies = action.data.results;
       return { ...state, topMovies };
+    
+    case "GET_POPULAR_MOVIE":
+      return { ...state, topPopular: action.data };
+    
 
-    case "GET_ID_MOVIE":
-      const viewItem = action.data;
-      return { ...state, viewItem };
 
-    case "GET_KEYWORD":
-      const keyword = action.data;
-      return { ...state, keyword };
 
     case "TOP_MOVIE":
       console.log("TOP_MOVIE");

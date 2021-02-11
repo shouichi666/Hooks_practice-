@@ -2,28 +2,22 @@ import React, { useContext, useState } from "react";
 import AppContext from "../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 import { Link } from "react-router-dom";
-import SwiperCore, {
-  Autoplay,
-  Navigation,
-  EffectCoverflow,
-  Pagination,
-} from "swiper";
+import SwiperCore, { Autoplay, Navigation, EffectCoverflow, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
 import "swiper/components/pagination/pagination.scss";
+import { POSTER_780, BACKDROP_780 } from "../../hooks/hoge";
 SwiperCore.use([Autoplay, EffectCoverflow, Navigation, Pagination]);
 
 const SlidShow = () => {
   const [count, setCount] = useState(0);
   const { state, dispatch } = useContext(AppContext);
-  const imgPath = theMovieDb.common.images_uri;
   const gStateTopItem = state.movie.topMovies;
 
   const onClick = (e) => {
     const id = e.target.id;
-    console.log(id);
     theMovieDb.movies.getById(
       { id: id },
       (movie) => {
@@ -51,7 +45,7 @@ const SlidShow = () => {
       <SwiperSlide key={i} virtualIndex={i}>
         <Link to={"/movie/" + item.id} onClick={onClick}>
           <img
-            src={imgPath + "w780/" + item["poster_path"]}
+            src={POSTER_780 + item["poster_path"]}
             alt={item["poster_path"]}
             id={item.id}
           />
@@ -67,9 +61,7 @@ const SlidShow = () => {
   const style =
     gStateTopItem.length > 0
       ? {
-          backgroundImage: `url(${
-            imgPath + "w780/" + gStateTopItem[count]["backdrop_path"]
-          })`,
+          backgroundImage: `url(${BACKDROP_780 + gStateTopItem[count]["backdrop_path"]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }
@@ -78,7 +70,7 @@ const SlidShow = () => {
   const movieTitle = gStateTopItem.length > 0 ? gStateTopItem[count].title : "";
 
   return (
-    <div className="SlideShow Home__firstView--thumbnail" style={style}>
+    <div className='SlideShow Home__firstView--thumbnail' style={style}>
       <Swiper
         // grabCursor={true}
         autoplay={{ delay: 5500, disableOnInteraction: false }}
@@ -90,7 +82,7 @@ const SlidShow = () => {
           modifier: 2.5,
           slideShadows: false,
         }}
-        effect="coverflow"
+        effect='coverflow'
         loop={true}
         navigation
         onActiveIndexChange={isSetCount}
@@ -101,7 +93,7 @@ const SlidShow = () => {
         spaceBetween={95}
         slidesPerView={2.5}
       >
-        <p className="SlideShow__movieTitle">{movieTitle}</p>
+        <p className='SlideShow__movieTitle'>{movieTitle}</p>
         {isMapImgs}
       </Swiper>
     </div>

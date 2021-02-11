@@ -13,29 +13,29 @@ const SearchForm = () => {
 
   return (
     <form
-      action="/"
-      method="get"
+      action='/'
+      method='get'
       className={`SearchForm ${changeClassName}`}
       onClick={() => {
         setFocus(!focus);
       }}
     >
       <input
-        className="SearchForm--input"
-        type="text"
-        id="firstViewInput"
+        className='SearchForm--input'
+        type='text'
+        id='firstViewInput'
         value={text}
-        name="firstViewInput"
-        tabIndex="1"
+        name='firstViewInput'
+        tabIndex='1'
         onChange={handleChangeText}
-        placeholder="movie or acter ..."
+        placeholder="映画名、テレビ番組名、人物名で検索'"
       />
-      <span className="SearchForm--underBorder"></span>
-      <span className="SearchForm--sideBorder"></span>
-      <button className="SearchForm--deleteButton" onClick={isClerField}>
-        <span className="SearchForm--boder">del</span>
+      <span className='SearchForm--underBorder'></span>
+      <span className='SearchForm--sideBorder'></span>
+      <button className='SearchForm--deleteButton' onClick={isClerField}>
+        <span className='SearchForm--boder'>del</span>
       </button>
-      <input className="SearchForm--submit" type="submit" value="Search" />
+      <input className='SearchForm--submit' type='submit' value='Search' />
     </form>
   );
 };

@@ -9,7 +9,7 @@
 
   &__top {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     margin: 0 0 0.9em 0;
   }
 
@@ -17,7 +17,7 @@
     display: inline-block;
     font-size: 38px;
     font-family: $logoFont;
-    margin: 0 0.5em 0 1em;
+    margin: 0 1em 0 1em;
   }
 
   &__slider {
@@ -66,7 +66,7 @@
 
   &__img {
     box-shadow: 0px 0px 10px $boxShadowColor;
-    border-radius: 10px;
+    border-radius: 5px;
     display: inline-block;
     height: 220px;
     width: 100%;
