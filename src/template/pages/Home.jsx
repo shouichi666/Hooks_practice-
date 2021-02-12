@@ -10,10 +10,10 @@ const Home = () => {
   const [popular, setPopular] = useState("映画");
   const [rated, setRated] = useState("映画");
 
-  const today = state.movie.week.map((data, i) => (
+  const today = state.movie.day.map((data, i) => (
     <XsliderBox key={i} data={data} judge={"movie"} />
   ));
-  const week = state.movie.day.map((data, i) => (
+  const week = state.movie.week.map((data, i) => (
     <XsliderBox key={i} data={data} judge={"movie"} />
   ));
   const movie = state.movie.topPopular.map((data, i) => (

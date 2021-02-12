@@ -1,6 +1,6 @@
-import Archive from './Search';
+import Search from "./Search";
 import Favorite from "./Favorite";
 import Home from "./Home";
 import Sign from "./Sign";
 
-export {Archive, Favorite, Home, Sign };
+export { Search, Favorite, Home, Sign };

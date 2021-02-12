@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
 import AppContext from "../../../hooks/contexts/AppContext";
 import { PieChart } from "../";
 
 const XsliderBox = (props) => {
   const { dispatch } = useContext(AppContext);
+  const history = useHistory();
   const data = props.data;
 
   const onClick = (e) => {
@@ -18,7 +18,7 @@ const XsliderBox = (props) => {
       theMovieDb.movies.getById(
         { id: id },
         (movie) => {
-          dispatch({ type: "GET_VIEW_ITEM", data: JSON.parse(movie) });
+          dispatch({ type: "GET_MOVIE", data: JSON.parse(movie) });
         },
         (error) => {
           console.log(error);
@@ -33,11 +33,12 @@ const XsliderBox = (props) => {
           console.log(error);
         }
       );
+      history.push(`/movie/${id}`);
     } else if (name === "tv") {
       theMovieDb.tv.getById(
         { id: id },
         (movie) => {
-          dispatch({ type: "GET_VIEW_ITEM", data: JSON.parse(movie) });
+          dispatch({ type: "GET_TV", data: JSON.parse(movie) });
         },
         (error) => {
           console.log(error);
@@ -52,17 +53,12 @@ const XsliderBox = (props) => {
           console.log(error);
         }
       );
+      history.push(`/tv/${id}`);
     }
   };
 
   return (
-    <Link
-      className='sliderBox'
-      to={`/movie/${data.id}`}
-      id={data.id}
-      onClick={onClick}
-      name={props.judge}
-    >
+    <Link className='sliderBox' id={data.id} onClick={onClick} name={props.judge}>
       <div className='sliderBox__top'>
         <img
           src={theMovieDb.common.images_uri + "w185" + data.poster_path}
@@ -72,7 +68,7 @@ const XsliderBox = (props) => {
         <div className='sliderBox__review'>
           <p className='sliderBox__review--number'>
             {data.vote_average * 10}
-            <span className='sliderBox__review--number--per'>%</span>
+            <small className='sliderBox__review--number--per'>%</small>
           </p>
           <PieChart
             review={data.vote_average}
@@ -84,7 +80,7 @@ const XsliderBox = (props) => {
         </div>
       </div>
       <p className='sliderBox__title'>{data.title || data.name}</p>
-      <p className='sliderBox__date'>{data.release_date || data.first_air_date}</p>
+      <time className='sliderBox__date'>{data.release_date || data.first_air_date}</time>
     </Link>
   );
 };

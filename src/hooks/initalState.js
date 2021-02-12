@@ -14,27 +14,55 @@ const initialState = {
   },
 
   movie: {
-    day: [],
+    //映画
+    searchItems: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+    day: [], //今日のトレンド
     topMovies: [],
     topPopular: [],
-    week: [],
+    week: [], //今週のトレンド
+    viewItem: {}, //詳細ページ
   },
 
   tv: {
-    topTv: [],
-    topPopular: [],
+    //テレビ
+    searchItems: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+    topTv: [], //評価の高い
+    topPopular: [], // トレンド
+    viewItem: {}, //詳細ページ
+  },
+
+  cast: {
+    //出演者
+    searchItems: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+    viewItem: {}, //詳細ページ
   },
 
   common: {
     searchItems: {
-      page:0,
       results: [],
+      page: 0,
       totalResult: 0,
       totalPage: 0,
     },
-    favoriteList: [], //お気に入りリスト
+
+    favoriteList: [],
     keyword: [],
-    viewItem: {},
+    // viewItem: {}, //詳細ページ
     searchType: "",
   },
 };

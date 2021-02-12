@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { PieChart } from "../components";
-import { CastSliderBox, Xslider, XsliderBox } from "../components/slider";
-import AppContext from "../../hooks/contexts/AppContext";
+import { PieChart } from "../../components";
+import { CastSliderBox, Xslider, XsliderBox } from "../../components/slider";
+import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
-import { POSTER_342, BACKDROP_780 } from "../../hooks/hoge";
+import { POSTER_342, BACKDROP_780 } from "../../../hooks/hoge";
 
-const Movie = () => {
+const ArchiveCast = () => {
   // const history = useHistory();
   const { state } = useContext(AppContext);
   const [movies, setMovie] = useState([]);
@@ -72,7 +72,7 @@ const Movie = () => {
         <div className='Movie__discriptionWrap'>
           <div className='Movie__discriptionWrap--top'>
             <h2 className='Movie__discriptionWrap--top--title'>
-              {data.title || data.name} {/* 作品タイトル */}
+              {data.title || data.name} cast{/* 作品タイトル */}
             </h2>
             <div className='Movie__discriptionWrap--top--flex'>
               <span>{data.release_date}</span>
@@ -157,4 +157,4 @@ const Movie = () => {
   // }
 };
 
-export default Movie;
+export default ArchiveCast;

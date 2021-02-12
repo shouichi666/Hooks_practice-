@@ -3,22 +3,13 @@
 //
 //
 import initialState from "../initalState";
-const commonState = initialState.common;
+// import theMovieDb from "themoviedb-javascript-library";
 
-const common = (state = commonState, action) => {
+const castState = initialState.cast;
+
+const tv = (state = castState, action) => {
   switch (action.type) {
-    case "GET_VIEW_ITEM":
-      const viewItem = action.data;
-      return { ...state, viewItem };
-
-    case "GET_KEYWORD":
-      const keyword = action.data;
-      return { ...state, keyword };
-
-    case "SET_TYPE":
-      return { ...state, searchType: action.searchType };
-
-    case "SET_ALL_SEARCH_ITEMS":
+    case "SET_CAST_SEARTCH_ITEMS":
       const data = action.data;
       const newObj = {
         page: data.page,
@@ -28,7 +19,7 @@ const common = (state = commonState, action) => {
       };
       return { ...state, searchItems: newObj };
 
-    case "ADD_ALL_SEARCH_ITEMS":
+    case "ADD_SEARCH_CAST_ITEMS":
       const addResults = action.data.results;
       const newResults = state.searchItems.results.concat(addResults);
 
@@ -39,10 +30,9 @@ const common = (state = commonState, action) => {
         totalPage: action.data.total_pages,
       };
       return { ...state, searchItems: newSearchItems };
-
     default:
       return state;
   }
 };
 
-export default common;
+export default tv;

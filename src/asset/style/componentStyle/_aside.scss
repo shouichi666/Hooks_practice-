@@ -1,0 +1,48 @@
+/*
+aside
+*/
+
+.fixed-aside {
+  background: rgb(14, 14, 14);
+  border-radius: 9px;
+  margin: 0 10px 0 0;
+  padding: 10px 10px 30px 10px;
+
+  h3 {
+    font-size: 15px;
+    text-align: center;
+    margin: 0 0 1.5em 0;
+    color: rgb(219, 219, 219);
+  }
+
+  &__list--row {
+    position: relative;
+    margin: 0 auto 1em 0;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.1s;
+    cursor: pointer;
+
+    span {
+      background: #0a9191;
+      border-radius: 10px;
+      display: inline-block;
+      padding: 0.1em 0.5em;
+    }
+
+    &::before {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: "";
+      width: 0;
+      height: 1px;
+      background: #0a9191;
+    }
+
+    &:hover::before {
+      width: 80%;
+      transition: 0.17s;
+    }
+  }
+}

@@ -127,17 +127,13 @@
   }
 }
 
-.twoColoum {
-  display: flex;
-  padding: 20px;
-}
 
 .MovieMainContents {
   padding: 0 20px 0 0;
   width: 80%;
 } //MovieMainContents
 
-.aside {
+.m-aside {
   width: 20%;
 
   &__top {

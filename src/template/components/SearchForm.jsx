@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AppContext from "../../hooks/contexts/AppContext";
+import theMovieDb from "themoviedb-javascript-library";
+import { useHistory } from "react-router-dom";
 
 const SearchForm = () => {
-  const [text, setText] = useState("");
+  const history = useHistory();
+  const { dispatch } = useContext(AppContext);
+  const [string, setString] = useState("");
   const [focus, setFocus] = useState(false);
-  const handleChangeText = (e) => setText(e.target.value);
   let changeClassName = focus ? "on" : "off";
+
+  const handleChangeText = (e) => setString(e.target.value);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: "SET_SEARCH_STRING", string: string });
+    theMovieDb.search.getMulti(
+      { query: string },
+      (result) => {
+        dispatch({ type: "SET_SEARCH_ITEMS", data: JSON.parse(result) });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    history.push("/search/all");
+  };
 
   const isClerField = (e) => {
     e.preventDefault();
-    setText("");
+    dispatch({ type: "DELETE_SEARCH_STRING" });
   };
 
   return (
     <form
-      action='/'
-      method='get'
       className={`SearchForm ${changeClassName}`}
       onClick={() => {
         setFocus(!focus);
       }}
+      onSubmit={onSubmit}
     >
       <input
         className='SearchForm--input'
         type='text'
         id='firstViewInput'
-        value={text}
-        name='firstViewInput'
+        value={string}
         tabIndex='1'
         onChange={handleChangeText}
         placeholder="映画名、テレビ番組名、人物名で検索'"

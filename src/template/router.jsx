@@ -1,6 +1,8 @@
 import { Switch, Route } from "react-router-dom";
-import { Archive, Favorite, Home, Sign } from "./pages";
-import Movie from "./pages/Movie";
+import { Search, Favorite, Home, Sign } from "./pages";
+import { ArchiveTv, Tv } from "./pages/tv";
+import { ArchiveMovie, Movie } from "./pages/movie/";
+import { ArchiveCast, Cast } from "./pages/cast";
 
 const Router = () => {
   return (
@@ -9,12 +11,35 @@ const Router = () => {
         <Home />
       </Route>
 
-      <Route path='/archive/'>
-        <Archive />
+      <Route path='/search/'>
+        <Search />
+      </Route>
+
+      <Route path='/tv/'>
+        {/* TV page */}
+        <ArchiveTv />
+      </Route>
+
+      <Route path='/tv/:id'>
+        <Tv />
+      </Route>
+
+      <Route path='/movie/'>
+        {/* 映画 page */}
+        <ArchiveMovie />
       </Route>
 
       <Route path='/movie/:id'>
         <Movie />
+      </Route>
+
+      <Route path='/cast/'>
+        {/* CAST page */}
+        <ArchiveCast />
+      </Route>
+
+      <Route path='/cast/:id'>
+        <Cast />
       </Route>
 
       <Route exact path='/favorite'>

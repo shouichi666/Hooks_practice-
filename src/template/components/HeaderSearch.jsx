@@ -36,14 +36,14 @@ const HeaderSearch = (props) => {
     theMovieDb.search.getMulti(
       { query: value },
       (result) => {
-        dispatch({ type: "SET_ARCHINE_ITEMS", data: JSON.parse(result) });
+        dispatch({ type: "SET_SEARCH_ITEMS", data: JSON.parse(result) });
       },
       (error) => {
         console.log(error);
       }
     );
     setCandidate([]);
-    history.push("/archive");
+    history.push("/search/all");
   };
 
   const onClickSearch = (e) => {
@@ -52,14 +52,14 @@ const HeaderSearch = (props) => {
     theMovieDb.search.getMulti(
       { query: value },
       (result) => {
-        dispatch({ type: "SET_ARCHINE_ITEMS", data: JSON.parse(result) });
+        dispatch({ type: "SET_ALL_SEARCH_ITEMS", data: JSON.parse(result) });
       },
       (error) => {
         console.log(error);
       }
     );
     setCandidate([]);
-    history.push("/archive");
+    history.push("/search/all");
   };
 
   const deleteForm = () => {

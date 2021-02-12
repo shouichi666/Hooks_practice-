@@ -11,8 +11,7 @@ const Header = () => {
     openSearch: false,
   });
 
-  const toggleOpenSearch = () =>
-    setState({ ...state, openSearch: !state.openSearch });
+  const toggleOpenSearch = () => setState({ ...state, openSearch: !state.openSearch });
 
   useEffect(() => {
     setState({ ...state, headerElement: target.current });
@@ -25,17 +24,26 @@ const Header = () => {
   return (
     <>
       <header className={`header ${changeHeaderClass}`} ref={target}>
-        <div className="header__wrap">
-          <div className="header__logoWrap">
-            <Link to="/" className="header__logoWrap--logo">
+        <div className='header__wrap'>
+          <div className='header__logoWrap'>
+            <Link to='/' className='header__logoWrap--logo'>
               MOVIE
             </Link>
           </div>
-          <nav className="header__nav">
-            <Link to="/favorite" className="header__nav--link" hidden={true}>
-              Favrite List
+          <nav className='header__nav'>
+            <Link to='/movie' className='header__nav--link'>
+              MOVIE
             </Link>
-            <Link to="/sign" className="header__nav--link">
+            <Link to='/tv' className='header__nav--link'>
+              TV
+            </Link>
+            <Link to='/cast' className='header__nav--link'>
+              CAST
+            </Link>
+            <Link to='/fivorite' className='header__nav--link' hidden={false}>
+              FAVORITE
+            </Link>
+            <Link to='/sign' className='header__nav--link'>
               Sign In
             </Link>
             <div hidden={true}>

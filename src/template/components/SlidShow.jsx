@@ -14,7 +14,7 @@ SwiperCore.use([Autoplay, EffectCoverflow, Navigation, Pagination]);
 const SlidShow = () => {
   const [count, setCount] = useState(0);
   const { state, dispatch } = useContext(AppContext);
-  const gStateTopItem = state.movie.topMovies;
+  const gStateTopItem = state.movie.topPopular;
 
   const onClick = (e) => {
     const id = e.target.id;
@@ -22,7 +22,7 @@ const SlidShow = () => {
       { id: id },
       (movie) => {
         const data = JSON.parse(movie);
-        dispatch({ type: "GET_ID_MOVIE", data: data });
+        dispatch({ type: "GET_MOVIE", data: data });
       },
       (error) => {
         console.log(error);

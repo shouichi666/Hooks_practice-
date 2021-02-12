@@ -4,11 +4,13 @@ import search from "./search";
 import common from "./common";
 import movie from "./movie";
 import tv from "./tv";
+import cast from "./cast";
 
 export default combineReducers({
+  cast,
+  common,
   users,
   search,
-  common,
   movie,
   tv,
 });
