@@ -14,7 +14,7 @@ SwiperCore.use([Autoplay, EffectCoverflow, Navigation, Pagination]);
 const SlidShow = () => {
   const [count, setCount] = useState(0);
   const { state, dispatch } = useContext(AppContext);
-  const gStateTopItem = state.movie.topPopular;
+  const gStateTopItem = state.movie.popular.results.slice(0,19);
 
   const onClick = (e) => {
     const id = e.target.id;

@@ -10,6 +10,33 @@ import theMovieDb from "themoviedb-javascript-library";
 const SearchCast = () => {
   const { state, dispatch } = useContext(AppContext);
 
+  const jumpToCast = (e) => {
+    // e.preventDefault();
+    const id = e.target.id;
+    theMovieDb.people.getById(
+      { id: id },
+      (cast) => {
+        dispatch({
+          type: "GET_CAST",
+          cast: JSON.parse(cast),
+        });
+        console.log(JSON.parse(cast));
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    theMovieDb.people.getCredits(
+      { id: id },
+      (work) => {
+        dispatch({ type: "GET_CAST_WORK", work: JSON.parse(work) });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   const onClickAddSearch = (e) => {
     e.preventDefault();
     const value = state.search.string;
@@ -33,7 +60,7 @@ const SearchCast = () => {
             <li key={i} className='flexBox'>
               <div className='flexBox__left'>
                 {result.profile_path !== null ? (
-                  <Link to='/'>
+                  <Link to={`/cast/${result.name}`} id={result.id} onClick={jumpToCast}>
                     <img src={POSTER_342 + result.profile_path} alt='' />
                   </Link>
                 ) : (
@@ -42,7 +69,9 @@ const SearchCast = () => {
               </div>
               <div className='flexBox__right'>
                 <h3 className='flexBox__title'>
-                  <Link to='/'>{result.name}</Link>
+                  <Link to={`/cast/${result.name}`} id={result.id} onClick={jumpToCast}>
+                    {result.name}
+                  </Link>
                 </h3>
                 <div className='flexBox__review'>
                   <PieChart

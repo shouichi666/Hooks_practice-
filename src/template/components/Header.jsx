@@ -31,13 +31,13 @@ const Header = () => {
             </Link>
           </div>
           <nav className='header__nav'>
-            <Link to='/movie' className='header__nav--link'>
+            <Link to='/movie/list' className='header__nav--link'>
               MOVIE
             </Link>
-            <Link to='/tv' className='header__nav--link'>
+            <Link to='/tv/list' className='header__nav--link'>
               TV
             </Link>
-            <Link to='/cast' className='header__nav--link'>
+            <Link to='/cast/list' className='header__nav--link'>
               CAST
             </Link>
             <Link to='/fivorite' className='header__nav--link' hidden={false}>

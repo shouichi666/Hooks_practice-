@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import noPhoto from "../../../asset/imags/no_500.png";
 import { PieChart } from "../../components/";
@@ -10,12 +10,24 @@ import theMovieDb from "themoviedb-javascript-library";
 const SearchTv = () => {
   const { state, dispatch } = useContext(AppContext);
 
+  const jumpToTvView = (e) => {
+    theMovieDb.tv.getById(
+      { id: e.target.id, include_adult: true },
+      (tv) => {
+        dispatch({ type: "GET_TV", data: JSON.parse(tv) });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   const onClickAddSearch = (e) => {
     e.preventDefault();
     const value = state.search.string;
     const nowPage = state.tv.searchItems.page;
-    theMovieDb.search.getMulti(
-      { query: value, page: nowPage + 1 },
+    theMovieDb.search.getTv(
+      { query: value, page: nowPage + 1, include_adult: true },
       (result) => {
         dispatch({ type: "ADD_SEARCH_TV_ITEMS", data: JSON.parse(result) });
       },
@@ -24,6 +36,8 @@ const SearchTv = () => {
       }
     );
   };
+
+  let iii = state.tv.searchItems.results.length < 20 ? true : false;
 
   return (
     <>
@@ -41,7 +55,7 @@ const SearchTv = () => {
             >
               <div className='flexBox__left'>
                 {result.poster_path !== "" ? (
-                  <Link to='/'>
+                  <Link to={`/tv/${result.name}`} id={result.id} onClick={jumpToTvView}>
                     <img src={POSTER_342 + result.poster_path} alt='' />
                   </Link>
                 ) : (
@@ -50,7 +64,9 @@ const SearchTv = () => {
               </div>
               <div className='flexBox__right'>
                 <h3 className='flexBox__title'>
-                  <Link to='/'>{result.name}</Link>
+                  <Link to={`/tv/${result.name}`} onClick={jumpToTvView} id={result.id}>
+                    {result.name}
+                  </Link>
                 </h3>
                 <div className='flexBox__review'>
                   <PieChart
@@ -75,7 +91,7 @@ const SearchTv = () => {
           );
         })}
       </ul>
-      <MoreButton onClick={onClickAddSearch} />
+      <MoreButton onClick={onClickAddSearch} hidden={iii} />
     </>
   );
 };

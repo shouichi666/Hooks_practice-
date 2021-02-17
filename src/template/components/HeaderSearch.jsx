@@ -34,7 +34,7 @@ const HeaderSearch = (props) => {
     console.log(value);
     dispatch({ type: "SET_SEARCH_STRING", string: value });
     theMovieDb.search.getMulti(
-      { query: value },
+      { query: value, include_adult: true },
       (result) => {
         dispatch({ type: "SET_SEARCH_ITEMS", data: JSON.parse(result) });
       },
@@ -43,14 +43,14 @@ const HeaderSearch = (props) => {
       }
     );
     setCandidate([]);
-    history.push("/search/all");
+    history.push("/search/movie");
   };
 
   const onClickSearch = (e) => {
     e.preventDefault();
     const value = state.search.string;
     theMovieDb.search.getMulti(
-      { query: value },
+      { query: value, include_adult: true },
       (result) => {
         dispatch({ type: "SET_ALL_SEARCH_ITEMS", data: JSON.parse(result) });
       },
@@ -59,7 +59,7 @@ const HeaderSearch = (props) => {
       }
     );
     setCandidate([]);
-    history.push("/search/all");
+    history.push("/search/movie");
   };
 
   const deleteForm = () => {

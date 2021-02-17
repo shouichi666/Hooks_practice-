@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
 import AppContext from "../../../hooks/contexts/AppContext";
 import { PieChart } from "../";
+import { POSTER_185 } from "../../../hooks/hoge";
 
 const XsliderBox = (props) => {
   const { dispatch } = useContext(AppContext);
@@ -14,7 +15,7 @@ const XsliderBox = (props) => {
     const id = e.target.id;
     dispatch({ type: "SET_TYPE", searchType: name });
 
-    if (name === "movie") {
+    if (data.adult === false || data.adult) {
       theMovieDb.movies.getById(
         { id: id },
         (movie) => {
@@ -27,6 +28,7 @@ const XsliderBox = (props) => {
       theMovieDb.movies.getKeywords(
         { id: id },
         (movie) => {
+          console.log(movie);
           dispatch({ type: "GET_KEYWORD", data: JSON.parse(movie).keywords });
         },
         (error) => {
@@ -34,11 +36,11 @@ const XsliderBox = (props) => {
         }
       );
       history.push(`/movie/${id}`);
-    } else if (name === "tv") {
+    } else {
       theMovieDb.tv.getById(
         { id: id },
-        (movie) => {
-          dispatch({ type: "GET_TV", data: JSON.parse(movie) });
+        (tv) => {
+          dispatch({ type: "GET_TV", data: JSON.parse(tv) });
         },
         (error) => {
           console.log(error);
@@ -46,8 +48,9 @@ const XsliderBox = (props) => {
       );
       theMovieDb.tv.getKeywords(
         { id: id },
-        (movie) => {
-          dispatch({ type: "GET_KEYWORD", data: JSON.parse(movie).keywords });
+        (tv) => {
+          console.log(tv);
+          dispatch({ type: "GET_KEYWORD", data: JSON.parse(tv).results });
         },
         (error) => {
           console.log(error);
@@ -61,7 +64,7 @@ const XsliderBox = (props) => {
     <Link className='sliderBox' id={data.id} onClick={onClick} name={props.judge}>
       <div className='sliderBox__top'>
         <img
-          src={theMovieDb.common.images_uri + "w185" + data.poster_path}
+          src={POSTER_185 + data.poster_path}
           alt={data.poster_path}
           className='sliderBox__img'
         />
@@ -72,8 +75,8 @@ const XsliderBox = (props) => {
           </p>
           <PieChart
             review={data.vote_average}
-            inner={14}
-            outer={15}
+            inner={15}
+            outer={16.5}
             width={40}
             height={40}
           />

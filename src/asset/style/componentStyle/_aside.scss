@@ -6,7 +6,7 @@ aside
   background: rgb(14, 14, 14);
   border-radius: 9px;
   margin: 0 10px 0 0;
-  padding: 10px 10px 30px 10px;
+  padding: 10px 10px;
 
   h3 {
     font-size: 15px;
@@ -14,8 +14,9 @@ aside
     margin: 0 0 1.5em 0;
     color: rgb(219, 219, 219);
   }
-
+  
   &__list--row {
+    font-size: 15px;
     position: relative;
     margin: 0 auto 1em 0;
     display: flex;
@@ -41,7 +42,7 @@ aside
     }
 
     &:hover::before {
-      width: 80%;
+      width: 90%;
       transition: 0.17s;
     }
   }

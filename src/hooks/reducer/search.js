@@ -3,8 +3,6 @@
 //
 //
 import initialState from "../initalState";
-// import theMovieDb from "themoviedb-javascript-library";
-
 const searchState = initialState.search;
 
 const search = (state = searchState, action) => {

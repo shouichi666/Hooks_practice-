@@ -10,12 +10,25 @@ import theMovieDb from "themoviedb-javascript-library";
 const SearchMovie = () => {
   const { state, dispatch } = useContext(AppContext);
 
+  const jumpToMovie = (e) => {
+    const id = e.target.id;
+    theMovieDb.movies.getById(
+      { id: id },
+      (movie) => {
+        dispatch({ type: "GET_MOVIE", data: JSON.parse(movie) });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   const onClickAddSearch = (e) => {
     e.preventDefault();
     const value = state.search.string;
     const nowPage = state.movie.searchItems.page;
     theMovieDb.search.getMovie(
-      { query: value, page: nowPage + 1 },
+      { query: value, page: nowPage + 1, include_adult: true },
       (result) => {
         dispatch({ type: "ADD_SEARCH_MOVIE_ITEMS", data: JSON.parse(result) });
       },
@@ -24,6 +37,8 @@ const SearchMovie = () => {
       }
     );
   };
+
+  let buttonJudge = state.movie.searchItems.results.length < 20 ? true : false;
 
   return (
     <>
@@ -41,7 +56,7 @@ const SearchMovie = () => {
             >
               <div className='flexBox__left'>
                 {result.poster_path !== null ? (
-                  <Link to='/'>
+                  <Link to={`/movie/${result.id}`} onClick={jumpToMovie} id={result.id}>
                     <img src={POSTER_342 + result.poster_path} alt='' />
                   </Link>
                 ) : (
@@ -50,7 +65,9 @@ const SearchMovie = () => {
               </div>
               <div className='flexBox__right'>
                 <h3 className='flexBox__title'>
-                  <Link to='/'>{result.title}</Link>
+                  <Link to={`/movie/${result.id}`} onClick={jumpToMovie} id={result.id}>
+                    {result.title}
+                  </Link>
                 </h3>
                 <div className='flexBox__review'>
                   <PieChart
@@ -75,7 +92,7 @@ const SearchMovie = () => {
           );
         })}
       </ul>
-      <MoreButton onClick={onClickAddSearch} />
+      <MoreButton onClick={onClickAddSearch} hidden={buttonJudge} />
     </>
   );
 };

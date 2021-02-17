@@ -21,11 +21,26 @@ const movie = (state = movieState, action) => {
       return { ...state, week };
 
     case "GET_TOP_ROTED_MOVIE":
-      const topMovies = action.data.results;
-      return { ...state, topMovies };
+      const rated = action.rated;
+      const newRated = {
+        results: rated.results,
+        page: rated.page,
+        totalResult: rated.total_results,
+        totalPage: rated.total_pages,
+      };
+      return { ...state, rated: newRated };
 
     case "GET_POPULAR_MOVIE":
-      return { ...state, topPopular: action.data };
+      const popular = action.popular;
+      return {
+        ...state,
+        popular: {
+          page: popular.page,
+          results: popular.results,
+          totalResult: popular.total_results,
+          totalPage: popular.total_pages,
+        },
+      };
 
     case "SET_MOVIE_SEARTCH_ITEMS":
       const data = action.data;
@@ -48,6 +63,30 @@ const movie = (state = movieState, action) => {
         totalPage: action.data.total_pages,
       };
       return { ...state, searchItems: newSearchItems };
+
+    case "ADD_TOP_RATED_MOVIE":
+      const _rated = state.rated;
+      return {
+        ...state,
+        rated: {
+          results: _rated.results.concat(action.rated.results),
+          page: _rated.page + 1,
+          totalResult: _rated.totalResult,
+          totalPage: _rated.totalPage,
+        },
+      };
+
+    case "ADD_POPULAR_MOVIE":
+      const _popular = state.popular;
+      return {
+        ...state,
+        popular: {
+          results: _popular.results.concat(action.popular.results),
+          page: _popular.page + 1,
+          totalResult: _popular.totalResult,
+          totalPage: _popular.totalPage,
+        },
+      };
 
     default:
       return state;

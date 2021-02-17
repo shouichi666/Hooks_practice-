@@ -29,19 +29,18 @@ const AppTop = () => {
 
     //評価の高い映画の取得
     theMovieDb.movies.getTopRated(
-      {},
+      {include_adult: true},
       (movie) => {
-        dispatch({ type: "GET_TOP_ROTED_MOVIE", data: JSON.parse(movie) });
+        dispatch({ type: "GET_TOP_ROTED_MOVIE", rated: JSON.parse(movie) });
       },
       (error) => console.log(error)
     );
 
     //評価の高いドラマの取得
     theMovieDb.tv.getTopRated(
-      {},
+      { page: 1,include_adult: true },
       (result) => {
-        const topRotedMovie = JSON.parse(result);
-        dispatch({ type: "GET_TOP_ROTED_TV", data: topRotedMovie.results });
+        dispatch({ type: "GET_TOP_RATED_TV", rated: JSON.parse(result) });
       },
       (error) => {
         console.log(error);
@@ -50,10 +49,9 @@ const AppTop = () => {
 
     //人気の映画の取得
     theMovieDb.movies.getPopular(
-      {},
+      {include_adult: true},
       (result) => {
-        const popularMovie = JSON.parse(result);
-        dispatch({ type: "GET_POPULAR_MOVIE", data: popularMovie.results });
+        dispatch({ type: "GET_POPULAR_MOVIE", popular: JSON.parse(result) });
       },
       (error) => {
         console.log(error);
@@ -62,10 +60,9 @@ const AppTop = () => {
 
     //人気のドラマの取得
     theMovieDb.tv.getPopular(
-      {},
+      {include_adult: true},
       (result) => {
-        const popularTv = JSON.parse(result);
-        dispatch({ type: "GET_POPULAR_TV", data: popularTv.results });
+        dispatch({ type: "GET_POPULAR_TV", popular: JSON.parse(result) });
       },
       (error) => {
         console.log(error);

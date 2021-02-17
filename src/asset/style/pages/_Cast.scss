@@ -1,0 +1,103 @@
+/*
+Cast style
+*/
+
+.Cast {
+  display: flex;
+  padding: 30px 10px;
+}
+
+.Cast__left {
+  width: 30%;
+}
+.Cast__right {
+  width: 70%;
+  padding: 10px 20px;
+}
+
+.Cast__profile {
+  background: rgb(24, 24, 24);
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 20px;
+
+  &--imgBox {
+    overflow: hidden;
+
+    &-img {
+      width: 100%;
+    }
+  }
+
+  &--title {
+    font-size: 25px;
+    text-align: center;
+    margin: 0.5em 0;
+    font-family: $Font;
+  }
+
+  &--details {
+    dt {
+      color: rgb(150, 150, 150);
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0 0 0.3em 0;
+    }
+    dd {
+      font-size: 16px;
+      margin: 0 0 1em 0;
+
+      span {
+        width: 100%;
+        display: inline-block;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.Cast__name {
+  display: inline-block;
+  font-size: 38px;
+  font-family: $Font;
+  font-weight: 600;
+  position: relative;
+  margin: 1em 0 2em 0.5em;
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: -1%;
+    content: "";
+    width: 102%;
+    height: 1px;
+    background: #b9b9b9;
+  }
+}
+
+.Cast__careerBox {
+  &--heading {
+    font-size: 25px;
+    margin: 0 0 0.7em 0;
+  }
+
+  &--text {
+    line-height: 1.5em;
+  }
+}
+
+.Cast__works {
+  margin: 3em 0 0 0;
+  &--heading {
+    font-size: 25px;
+    margin: 0 0 0.7em 0;
+
+    span {
+      font-size: 33px;
+    }
+  }
+
+  &--flex {
+    justify-content: left;
+  }
+}

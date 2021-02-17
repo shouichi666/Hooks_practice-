@@ -3,7 +3,7 @@ const initialState = {
     email: "", //eamil
     isSignIn: false, //ログイン状況
     password: "", //password
-    userName: "hoge", // ユーザー名
+    userName: "", // ユーザー名
   },
 
   search: {
@@ -13,43 +13,80 @@ const initialState = {
     rating: "", //検索評価
   },
 
+  //映画
   movie: {
-    //映画
     searchItems: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    rated: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    popular: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    day: [], //今日のトレンド
+    week: [], //今週のトレンド
+    viewItem: {}, //詳細ページ
+  },
+
+  //テレビ
+  tv: {
+    searchItems: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    rated: {
+      results: [],
+      page: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    popular: {
       results: [],
       page: 0,
       totalResult: 0,
       totalPage: 0,
     },
     day: [], //今日のトレンド
-    topMovies: [],
-    topPopular: [],
-    week: [], //今週のトレンド
     viewItem: {}, //詳細ページ
   },
 
-  tv: {
-    //テレビ
-    searchItems: {
-      results: [],
-      page: 0,
-      totalResult: 0,
-      totalPage: 0,
-    },
-    topTv: [], //評価の高い
-    topPopular: [], // トレンド
-    viewItem: {}, //詳細ページ
-  },
-
+  //出演者
   cast: {
-    //出演者
     searchItems: {
       results: [],
       page: 0,
       totalResult: 0,
       totalPage: 0,
     },
-    viewItem: {}, //詳細ページ
+
+    people: {
+      results: [],
+      paghe: 0,
+      totalResult: 0,
+      totalPage: 0,
+    },
+
+    viewItem: {
+      cast: {},
+      work: [],
+    }, //詳細ページ
   },
 
   common: {

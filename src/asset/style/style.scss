@@ -2,7 +2,7 @@
 @import "mixin";
 
 // google fonts
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Condensed&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
@@ -10,7 +10,7 @@ body {
   width: 100%;
   background: $baseBkColor;
   color: white;
-  font-family: $specialFont;
+  font-family: $baseFont;
   margin: 0 auto;
 }
 
@@ -23,7 +23,7 @@ body {
 }
 
 main {
-  max-width: 1500px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 
@@ -129,10 +129,38 @@ small {
   }
 }
 
+.flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.page_heading {
+  font-size: 38px;
+  font-family: $logoFont;
+  text-align: center;
+  margin: 2em 0 1em 0;
+}
+
+.pageNation {
+  background-color: #161622e0;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  width: 300px;
+
+  &__num {
+    padding: 5px;
+    border: #ffffffe0 solid 1px;
+  }
+}
+
 @import "./pages/Home";
 @import "./pages/Movie";
 @import "./pages/Sign";
 @import "./pages/Search";
+@import "./pages/Cast";
 @import "./componentStyle/Header";
 @import "./componentStyle/footer";
 @import "./componentStyle/form";
