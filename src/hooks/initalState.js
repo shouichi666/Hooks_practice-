@@ -78,7 +78,7 @@ const initialState = {
 
     people: {
       results: [],
-      paghe: 0,
+      page: 0,
       totalResult: 0,
       totalPage: 0,
     },

@@ -118,14 +118,31 @@ small {
   margin: 2em 0 1em 0; }
 
 .pageNation {
-  background-color: #161622e0;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 0 auto;
   text-align: center;
-  width: 300px; }
+  max-width: 400px; }
   .pageNation__num {
     padding: 5px;
-    border: #ffffffe0 solid 1px; }
+    margin: 0 4px;
+    cursor: pointer; }
+    .pageNation__num:hover {
+      background-color: #6d6d6de0; }
+  .pageNation__prev, .pageNation__next, .pageNation__first, .pageNation__last {
+    font-size: 13px;
+    margin: 0 4px; }
+    .pageNation__prev:hover, .pageNation__next:hover, .pageNation__first:hover, .pageNation__last:hover {
+      background-color: #6d6d6de0;
+      color: black; }
+  .pageNation .reActiove {
+    display: none; }
+
+.crrentPage {
+  background: white;
+  color: black; }
 
 /*
 /Home style

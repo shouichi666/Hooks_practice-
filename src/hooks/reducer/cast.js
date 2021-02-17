@@ -15,7 +15,7 @@ const tv = (state = castState, action) => {
         ...state,
         people: {
           results: _people.results,
-          page: _people.page,
+          page: action.page,
           totalResult: _people.total_results,
           totalPage: _people.total_pages,
         },

@@ -5,14 +5,13 @@ import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 
 const Cast = () => {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const getPeple = () => {
     theMovieDb.people.getPopular(
       { page: 1 },
       (people) => {
-        dispatch({ type: "GET_PEOPLE", people: JSON.parse(people) });
-        console.log("W");
+        dispatch({ type: "GET_PEOPLE", people: JSON.parse(people), page: 1 });
       },
       (error) => {
         console.error(error);
@@ -20,7 +19,7 @@ const Cast = () => {
     );
   };
 
-  useEffect(getPeple, [dispatch]);
+  useEffect(getPeple, []);
 
   return (
     <>

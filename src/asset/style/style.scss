@@ -144,16 +144,45 @@ small {
 }
 
 .pageNation {
-  background-color: #161622e0;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 0 auto;
   text-align: center;
-  width: 300px;
+  max-width: 400px;
 
   &__num {
     padding: 5px;
-    border: #ffffffe0 solid 1px;
+    margin: 0 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #6d6d6de0;
+    }
   }
+
+  &__prev,
+  &__next,
+  &__first,
+  &__last {
+    font-size: 13px;
+    margin: 0 4px;
+
+    &:hover {
+      background-color: #6d6d6de0;
+      color: black;
+    }
+  }
+
+  .reActiove {
+    display: none;
+  }
+}
+
+.crrentPage {
+  background: white;
+  color: black;
 }
 
 @import "./pages/Home";
