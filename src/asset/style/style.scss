@@ -1,17 +1,170 @@
 @import "variable";
+@import "mixin";
 
 // google fonts
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Condensed&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 body {
   width: 100%;
-  max-width: 1400px;
-  height: auto;
-  background: rgb(0, 0, 0);
+  background: $baseBkColor;
   color: white;
-  font-family: $specialFont;
+  font-family: $baseFont;
+  margin: 0 auto;
 }
 
+#container {
+  position: relative;
+  height: 100%;
+  padding: 60px 0 250px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+small {
+  font-size: 7px;
+}
+
+.twoColoum {
+  display: flex;
+  padding: 50px 20px;
+  width: 100%;
+
+  &__main {
+    width: 80%;
+    // border: 1px solid rgb(112, 138, 138);
+    padding: 0 20px;
+  }
+
+  &__side {
+    margin: 20px 0 0 0;
+    width: 20%;
+    max-width: 350px;
+    min-width: 200px;
+  }
+} //twoColoum
+
+.flexBox {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+  @include _SHADOW(0px);
+
+  &:before {
+    @include _BEFORE(#161622e0);
+  }
+
+  &__left {
+    position: relative;
+    z-index: 5;
+    width: 20%;
+    max-width: 350px;
+    min-width: 100px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__right {
+    position: relative;
+    z-index: 5;
+    padding: 1em 1.5em;
+    width: 80%;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    width: 90%;
+  }
+
+  &__date {
+    margin: 1em 0;
+    display: inline-block;
+    color: rgb(118, 158, 158);
+  }
+
+  &__review {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    &--num {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__lang {
+    color: rgb(118, 158, 158);
+    margin: 0 0 0 1em;
+  }
+
+  &__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 15px;
+  }
+
+  &__knowFor {
+    font-size: 12px;
+    color: #929299e0;
+    display: inline-block;
+    padding: 0.3em 0.6em;
+  }
+}
+
+.flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.page_heading {
+  font-size: 38px;
+  font-family: $logoFont;
+  text-align: center;
+  margin: 2em 0 1em 0;
+}
+
+.pageNation {
+  background-color: #161622e0;
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  width: 300px;
+
+  &__num {
+    padding: 5px;
+    border: #ffffffe0 solid 1px;
+  }
+}
+
+@import "./pages/Home";
+@import "./pages/Movie";
+@import "./pages/Sign";
+@import "./pages/Search";
+@import "./pages/Cast";
 @import "./componentStyle/Header";
+@import "./componentStyle/footer";
+@import "./componentStyle/form";
+@import "./componentStyle/slider";
+@import "./componentStyle/aside";
+@import "./buttonStyle/button";
+@import "animation";

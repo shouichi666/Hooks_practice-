@@ -1,0 +1,161 @@
+/*
+/ Slider
+*/
+
+.slider {
+  padding: 45px 0px 50px 0px;
+  width: 100%;
+  @include scrollBer;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.9em 0;
+  }
+
+  &__heading {
+    display: inline-block;
+    font-size: 38px;
+    font-family: $logoFont;
+    margin: 0 1em 0 1em;
+  }
+
+  &__slider {
+    position: relative;
+    width: 97%;
+    margin: 0 auto;
+    background: #0c0c0e;
+    border: 1px solid #1a1a36;
+    box-shadow: inset -5px 5px 10px #0b0b0c, inset 5px -5px 3px #0c0c0e;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    width: auto;
+  }
+} // Xslider
+
+.sliderBox {
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  min-width: 140px;
+  max-width: 150px;
+  width: calc(100% / 4);
+  min-height: 200px;
+  margin: 1px 0 34px;
+  text-align: left;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+  }
+  &:hover .sliderBox__img {
+    transform: scale(1.03, 1.03);
+    background-color: sienna;
+    transition: $changeTime;
+  }
+
+  &__top {
+    position: relative;
+  }
+
+  &__img {
+    @include _SHADOW(1px);
+    display: inline-block;
+    height: 220px;
+    width: 100%;
+    transition: $changeTime;
+  }
+
+  &__title,
+  &__date {
+    width: 92%;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-family: $baseFont;
+    letter-spacing: 1px;
+    margin: 2em 0 0.5em 0;
+  }
+
+  &__date {
+    color: #9e9e9e;
+    font-size: 14px;
+    font-family: $Font;
+  }
+
+  &__review {
+    align-items: center;
+    background: rgb(10, 10, 10);
+    bottom: -23px;
+    border-radius: 50%;
+    border: rgb(109, 109, 15) 1px solid;
+    display: grid;
+    height: 41px;
+    justify-content: center;
+    left: 10px;
+    position: absolute;
+    width: 41px;
+
+    &--number {
+      font-size: 12px;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+    }
+  }
+} //XsliderBox
+
+.slider__arrows {
+  display: flex;
+  justify-content: center;
+  padding: 0.3em 1em;
+  width: 100%;
+  background: #000;
+  color: rgba(228, 228, 228, 0.418);
+  font-size: 27px;
+  text-shadow: 0px 0px 3px #01011be0;
+}
+
+.castSliderBox {
+  flex-direction: column;
+  display: flex;
+  min-width: 125px;
+  max-width: 190px;
+  min-height: 190px;
+  margin: 0 0px 18px;
+  width: calc(100% / 5);
+  text-align: left;
+
+  &--img {
+    box-shadow: 0px 0px 4px $boxShadowColor;
+    border-radius: 1px;
+    display: inline-block;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    &:hover {
+      transform: scale(1.01, 1.01);
+    }
+  }
+
+  &--name {
+    margin: 0.4em;
+    font-size: 15px;
+    font-family: $Font;
+  }
+}

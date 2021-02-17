@@ -1,18 +1,26 @@
 /*
-header style
+Header style
+HeaderSearch style
 */
 
 .header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
   background-color: $headerBkColor;
   border-bottom: $primaryBorderColor solid 0.5px;
-  box-shadow: 0px 1px 10px $boxShadowCoor;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  padding: 13px 20px;
-  top: 0;
-  width: 100%;
+  box-shadow: 0px 1px 2px $boxShadowColor;
+  z-index: 50;
+
+  &__wrap {
+    background-color: $headerBkColor;
+    position: relative;
+    padding: 0px 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
 
   &__logoWrap {
     align-items: center;
@@ -23,7 +31,7 @@ header style
     &--logo {
       color: $primaryColor;
       font-family: $logoFont;
-      font-size: 33px;
+      font-size: 30px;
       font-weight: 700;
       padding: 0 0 0 19px;
     }
@@ -31,21 +39,21 @@ header style
   } //__logoWrap
 
   &__nav {
+    align-items: center;
     display: flex;
     justify-content: space-around;
     margin: 0 0 0 auto;
-    width: 20%;
-    min-width: 300px;
+    width: 19%;
+    min-width: 340px;
 
-    &--btn {
+    &--link {
       border-radius: 4px;
       border: white 0.7px solid;
-      display: inline-block;
-      padding: 0.5em 1em;
+      padding: 0.4em 0.7em;
+      font-size: 13px;
 
       &:hover {
-        // border: $primaryColor 0.1px solid;
-        background-color: #e7dada1f;
+        background-color: #e7dada77;
         box-shadow: 0px 1px 10px #6e6e6ea6;
         transition: $changeTime;
         // color: $primaryColor;
@@ -53,3 +61,74 @@ header style
     }
   }
 } //header
+
+.HeaderSearch {
+  position: absolute;
+  left: 0;
+  top: 58px;
+  width: 100%;
+  text-align: center;
+  background-color: $headerSearchBkColor;
+  box-shadow: 0px 0px 30px $boxShadowColor;
+  border: $primaryBorderColor solid;
+  z-index: 100;
+
+  &__form {
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__label {
+    display: inline-block;
+    left: 2.2%;
+    top: 56%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+
+  &__input {
+    position: relative;
+    color: white;
+    padding: 0.8em 1.5em;
+    text-align: left;
+    width: 90%;
+
+    &::placeholder {
+      position: absolute;
+      color: #ffffff96;
+      transition: $changeTime;
+      font-size: 15px;
+    }
+
+    &:focus::placeholder {
+      transition: $changeTime;
+      font-size: 90%;
+      opacity: 0.5;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 2%;
+    top: 56%;
+    transform: translateY(-50%);
+    &:active {
+      opacity: 0.5;
+    }
+  }
+} //HeaderSearch
+
+.HeaderSearch__candidateList li {
+  padding: 0.4em 2em;
+  text-align: left;
+  border-bottom: 0.1px solid rgba(238, 238, 238, 0.26);
+  &:hover {
+    background: rgb(190, 190, 190);
+  }
+}
+// .MuiSvgIcon-root {
+//   font-size: 30px !important;
+// }

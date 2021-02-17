@@ -1,0 +1,26 @@
+/*
+Footer style
+*/
+
+.footer {
+  background-color: $footerBkColor;
+  padding: 13px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  // &__wrap {  }
+
+  &__button {
+    background-color: rgba(235, 146, 30, 0.192);
+    padding: 40px;
+    border: rgba(235, 146, 30, 0.829) 2px solid;
+    border-radius: 50px;
+  }
+
+  p {
+    font-size: 10px;
+    text-align: center;
+  }
+} //header

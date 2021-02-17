@@ -1,0 +1,71 @@
+.SliderBackButton,
+.SliderNextButton {
+  display: inline-block;
+  padding: 0;
+  margin: 0 10px;
+  color: rgba(228, 228, 228, 0.418);
+  font-size: 27px;
+  text-shadow: 0px 0px 3px #01011be0;
+  &:hover {
+    color: #afa5caa4;
+    text-shadow: 0px 0px 10px #dedef7c7;
+  }
+}
+
+.SliderBackButton {
+  &:active {
+    transform: translateX(-1px);
+  }
+}
+
+.SliderNextButton {
+  &:active {
+    transform: translateX(1px);
+  }
+}
+
+.buttonOFF {
+  opacity: 0.5;
+}
+
+.buttonON {
+  opacity: 1;
+}
+
+.conversion {
+  display: inline-block;
+  background: rgba(114, 116, 219, 0.061);
+  border-radius: 2px;
+  border: 0.1px solid white;
+  padding: 5px 0;
+  position: relative;
+  overflow: hidden;
+
+  &__label {
+    position: relative;
+    z-index: 5;
+    width: 50%;
+    padding: 1em;
+    color: rgba(71, 80, 87, 0.479);
+    font-size: 14px;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]:checked + label {
+    color: black;
+    background: white;
+  }
+}
+
+.MoreButton {
+  padding: 0.5em 1em;
+  background: white;
+  color: black;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  margin: 2em 0 0 0;
+}

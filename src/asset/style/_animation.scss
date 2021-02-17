@@ -1,0 +1,82 @@
+//
+
+//
+//HeaderSearchの表示切替
+//
+.header__up {
+  top: -100px;
+}
+
+.header__down {
+  top: 0;
+}
+
+//
+//HeaderSearchの表示切替
+//
+.HeaderSearch-enter-done {
+  opacity: 1;
+  transition: $changeTime;
+  z-index: -1;
+}
+
+.HeaderSearch-exit-done {
+  top: 0px;
+  // transition: $changeTime;
+  opacity: 0;
+  z-index: -1;
+}
+
+//
+//xSlider-Shadowの表示切替
+//
+.jsAnimationOn {
+  opacity: 1;
+  transition: $changeTime;
+}
+
+.jsAnimationOff {
+  opacity: 0;
+  transition: $changeTime;
+}
+
+//
+//tabのアニメーション
+//
+.tab {
+  position: relative;
+  transition: $changeTime;
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    content: "";
+    background-color: $primaryColor;
+    transform: scale(0, 0);
+    transition: $changeTime;
+  }
+}
+
+.tab--active {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  transition: $changeTime;
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    content: "";
+    background-color: $primaryColor;
+    transform: scale(1, 1);
+    transition: $changeTime;
+    // transition: $changeTime;
+  }
+}
