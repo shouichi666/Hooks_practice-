@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import theMovieDb from "themoviedb-javascript-library";
 import { Link } from "react-router-dom";
 import AppContext from "../../../hooks/contexts/AppContext";
@@ -9,7 +9,7 @@ const CastSliderBox = (props) => {
   const { dispatch } = useContext(AppContext);
   let data = props.cast;
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     theMovieDb.people.getById(
       { id: data.id },
       (cast) => {
@@ -17,7 +17,6 @@ const CastSliderBox = (props) => {
           type: "GET_CAST",
           cast: JSON.parse(cast),
         });
-        console.log(JSON.parse(cast));
       },
       (error) => {
         console.error(error);
@@ -32,7 +31,7 @@ const CastSliderBox = (props) => {
         console.log(error);
       }
     );
-  };
+  }, [dispatch, data.id]);
 
   return (
     <Link
@@ -46,6 +45,7 @@ const CastSliderBox = (props) => {
           src={POSTER_185 + data.profile_path || noImg}
           alt={data.profile_path}
           className='castSliderBox--img'
+          loading='lazy'
         />
       ) : (
         <img src={noImg} alt={noImg} />

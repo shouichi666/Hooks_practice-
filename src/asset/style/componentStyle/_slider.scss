@@ -18,6 +18,7 @@
     font-size: 38px;
     font-family: $logoFont;
     margin: 0 1em 0 1em;
+    color: $blueColor;
   }
 
   &__slider {
@@ -44,12 +45,18 @@
   position: relative;
   flex-direction: column;
   display: flex;
-  min-width: 140px;
-  max-width: 150px;
+  min-width: 150px;
+  max-width: 160px;
   width: calc(100% / 4);
   min-height: 200px;
   margin: 1px 0 34px;
   text-align: left;
+  cursor: pointer;
+
+  &:hover .sliderBox__imgBox--img {
+    transform: scale(1.03, 1.03);
+    transition: $changeTime;
+  }
 
   &::before {
     position: absolute;
@@ -60,22 +67,23 @@
     height: 100%;
     z-index: 5;
   }
-  &:hover .sliderBox__img {
-    transform: scale(1.03, 1.03);
-    background-color: sienna;
-    transition: $changeTime;
-  }
 
   &__top {
     position: relative;
   }
 
-  &__img {
-    @include _SHADOW(1px);
+  &__imgBox {
+    @include _SHADOW(0px);
     display: inline-block;
     height: 220px;
     width: 100%;
     transition: $changeTime;
+    overflow: hidden;
+
+    &--img {
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   &__title,

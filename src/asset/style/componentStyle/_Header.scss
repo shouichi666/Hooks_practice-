@@ -48,9 +48,10 @@ HeaderSearch style
 
     &--link {
       border-radius: 4px;
-      border: white 0.7px solid;
+      // border: white 0.7px solid;
       padding: 0.4em 0.7em;
       font-size: 13px;
+      color: $blueColor;
 
       &:hover {
         background-color: #e7dada77;

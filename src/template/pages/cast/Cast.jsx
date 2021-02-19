@@ -5,7 +5,7 @@ import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 
 const Cast = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const getPeple = () => {
     theMovieDb.people.getPopular(
@@ -19,10 +19,10 @@ const Cast = () => {
     );
   };
 
-  useEffect(getPeple, []);
+  useEffect(getPeple, [dispatch]);
 
   return (
-    <>
+    <main>
       <Switch>
         <Route path='/cast/list'>
           <ArchiveCast />
@@ -31,7 +31,7 @@ const Cast = () => {
           <IdCast />
         </Route>
       </Switch>
-    </>
+    </main>
   );
 };
 

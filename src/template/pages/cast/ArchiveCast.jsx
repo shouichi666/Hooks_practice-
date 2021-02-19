@@ -34,7 +34,9 @@ const ArchiveCast = () => {
   return (
     <>
       <h2 className='page_heading'>人気の出演スタッフ</h2>
-      <div className='flexWrap'>{_MapCastSliderBox(state.cast.people.results)}</div>
+      <div className='flexWrap'>
+        {_MapCastSliderBox(state.cast.people.results)}
+      </div>
 
       <ul className='pageNation'>
         <li className={`pageNation__first ${prevClass}`}>

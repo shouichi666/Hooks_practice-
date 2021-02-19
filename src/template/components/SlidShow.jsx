@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../hooks/contexts/AppContext";
-import theMovieDb from "themoviedb-javascript-library";
-import { Link } from "react-router-dom";
 import SwiperCore, { Autoplay, Navigation, EffectCoverflow, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
@@ -13,43 +11,17 @@ SwiperCore.use([Autoplay, EffectCoverflow, Navigation, Pagination]);
 
 const SlidShow = () => {
   const [count, setCount] = useState(0);
-  const { state, dispatch } = useContext(AppContext);
-  const gStateTopItem = state.movie.popular.results.slice(0,19);
-
-  const onClick = (e) => {
-    const id = e.target.id;
-    theMovieDb.movies.getById(
-      { id: id },
-      (movie) => {
-        const data = JSON.parse(movie);
-        dispatch({ type: "GET_MOVIE", data: data });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    theMovieDb.movies.getKeywords(
-      { id: id },
-      (movie) => {
-        const keyword = JSON.parse(movie);
-        dispatch({ type: "GET_KEYWORD", data: keyword.keywords });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
+  const { state } = useContext(AppContext);
+  const gStateTopItem = state.movie.popular.results.slice(0, 19);
 
   const isMapImgs = gStateTopItem.map((item, i) => {
     return (
       <SwiperSlide key={i} virtualIndex={i}>
-        <Link to={"/movie/" + item.id} onClick={onClick}>
-          <img
-            src={POSTER_780 + item["poster_path"]}
-            alt={item["poster_path"]}
-            id={item.id}
-          />
-        </Link>
+        <img
+          src={POSTER_780 + item["poster_path"]}
+          alt={item["poster_path"]}
+          id={item.id}
+        />
       </SwiperSlide>
     );
   });
@@ -72,7 +44,6 @@ const SlidShow = () => {
   return (
     <div className='SlideShow Home__firstView--thumbnail' style={style}>
       <Swiper
-        // grabCursor={true}
         autoplay={{ delay: 5500, disableOnInteraction: false }}
         centeredSlides={true}
         coverflowEffect={{

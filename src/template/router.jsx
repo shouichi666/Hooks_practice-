@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom";
-import { Search, Favorite, Home, Sign } from "./pages";
+import { Search, Favorite, Home, Sign, Word } from "./pages";
 import { Tv } from "./pages/tv";
 import { Movie } from "./pages/movie/";
 import { Cast } from "./pages/cast";
@@ -25,6 +25,10 @@ const Router = () => {
 
       <Route path='/cast/'>
         <Cast />
+      </Route>
+
+      <Route path='/words/'>
+        <Word />
       </Route>
 
       <Route path='/favorite'>

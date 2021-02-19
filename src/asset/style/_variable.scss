@@ -4,22 +4,21 @@ variable list
 
 ////////////
 // -> color <-
-//            background
+//background
 $baseBkColor: #000;
 $headerBkColor: #0c0c0c;
 $footerBkColor: #df0c0c1c;
 $boxShadowColor: #7a717169;
 $headerSearchBkColor: #000000f5;
-// $headerSearchBkColor: #abff74;
 
-//            font
+//font
 $primaryColor: #fc1717;
-// $titleColor               : ;
-// $textColor                : ;
+$blueColor: rgb(225, 228, 255);
+// $textColor    : ;
 // $headerFontColor          : ;
 // $footerFontCOlor           : ;
 
-//            border
+//border
 $primaryBorderColor: #363636;
 
 ////////////////
@@ -31,3 +30,7 @@ $logoFont: "Russo One", sans-serif;
 ////////////////
 // -> transitin <-
 $changeTime: 0.2s;
+
+////////////////
+// -> Size <-
+$pageHeading: 40px;

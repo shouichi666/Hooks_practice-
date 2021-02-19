@@ -7,7 +7,6 @@ const Xslider = (props) => {
   const startPosition = useRef(null);
   const endPosition = useRef(null);
   const slider = useRef(null);
-  
 
   //scroll event
   const XsliderScrollEvent = () => {
@@ -22,9 +21,9 @@ const Xslider = (props) => {
   const onClickScroll = (arg) => {
     let ListWidth = slider.current.clientWidth;
     if (arg === "left") {
-      slider.current.scrollLeft += ListWidth - 30;
+      slider.current.scrollLeft += ListWidth - 10;
     } else if (arg === "right") {
-      slider.current.scrollLeft -= ListWidth - 30;
+      slider.current.scrollLeft -= ListWidth - 10;
     }
   };
   const nextScroll = () => onClickScroll("left");

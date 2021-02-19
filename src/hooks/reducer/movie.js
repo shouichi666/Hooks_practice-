@@ -65,26 +65,51 @@ const movie = (state = movieState, action) => {
       return { ...state, searchItems: newSearchItems };
 
     case "ADD_TOP_RATED_MOVIE":
-      const _rated = state.rated;
+      const _rated = action.rated;
       return {
         ...state,
         rated: {
-          results: _rated.results.concat(action.rated.results),
+          results: state.rated.results.concat(_rated.results),
           page: _rated.page + 1,
-          totalResult: _rated.totalResult,
-          totalPage: _rated.totalPage,
+          totalResult: _rated.total_results,
+          totalPage: _rated.total_pages,
         },
       };
 
     case "ADD_POPULAR_MOVIE":
-      const _popular = state.popular;
+      const _popular = action.popular;
       return {
         ...state,
         popular: {
-          results: _popular.results.concat(action.popular.results),
-          page: _popular.page + 1,
-          totalResult: _popular.totalResult,
-          totalPage: _popular.totalPage,
+          results: state.popular.results.concat(action.popular.results),
+          page: _popular.page,
+          totalResult: _popular.total_results,
+          totalPage: _popular.total_pages,
+        },
+      };
+
+    case "GET_GENRES_MOVIE":
+      const _words = action.genres;
+      return {
+        ...state,
+        words: {
+          id: action.id,
+          page: _words.page,
+          results: _words.results,
+          totalPage: _words.total_pages,
+        },
+      };
+
+    case "ADD_GENRES_MOVIE":
+      const _AddWords = action.genres;
+      return {
+        ...state,
+        words: {
+          id: state.words.id,
+          page: _AddWords.page,
+          results: state.words.results.concat(_AddWords.results),
+          totalPage: _AddWords.total_pages,
+          totalResult: _AddWords.total_results,
         },
       };
 

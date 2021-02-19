@@ -10,7 +10,6 @@ const tvState = initialState.tv;
 const tv = (state = tvState, action) => {
   switch (action.type) {
     case "GET_TV":
-      console.log(action.data);
       return { ...state, viewItem: action.data };
 
     case "GET_TOP_RATED_TV":
@@ -62,7 +61,6 @@ const tv = (state = tvState, action) => {
 
     case "ADD_POPULAR_TV":
       const addPopular = action.popular;
-      console.log(addPopular);
       return {
         ...state,
         popular: {
@@ -84,6 +82,34 @@ const tv = (state = tvState, action) => {
           totalPage: addTopRoted.total_pages,
         },
       };
+
+    case "GET_GENRES_TV":
+      const _tv = action.genres;
+      console.log(_tv);
+      return {
+        ...state,
+        words: {
+          id: action.id,
+          page: _tv.page,
+          results: _tv.results,
+          totalPage: _tv.total_pages,
+          totalResult: _tv.total_results,
+        },
+      };
+
+    case "ADD_GENRES_TV":
+      const _addTv = action.genres;
+      return {
+        ...state,
+        words: {
+          id: state.words.id,
+          page: _addTv.page,
+          results: state.words.results.concat(_addTv.results),
+          totalPage: _addTv.total_pages,
+          totalResult: _addTv.total_results,
+        },
+      };
+
     default:
       return state;
   }

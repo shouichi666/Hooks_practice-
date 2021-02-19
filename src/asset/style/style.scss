@@ -137,7 +137,7 @@ small {
 }
 
 .page_heading {
-  font-size: 38px;
+  font-size: $pageHeading;
   font-family: $logoFont;
   text-align: center;
   margin: 2em 0 1em 0;
@@ -150,11 +150,11 @@ small {
   align-items: center;
   margin: 0 auto;
   text-align: center;
-  max-width: 400px;
+  max-width: 365px;
 
   &__num {
-    padding: 5px;
-    margin: 0 4px;
+    padding: 4px 2px;
+    margin: 0 2px;
     cursor: pointer;
 
     &:hover {
@@ -166,8 +166,10 @@ small {
   &__next,
   &__first,
   &__last {
-    font-size: 13px;
-    margin: 0 4px;
+    font-size: 12px;
+    margin: 0 3px;
+    letter-spacing: -1px;
+    padding: 3px 0;
 
     &:hover {
       background-color: #6d6d6de0;
@@ -190,6 +192,7 @@ small {
 @import "./pages/Sign";
 @import "./pages/Search";
 @import "./pages/Cast";
+@import "./pages/Word";
 @import "./componentStyle/Header";
 @import "./componentStyle/footer";
 @import "./componentStyle/form";

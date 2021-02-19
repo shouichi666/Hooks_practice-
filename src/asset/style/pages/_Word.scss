@@ -1,0 +1,24 @@
+/*
+Word
+*/
+
+.words {
+  text-align: center;
+  padding: 1.7em 0 2.7m;
+  font-size: $pageHeading;
+
+  &__heading {
+    color: $blueColor;
+    // text-align: left;
+  }
+
+  &__count {
+    text-align: right;
+    color: $blueColor;
+
+    strong {
+      color: white;
+      font-size: 60px;
+    }
+  }
+}
