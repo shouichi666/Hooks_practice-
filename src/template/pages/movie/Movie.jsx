@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { ArchiveMovie, IdMovie } from ".";
+import { IdMovie } from ".";
+import ArchiveMovie from "./ArchiveMovie/ArchiveMovie";
 
 const Movie = () => {
   return (

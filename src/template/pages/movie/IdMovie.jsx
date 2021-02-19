@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PieChart } from "../../components";
-import { CastSliderBox, Xslider, XsliderBox } from "../../components/slider";
+import { CastSliderBox, Xslider } from "../../components/slider";
 import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 import {
@@ -10,11 +10,11 @@ import {
   ChangeLanguage,
   _MapXsliderBox,
   _WindowTop,
+  _GetGenresMovie,
 } from "../../../hooks/hoge";
 
 const Movie_Id = () => {
-  // const history = useHistory();
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const [movies, setMovie] = useState([]);
   const [casts, setCasts] = useState(null);
   const data = state.movie.viewItem;
@@ -35,7 +35,6 @@ const Movie_Id = () => {
       },
       (error) => {
         console.log(error);
-        // history.push("/");
       }
     );
     theMovieDb.movies.getSimilarMovies(
@@ -46,7 +45,6 @@ const Movie_Id = () => {
       },
       (error) => {
         console.log(error);
-        // history.push("/");
       }
     );
   };
@@ -58,7 +56,11 @@ const Movie_Id = () => {
     <main id='movie' className='Movie'>
       <section className='Movie__firstView' style={style}>
         <div className='Movie__posterWrap'>
-          <img src={POSTER_342 + data.poster_path} alt={data.poster_path} />
+          <img
+            src={POSTER_342 + data.poster_path}
+            alt={data.poster_path}
+            loading='lazy'
+          />
         </div>
 
         <div className='Movie__discriptionWrap'>
@@ -69,7 +71,12 @@ const Movie_Id = () => {
             <div className='Movie__discriptionWrap--top--flex'>
               <span>{data.release_date}</span>
               {(data.genres || []).map((genre, i) => (
-                <Link to={`/${genre.id}`} key={i} id={genre.id}>
+                <Link
+                  to={`/words/movie/${genre.name}`}
+                  key={i}
+                  id={genre.id}
+                  onClick={() => _GetGenresMovie(dispatch, genre.id)}
+                >
                   <span>{genre.name},</span>
                 </Link>
               ))}
@@ -133,7 +140,7 @@ const Movie_Id = () => {
             <div className='m-aside__bottom--flex'>
               {(keywords || []).map((key, i) => (
                 <Link key={i} to={key.name}>
-                  {key.name}
+                  <button value={key.id}>{key.name}</button>
                 </Link>
               ))}
             </div>

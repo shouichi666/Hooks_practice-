@@ -58,11 +58,6 @@
     position: relative;
     transition: $changeTime;
     z-index: 1;
-
-    &:hover {
-      transition: $changeTime;
-      transform: scale(1.04, 1.04) rotateX(4deg);
-    }
   }
 } //SlideShow
 

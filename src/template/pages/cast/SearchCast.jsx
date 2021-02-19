@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import noPhoto from "../../../asset/imags/no_500.png";
 import { PieChart } from "../../components/";
-import { MoreButton } from "../../components/button/";
 import { POSTER_342 } from "../../../hooks/hoge";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
+import InfiniteScroll from "react-infinite-scroller";
 
 const SearchCast = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -37,12 +37,10 @@ const SearchCast = () => {
     );
   };
 
-  const onClickAddSearch = (e) => {
-    e.preventDefault();
+  const onScrollAddSearch = (num) => {
     const value = state.search.string;
-    const nowPage = state.cast.searchItems.page;
     theMovieDb.search.getPerson(
-      { query: value, page: nowPage + 1 },
+      { query: value, page: num },
       (result) => {
         dispatch({ type: "ADD_SEARCH_CAST_ITEMS", data: JSON.parse(result) });
       },
@@ -53,7 +51,7 @@ const SearchCast = () => {
   };
 
   return (
-    <>
+    <InfiniteScroll pageStart={state.cast.searchItems.page} hasMore={true} loadMore={onScrollAddSearch}>
       <ul>
         {state.cast.searchItems.results.map((result, i) => {
           return (
@@ -97,8 +95,7 @@ const SearchCast = () => {
           );
         })}
       </ul>
-      <MoreButton onClick={onClickAddSearch} />
-    </>
+    </InfiniteScroll>
   );
 };
 

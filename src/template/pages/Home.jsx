@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { SlidShow, SearchForm } from "../components/";
 import { Xslider } from "../components/slider";
 import { SwitchButton } from "../components/button";
@@ -18,9 +18,9 @@ const Home = () => {
   const tv = _MapXsliderBox(state.tv.popular.results, "tv");
   const topTv = _MapXsliderBox(state.tv.rated.results, "tv");
 
-  const onChangeTrend = (e) => setTrend(e.target.value);
-  const onChangeRated = (e) => setRated(e.target.value);
-  const onChangePopular = (e) => setPopular(e.target.value);
+  const onChangeTrend = useCallback((e) => setTrend(e.target.value), []);
+  const onChangeRated = useCallback((e) => setRated(e.target.value), []);
+  const onChangePopular = useCallback((e) => setPopular(e.target.value), []);
 
   const data = {
     trend: [

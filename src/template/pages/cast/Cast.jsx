@@ -11,8 +11,7 @@ const Cast = () => {
     theMovieDb.people.getPopular(
       { page: 1 },
       (people) => {
-        dispatch({ type: "GET_PEOPLE", people: JSON.parse(people) });
-        console.log("W");
+        dispatch({ type: "GET_PEOPLE", people: JSON.parse(people), page: 1 });
       },
       (error) => {
         console.error(error);
@@ -23,7 +22,7 @@ const Cast = () => {
   useEffect(getPeple, [dispatch]);
 
   return (
-    <>
+    <main>
       <Switch>
         <Route path='/cast/list'>
           <ArchiveCast />
@@ -32,7 +31,7 @@ const Cast = () => {
           <IdCast />
         </Route>
       </Switch>
-    </>
+    </main>
   );
 };
 

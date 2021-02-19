@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import noPhoto from "../../../asset/imags/no_500.png";
 import { PieChart } from "../../components/";
-import { MoreButton } from "../../components/button/";
 import { POSTER_342, BACKDROP_780, ChangeLanguage } from "../../../hooks/hoge";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
+import InfiniteScroll from "react-infinite-scroller";
 
 const SearchMovie = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -23,25 +23,28 @@ const SearchMovie = () => {
     );
   };
 
-  const onClickAddSearch = (e) => {
-    e.preventDefault();
-    const value = state.search.string;
-    const nowPage = state.movie.searchItems.page;
-    theMovieDb.search.getMovie(
-      { query: value, page: nowPage + 1, include_adult: true },
-      (result) => {
-        dispatch({ type: "ADD_SEARCH_MOVIE_ITEMS", data: JSON.parse(result) });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
-
-  let buttonJudge = state.movie.searchItems.results.length < 20 ? true : false;
+  const onScrollAddSearch = useCallback(
+    (num) => {
+      const value = state.search.string;
+      theMovieDb.search.getMovie(
+        { query: value, page: num, include_adult: true },
+        (result) => {
+          dispatch({ type: "ADD_SEARCH_MOVIE_ITEMS", data: JSON.parse(result) });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    [dispatch, state.search]
+  );
 
   return (
-    <>
+    <InfiniteScroll
+      pageStart={1}
+      hasMore={state.movie.searchItems.results.length === 0 ? false : true}
+      loadMore={onScrollAddSearch}
+    >
       <ul>
         {state.movie.searchItems.results.map((result, i) => {
           return (
@@ -92,8 +95,7 @@ const SearchMovie = () => {
           );
         })}
       </ul>
-      <MoreButton onClick={onClickAddSearch} hidden={buttonJudge} />
-    </>
+    </InfiniteScroll>
   );
 };
 

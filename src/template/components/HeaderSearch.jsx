@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { SearchIcon, ClearSharpIcon } from "../../asset/icons";
 import theMovieDb from "themoviedb-javascript-library";
 import AppContext from "../../hooks/contexts/AppContext";
@@ -8,6 +8,7 @@ const HeaderSearch = (props) => {
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
   const [candidate, setCandidate] = useState([]);
+  const inputRef = useRef();
 
   let animationClassName = props.open
     ? "HeaderSearch-enter-done"
@@ -31,19 +32,8 @@ const HeaderSearch = (props) => {
 
   const onClickCandidate = (e) => {
     const value = e.target.id;
-    console.log(value);
     dispatch({ type: "SET_SEARCH_STRING", string: value });
-    theMovieDb.search.getMulti(
-      { query: value, include_adult: true },
-      (result) => {
-        dispatch({ type: "SET_SEARCH_ITEMS", data: JSON.parse(result) });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
     setCandidate([]);
-    history.push("/search/movie");
   };
 
   const onClickSearch = (e) => {
@@ -65,9 +55,13 @@ const HeaderSearch = (props) => {
   const deleteForm = () => {
     dispatch({ type: "DELETE_SEARCH_STRING", string: "" });
   };
-  //
-  //
-  //
+
+  const foucs = () => {
+    if (props.open) inputRef.current.focus();
+  };
+
+  foucs();
+
   return (
     <div className={`HeaderSearch ${animationClassName}`}>
       <form className='HeaderSearch__form' onSubmit={onClickSearch}>
@@ -80,6 +74,7 @@ const HeaderSearch = (props) => {
           type='text'
           name='query'
           tabIndex='1'
+          ref={inputRef}
           autoCorrect='off'
           autofill='off'
           autoComplete='off'

@@ -24,7 +24,7 @@ const SearchForm = () => {
         console.log(error);
       }
     );
-    history.push("/search/all");
+    history.push("/search/movie");
   };
 
   const isClerField = (e) => {
@@ -47,14 +47,19 @@ const SearchForm = () => {
         value={string}
         tabIndex='1'
         onChange={handleChangeText}
-        placeholder="映画名、テレビ番組名、人物名で検索'"
+        placeholder='映画名、テレビ番組名、人物名で検索'
       />
       <span className='SearchForm--underBorder'></span>
       <span className='SearchForm--sideBorder'></span>
       <button className='SearchForm--deleteButton' onClick={isClerField}>
         <span className='SearchForm--boder'>del</span>
       </button>
-      <input className='SearchForm--submit' type='submit' value='Search' />
+      <input
+        className='SearchForm--submit'
+        type='submit'
+        value='Search'
+        disabled={string === "" ? true : false}
+      />
     </form>
   );
 };

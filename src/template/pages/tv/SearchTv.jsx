@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useCallback, useContext } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import noPhoto from "../../../asset/imags/no_500.png";
 import { PieChart } from "../../components/";
-import { MoreButton } from "../../components/button/";
 import { POSTER_342, BACKDROP_780, ChangeLanguage } from "../../../hooks/hoge";
 import { Link } from "react-router-dom";
 import theMovieDb from "themoviedb-javascript-library";
+import InfiniteScroll from "react-infinite-scroller";
 
 const SearchTv = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -22,25 +22,28 @@ const SearchTv = () => {
     );
   };
 
-  const onClickAddSearch = (e) => {
-    e.preventDefault();
-    const value = state.search.string;
-    const nowPage = state.tv.searchItems.page;
-    theMovieDb.search.getTv(
-      { query: value, page: nowPage + 1, include_adult: true },
-      (result) => {
-        dispatch({ type: "ADD_SEARCH_TV_ITEMS", data: JSON.parse(result) });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
-
-  let iii = state.tv.searchItems.results.length < 20 ? true : false;
+  const onScrollAddSearch = useCallback(
+    (num) => {
+      const value = state.search.string;
+      theMovieDb.search.getTv(
+        { query: value, page: num, include_adult: true },
+        (result) => {
+          dispatch({ type: "ADD_SEARCH_TV_ITEMS", data: JSON.parse(result) });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    [dispatch, state.search]
+  );
 
   return (
-    <>
+    <InfiniteScroll
+      hasMore={state.movie.searchItems.results.length === 0 ? false : true}
+      loadMore={onScrollAddSearch}
+      pageStart={state.tv.searchItems.page}
+    >
       <ul>
         {state.tv.searchItems.results.map((result, i) => {
           return (
@@ -91,8 +94,7 @@ const SearchTv = () => {
           );
         })}
       </ul>
-      <MoreButton onClick={onClickAddSearch} hidden={iii} />
-    </>
+    </InfiniteScroll>
   );
 };
 

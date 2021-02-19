@@ -9,11 +9,12 @@ import {
   BACKDROP_780,
   ChangeLanguage,
   _WindowTop,
+  _GetGenresTv,
 } from "../../../hooks/hoge";
 
 const IdTv = () => {
   // const history = useHistory();
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const [movies, setMovie] = useState([]);
   const [casts, setCasts] = useState(null);
   const data = state.tv.viewItem;
@@ -46,17 +47,6 @@ const IdTv = () => {
         // history.push("/");
       }
     );
-
-    // theMovieDb.tv.getExternalIds(
-    //   { id: state.tv.viewItem.id },
-    //   (movie) => {
-    //     console.log(movie);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     // history.push("/");
-    //   }
-    // );
   };
 
   useEffect(getMovie, [state]);
@@ -78,7 +68,12 @@ const IdTv = () => {
             <div className='Movie__discriptionWrap--top--flex'>
               <span>{data.release_date}</span>
               {(data.genres || []).map((genre, i) => (
-                <Link to={`/${genre.id}`} key={i} id={genre.id}>
+                <Link
+                  to={`/words/tv/${genre.name}`}
+                  key={i}
+                  id={genre.id}
+                  onClick={() => _GetGenresTv(dispatch, genre.id)}
+                >
                   <span>{genre.name},</span>
                 </Link>
               ))}

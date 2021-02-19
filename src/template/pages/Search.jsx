@@ -57,9 +57,7 @@ const Search = () => {
     }
   };
 
-  useEffect(() => {
-    getData();
-  }, [string]);
+  useEffect(getData, [string, dispatch]);
 
   return (
     <main id='Search' className='Search'>

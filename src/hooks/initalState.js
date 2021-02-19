@@ -36,6 +36,14 @@ const initialState = {
       totalPage: 0,
     },
 
+    words: {
+      id: 0,
+      page: 0,
+      results: [],
+      totalPage: 0,
+      totalResult: 0,
+    },
+
     day: [], //今日のトレンド
     week: [], //今週のトレンド
     viewItem: {}, //詳細ページ
@@ -63,6 +71,15 @@ const initialState = {
       totalResult: 0,
       totalPage: 0,
     },
+
+    words: {
+      id: 0,
+      page: 0,
+      results: [],
+      totalPage: 0,
+      totalResult: 0,
+    },
+
     day: [], //今日のトレンド
     viewItem: {}, //詳細ページ
   },
@@ -78,7 +95,7 @@ const initialState = {
 
     people: {
       results: [],
-      paghe: 0,
+      page: 0,
       totalResult: 0,
       totalPage: 0,
     },
@@ -96,11 +113,8 @@ const initialState = {
       totalResult: 0,
       totalPage: 0,
     },
-
     favoriteList: [],
     keyword: [],
-    // viewItem: {}, //詳細ページ
-    searchType: "",
   },
 };
 

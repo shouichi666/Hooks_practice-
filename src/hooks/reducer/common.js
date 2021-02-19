@@ -15,9 +15,6 @@ const common = (state = commonState, action) => {
       const keyword = action.data;
       return { ...state, keyword };
 
-    case "SET_TYPE":
-      return { ...state, searchType: action.searchType };
-
     case "SET_ALL_SEARCH_ITEMS":
       const data = action.data;
       const newObj = {
