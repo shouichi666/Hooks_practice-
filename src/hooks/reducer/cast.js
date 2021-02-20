@@ -2,7 +2,7 @@
 // getItemに関する情報
 //
 //
-import initialState from "../initalState";
+import initialState from "../appState";
 // import theMovieDb from "themoviedb-javascript-library";
 
 const castState = initialState.cast;

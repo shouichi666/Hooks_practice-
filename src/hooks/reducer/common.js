@@ -2,7 +2,7 @@
 // getItemに関する情報
 //
 //
-import initialState from "../initalState";
+import initialState from "../appState";
 const commonState = initialState.common;
 
 const common = (state = commonState, action) => {

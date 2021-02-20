@@ -1,11 +1,16 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, Route } from "react-router-dom";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import { Rated, Popular, Today, Week } from "./";
+import { _WindowTop } from "../../../../hooks/hoge";
 
 const ArchiveMovie = () => {
   const { state } = useContext(AppContext);
   const [view, setView] = useState("popular");
+
+  useEffect(() => {
+    _WindowTop();
+  }, []);
 
   const selectView = useCallback((e) => {
     const id = e.target.id;

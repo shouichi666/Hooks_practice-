@@ -38,7 +38,7 @@ const Header = () => {
               FAVORITE
             </Link>
             <Link to='/sign' className='header__nav--link'>
-              Sign In
+              SIGN IN
             </Link>
             <div hidden={true}>
               <AccountButton />

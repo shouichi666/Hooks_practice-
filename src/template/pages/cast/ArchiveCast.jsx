@@ -5,7 +5,7 @@ import theMovieDb from "themoviedb-javascript-library";
 
 const ArchiveCast = () => {
   const { state, dispatch } = useContext(AppContext);
-  const [pageN, setPage] = useState(0);
+  const [pageN, setPage] = useState(1);
   const totalResult = state.cast.people.totalResult;
   const totalPage = totalResult / 20;
   const crrentPage = state.cast.people.page;
@@ -34,9 +34,7 @@ const ArchiveCast = () => {
   return (
     <>
       <h2 className='page_heading'>人気の出演スタッフ</h2>
-      <div className='flexWrap'>
-        {_MapCastSliderBox(state.cast.people.results)}
-      </div>
+      <div className='flexWrap'>{_MapCastSliderBox(state.cast.people.results)}</div>
 
       <ul className='pageNation'>
         <li className={`pageNation__first ${prevClass}`}>

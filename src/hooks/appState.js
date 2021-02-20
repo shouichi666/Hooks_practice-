@@ -1,4 +1,4 @@
-const initialState = {
+const appState = {
   users: {
     email: "", //eamil
     isSignIn: false, //ログイン状況
@@ -118,4 +118,4 @@ const initialState = {
   },
 };
 
-export default initialState;
+export default appState;

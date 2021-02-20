@@ -4,11 +4,13 @@ import { HashRouter } from "react-router-dom";
 import Router from "./router";
 import AppContext from "../hooks/contexts/AppContext";
 import reducer from "../hooks/reducer";
-import initialState from "../hooks/initalState";
+import appState from "../hooks/appState";
 import theMovieDb from "themoviedb-javascript-library";
 
 const AppTop = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const localData = localStorage.getItem("data_on_movie");
+  const State = localData ? JSON.parse(localData) : appState;
+  const [state, dispatch] = useReducer(reducer, State);
 
   useEffect(() => {
     //今日人気の映画の取得
@@ -29,7 +31,7 @@ const AppTop = () => {
 
     //評価の高い映画の取得
     theMovieDb.movies.getTopRated(
-      {include_adult: true},
+      { include_adult: true },
       (movie) => {
         dispatch({ type: "GET_TOP_ROTED_MOVIE", rated: JSON.parse(movie) });
       },
@@ -38,7 +40,7 @@ const AppTop = () => {
 
     //評価の高いドラマの取得
     theMovieDb.tv.getTopRated(
-      { page: 1,include_adult: true },
+      { page: 1, include_adult: true },
       (result) => {
         dispatch({ type: "GET_TOP_RATED_TV", rated: JSON.parse(result) });
       },
@@ -49,7 +51,7 @@ const AppTop = () => {
 
     //人気の映画の取得
     theMovieDb.movies.getPopular(
-      {include_adult: true},
+      { include_adult: true },
       (result) => {
         dispatch({ type: "GET_POPULAR_MOVIE", popular: JSON.parse(result) });
       },
@@ -60,7 +62,7 @@ const AppTop = () => {
 
     //人気のドラマの取得
     theMovieDb.tv.getPopular(
-      {include_adult: true},
+      { include_adult: true },
       (result) => {
         dispatch({ type: "GET_POPULAR_TV", popular: JSON.parse(result) });
       },
@@ -69,13 +71,18 @@ const AppTop = () => {
       }
     );
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("data_on_movie", JSON.stringify(state));
+  }, [state]);
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      <HashRouter>
-        <Header />
-        <Router />
-        <Footer />
-      </HashRouter>
+        <HashRouter>
+          <Header />
+          <Router />
+          <Footer />
+        </HashRouter>
     </AppContext.Provider>
   );
 };

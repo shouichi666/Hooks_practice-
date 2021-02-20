@@ -3,15 +3,15 @@
 */
 
 .Sign {
-  height: 100%;
-  max-width: 550px;
-  min-width: 290px;
-  margin: 65px auto 0 auto;
+  align-items: center;
   background-color: rgba(158, 158, 158, 0.151);
   border-radius: 20px;
   display: grid;
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  margin: 65px auto 0 auto;
+  max-width: 550px;
+  min-width: 290px;
 }
 
 .tabBar {
@@ -19,25 +19,25 @@
   width: 100%;
 
   &__tab {
-    position: relative;
     color: #585858;
-    width: 50%;
-    text-align: center;
-    padding: 1em 2em;
-    font-size: 20px;
     cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    padding: 1em 2em;
+    text-align: center;
     transition: $changeTime;
+    width: 50%;
 
     &::after {
-      position: absolute;
-      z-index: 50;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      content: "";
       background-color: #8b8a8a2f;
+      content: "";
+      left: 0;
+      height: 100%;
       opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 50;
     }
 
     &:active.tabBar__tab::after {

@@ -2,7 +2,7 @@
 // getItemに関する情報
 //
 //
-import initialState from "../initalState";
+import initialState from "../appState";
 const searchState = initialState.search;
 
 const search = (state = searchState, action) => {
