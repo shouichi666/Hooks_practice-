@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
-import { _MapXsliderBox } from "../../../../hooks/hoge";
+import { _mapXsliderBox } from "../../../../hooks/hoge";
 import InfiniteScroll from "react-infinite-scroller";
 
 const Favorite = () => {
@@ -28,7 +28,9 @@ const Favorite = () => {
         hasMore={state.tv.popular.results.length > 0 ? true : false}
         pageStart={state.tv.popular.page}
       >
-        <div className='flexWrap'>{_MapXsliderBox(state.tv.popular.results, "tv")}</div>
+        <div className='flexWrap'>
+          {_mapXsliderBox(state.tv.popular.results, "tv")}
+        </div>
       </InfiniteScroll>
     </>
   );

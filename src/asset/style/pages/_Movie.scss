@@ -12,13 +12,20 @@
     left: 0;
     z-index: 0;
     content: "";
-    background: rgb(10, 1, 34);
+    background-repeat: no-repeat;
+    background: rgb(0, 0, 0);
     background: linear-gradient(
-      90deg,
-      rgba(10, 1, 34, 0.9416360294117647) 0%,
-      rgba(6, 6, 19, 0.8491990546218487) 58%,
-      rgba(6, 1, 33, 0.675529586834734) 100%
+      80deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 27, 1) 31%,
+      rgba(0, 7, 40, 0.6559217436974789) 63%,
+      rgba(1, 0, 59, 0.26376488095238093) 100%
     );
+  }
+
+  @include break($md) {
+    flex-direction: column;
+    padding: 40px 10px 20px;
   }
 } //Movie__firstView
 
@@ -26,36 +33,108 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
+  margin: 0 auto;
+
+  @include break($md) {
+    width: 70%;
+  }
 
   img {
     width: 100%;
     border-radius: 10px;
+
+    @include break($md) {
+      border-radius: 0px;
+    }
   }
 } //Movie__posterWrap
 
 .Movie__discriptionWrap {
-  position: relative;
-  z-index: 1;
-  width: 70%;
   height: 100%;
+  position: relative;
   margin: 0 0 0 30px;
+  width: 70%;
+  z-index: 1;
+
+  @include break($md) {
+    margin: 0;
+    width: 100%;
+  }
+
   &--top {
-    padding: 10px 0 0 0;
-    &--title {
-      font-size: 38px;
-      font-weight: 600;
-      font-family: $Font;
-      margin: 0 0 10px 0;
+    padding: 18px 0 0 0;
+
+    @include break($md) {
+      margin: 0 0 0 1em;
     }
 
-    &--flex {
+    &--title {
+      font-size: 48px;
+      font-weight: 600;
+      font-family: $titleFont;
+      margin: 0 0 0.2em 0;
+
+      @include break($md) {
+        font-size: 18px;
+        font-family: $titleFont;
+        margin: 0 0 0.2em 0;
+      }
+    }
+
+    &--tanline {
+      margin: 0 0 1em 0;
+      font-family: $titleFont;
+      color: rgb(212, 212, 212);
+
+      @include break($md) {
+        font-size: 10px;
+        font-family: $titleFont;
+        margin: 0 0 0.2em 0;
+      }
+    }
+
+    &--flex span {
+      color: rgb(206, 206, 206);
+      margin: 0 1em 0 0;
+    }
+  } //top
+
+  &--mid {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    &--top {
       display: flex;
-      align-items: center;
-      font-size: 14px;
-      a span {
+      margin: 1em 0 0 0;
+      &--score {
+        background-color: rgb(0, 0, 0);
+        border-radius: 50%;
+        position: relative;
+        width: 75px;
+
+        @include break($md) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &--bottom {
+      margin: 1em 0 0 0;
+      &-gunre {
         position: relative;
         display: inline-block;
-        margin: 0 0.5em;
+        margin: 0 1em 0 0;
+        color: #45729c;
+
+        @include break($md) {
+          margin: 0.3em 0.3em;
+          font-size: 12px;
+          padding: 2px 5px;
+          border-radius: 10px;
+        }
+
         &::before {
           position: absolute;
           bottom: 0;
@@ -63,8 +142,9 @@
           width: 0%;
           content: "";
           height: 1px;
-          background-color: white;
+          background-color: #325e88;
         }
+
         &:hover {
           &::before {
             width: 100%;
@@ -73,60 +153,108 @@
         }
       }
     }
-  } //top
-
-  &--mid {
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-
-    &--score {
-      position: relative;
-      margin: 1em;
-      background-color: rgb(0, 0, 0);
-      border-radius: 50%;
-    }
   }
 
   &--bottom {
-    margin: 1.5em 0 0 0;
     h3 {
-      font-size: 18px;
-      margin: 0 0 0.3em;
+      font-size: 19px;
+      margin: 1em 0 1em;
     }
+
     p {
       font-size: 15px;
-      line-height: 1.3em;
+      line-height: 1.4em;
       letter-spacing: 1px;
+
+      @include break($md) {
+        font-size: 13px;
+      }
+    }
+  }
+  &--teaserWrap {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include break($md) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    &--imgBox {
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      flex-direction: column-reverse;
+
+      @include break($md) {
+        margin: 0 0 15px 0;
+      }
+
+      &:hover {
+        filter: blur(0.5px);
+
+        .Movie__discriptionWrap--teaserWrap--imgBox-icon {
+          opacity: 0.1;
+        }
+      }
+
+      &-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px !important;
+      }
+      &-name {
+        position: absolute;
+        bottom: 0;
+        left: 1em;
+        display: inline-block;
+        font-size: 10px;
+      }
     }
   }
 } //Movie__discriptionWrap
 
 .scoreCircle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
   display: inline-block;
-  text-align: center;
-  line-height: 73px;
   font-size: 20px;
+  left: 50%;
+  line-height: 73px;
+  height: 75px;
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 75px;
 
   &__amount {
     font-size: 10px;
+  }
+
+  @include break($sm) {
+    font-size: 14px;
   }
 }
 
 .MovieMainContents {
   padding: 0 20px 0 0;
   width: 80%;
+
+  @include break($md) {
+    padding: 0;
+    width: 100%;
+  }
 } //MovieMainContents
 
 .m-aside {
   width: 20%;
+
+  @include break($md) {
+    width: 100%;
+  }
 
   &__top {
     padding: 10px 0;
@@ -151,9 +279,12 @@
       a {
         margin: 0.2em;
         display: inline-block;
-        padding: 0.1em 0.2em;
-        background-color: rgb(146, 146, 146);
-        border-radius: 2px;
+
+        button {
+          background-color: rgb(146, 146, 146);
+          border-radius: 2px;
+          padding: 0.1em 0.2em;
+        }
         &:hover {
           color: rgb(34, 34, 34);
         }
@@ -161,3 +292,17 @@
     }
   }
 } ///aside
+
+.Movie__icon {
+  font-size: 50px !important;
+  margin: 0 0 0 20px;
+  color: rgb(245, 245, 245);
+
+  &:hover {
+    color: rgb(18, 19, 20);
+  }
+
+  &:active {
+    animation: vaiblation  0.1s ease-in;
+  }
+}

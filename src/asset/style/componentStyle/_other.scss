@@ -1,0 +1,146 @@
+/* 
+LogOutModal style
+*/
+
+.LogOutModal {
+  background-color: rgb(0, 0, 0);
+  height: 160px;
+  left: 50%;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 2em 0 0 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+
+  &__text {
+    color: rgb(201, 201, 201);
+    text-align: center;
+  }
+
+  &__button {
+    bottom: 0;
+    display: flex;
+    position: absolute;
+    width: 100%;
+
+    &--agree,
+    &--disAgree {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      padding: 1em 0;
+      color: rgb(255, 255, 255);
+    }
+
+    &--agree {
+      background-color: rgba(0, 132, 255, 0.171);
+    }
+
+    &--disAgree {
+      background-color: rgba(63, 32, 3, 0.1004);
+    }
+  }
+}
+
+.DialogList {
+  position: absolute;
+  z-index: 21;
+  border-radius: 5px;
+  box-shadow: #000 0px 0px 8px;
+  overflow: hidden;
+  background-color: #505050;
+
+  &__item {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #3d3d3d;
+    display: flex;
+    align-items: center;
+    height: 4em;
+    padding: 0 1em;
+    width: 100%;
+    min-width: 220px;
+
+    @include break($md) {
+      min-width: 140px;
+      .MuiSvgIcon-root {
+        font-size: 19px;
+      }
+    }
+    &:nth-child(1) {
+      border-bottom: #333333 0.1px solid;
+    }
+
+    &:hover {
+      background-color: #383838;
+    }
+
+    &:active {
+      background-color: rgb(163, 163, 163);
+      opacity: 0.5;
+    }
+
+    &--text {
+      margin: 0 0 0 1em;
+      user-select: none;
+
+      @include break($md) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.Player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  background-color: rgba(3, 1, 1, 0.658);
+
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+
+    @include break($md) {
+      width: 330px;
+      height: 200px;
+    }
+  }
+
+  &__iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    z-index: 30;
+  }
+}
+
+.ItemBox {
+  width: calc(100% / 5);
+  position: relative;
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__moreButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}

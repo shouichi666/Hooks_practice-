@@ -1,0 +1,100 @@
+/*
+Favorite page style
+*/
+
+.Favorite {
+  position: relative;
+  padding: 30px 0 0 0;
+
+  &__container {
+    padding: 10px;
+  }
+
+  &__heading {
+    margin: 0;
+
+    @include break($md) {
+      margin: 0 0 2em 0;
+    }
+  }
+
+  &__navigationBar {
+    position: relative;
+    width: 100%;
+    margin: 0 0 50px 0;
+    border-bottom: 1px solid #e2e2e2;
+
+    &--recent {
+      width: 100%;
+      overflow: hidden;
+      margin: 0 0 30px;
+
+      &-heading {
+        font-size: 14px;
+        margin: 0 0 0.5em 1em;
+      }
+
+      &--scroll {
+        display: flex;
+        justify-content: left;
+        width: 100%;
+        height: 100%;
+
+        @include break($md) {
+          overflow-x: scroll;
+        }
+      }
+
+      &--item {
+        width: calc(100% / 9);
+
+        @include break($md) {
+          width: calc(100% / 4);
+        }
+      }
+
+      &--img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &--icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    &--tabBar {
+      margin: 1em 0 0 0;
+      display: flex;
+      justify-content: space-around;
+
+      &-item {
+        width: calc((100% / 4) - 10px);
+      }
+
+      &-input {
+        display: none;
+      }
+
+      &-input:checked + .Favorite__navigationBar--tabBar-button {
+        border: solid 1px #e2e2e2;
+        border-bottom: none;
+        background-color: #e2e2e2;
+        color: black;
+      }
+
+      &-button {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        padding: 0.5em;
+
+        @include break($md) {
+          font-size: 12px;
+        }
+      }
+    } //__tabBer
+  } //__navigationBar
+} //Favorite

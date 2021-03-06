@@ -3,35 +3,44 @@
 @mixin scrollBer {
   ::-webkit-scrollbar {
     width: 5px;
-    height: 9px;
+    height: 15px;
   }
 
   /* スクロールの背景の設定 */
   ::-webkit-scrollbar-track {
     border-radius: 1px;
-    box-shadow: 0 0 1px #ac9ef850 inset;
+    // box-shadow: 0 0 1px #ffffff inset;
+    // background: #00000086;
   }
 
   /* スクロールのつまみ部分の設定 */
   ::-webkit-scrollbar-thumb {
-    border-radius: 1px;
-    background: #2e4d7486;
+    border-radius: 3px;
+    background: #111111;
   }
 }
 
 /* box-shadow 共通スタイル */
 @mixin _SHADOW($deg) {
-  box-shadow: 0px 0px 10px $boxShadowColor;
+  box-shadow: 0px 0px 5px $boxShadowColor;
   border-radius: $deg;
 }
 
 /* 疑似要素 */
-@mixin _BEFORE($color){
+@mixin _BEFORE($color) {
   position: absolute;
   top: 0;
   left: 0;
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   background: $color;
+}
+
+/* レスポンシブ */
+
+@mixin break($breakPoint) {
+  @media only screen and(max-width: ($breakPoint)) {
+    @content;
+  }
 }

@@ -11,14 +11,16 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  min-height: 75vh;
-  width: 100%;
+  max-height: 75vh;
   position: relative;
+  margin: 0 0 110px;
+  width: 100%;
+
   &::before {
     background: rgb(1, 7, 40);
     background: linear-gradient(
       27deg,
-      rgba(0, 3, 20, 0.788) 0%,
+      rgba(0, 0, 0, 0.888) 0%,
       rgba(181, 191, 247, 0.267) 35%,
       rgba(0, 0, 0, 0.137) 52%,
       rgba(4, 12, 23, 1) 96%
@@ -31,6 +33,10 @@
     width: 100%;
     z-index: 1;
   }
+
+  @include break($md) {
+    min-height: 50vh;
+  }
 } //.Home__firstView
 
 .SlideShow {
@@ -38,7 +44,7 @@
   height: 100%;
   object-fit: cover;
   position: relative;
-  padding: 7px;
+  // padding: 7px;
   top: 0;
   width: 100%;
 
@@ -48,16 +54,28 @@
     left: 4%;
     text-shadow: 1px 1px 1px #01010fe0;
     position: absolute;
+
+    @include break($md) {
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
   }
 
   img {
-    border-radius: 5px;
+    border-radius: 2px;
     filter: drop-shadow(0px 0px 10px #050a5570);
     margin: 20px 0 0 0;
     max-width: 380px;
     position: relative;
     transition: $changeTime;
     z-index: 1;
+
+    @include break($md) {
+      width: 200px;
+      margin: 0;
+      object-fit: cover;
+    }
   }
 } //SlideShow
 
@@ -69,12 +87,15 @@
   left: 50%;
   margin: auto;
   position: absolute;
-  padding: 9px;
   top: 50%;
   transition: $changeTime;
   transform: translate(-50%, -50%);
   width: 80%;
   z-index: 30;
+
+  @include break($sm) {
+    display: none;
+  }
 
   &--input {
     color: rgb(227, 205, 255);
@@ -86,12 +107,18 @@
 
     &::placeholder {
       color: rgb(174, 166, 185);
+      transition: $changeTime;
     }
 
     &:focus {
       background: rgba(2, 2, 39, 0.719);
       padding: 1em 2em;
       transition: $changeTime;
+
+      &::placeholder {
+        font-size: 80%;
+        transition: $changeTime;
+      }
     }
 
     &:focus + .SearchForm--underBorder::before,
@@ -189,7 +216,6 @@
   }
 
   &--submit {
-    border-radius: 30px;
     color: #d4d4d4;
     font-family: $logoFont;
     min-width: 70px;

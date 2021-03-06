@@ -3,32 +3,44 @@
 */
 
 .slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 45px 0px 50px 0px;
   width: 100%;
   @include scrollBer;
 
   &__top {
+    align-items: flex-end;
     display: flex;
-    align-items: center;
     margin: 0 0 0.9em 0;
+
+    @include break($md) {
+      justify-content: space-around;
+    }
   }
 
   &__heading {
     display: inline-block;
-    font-size: 38px;
-    font-family: $logoFont;
+    font-size: 48px;
     margin: 0 1em 0 1em;
-    color: $blueColor;
+
+    @include break($md) {
+      margin: 0;
+      font-size: 25px;
+    }
   }
 
   &__slider {
+    border-radius: 6px;
+    background: #221f37;
+    box-shadow: inset 5px 5px 10px #0e0c16, inset -5px -5px 10px #363258;
+    border: 1px solid #10101a;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    overflow: hidden;
     position: relative;
     width: 97%;
-    margin: 0 auto;
-    background: #0c0c0e;
-    border: 1px solid #1a1a36;
-    box-shadow: inset -5px 5px 10px #0b0b0c, inset 5px -5px 3px #0c0c0e;
-    overflow: hidden;
   }
 
   &__list {
@@ -45,64 +57,84 @@
   position: relative;
   flex-direction: column;
   display: flex;
-  min-width: 150px;
-  max-width: 160px;
-  width: calc(100% / 4);
-  min-height: 200px;
-  margin: 1px 0 34px;
+  max-width: calc(100% / 5 - 10px);
+  min-width: 185px;
+  margin: 0px 5px 5px 0;
   text-align: left;
   cursor: pointer;
+  box-shadow: 1px 1px 5px $boxShadowColor;
+  background-color: #141313;
+  justify-content: space-between;
+  padding: 0 0 10px 0;
+
+  @include break($lg) {
+    margin: 9px 0 14px 0;
+    max-width: calc(100% / 4 - 10px);
+  }
+  @include break($md) {
+    min-width: 50%;
+    margin: 9px 0 14px 0;
+  }
 
   &:hover .sliderBox__imgBox--img {
     transform: scale(1.03, 1.03);
     transition: $changeTime;
   }
 
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-  }
-
   &__top {
     position: relative;
   }
 
+  &__likeIcon {
+    font-size: 35px !important;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 10;
+
+    @include break($md) {
+      font-size: 25px !important;
+    }
+  }
+
   &__imgBox {
-    @include _SHADOW(0px);
     display: inline-block;
-    height: 220px;
     width: 100%;
     transition: $changeTime;
     overflow: hidden;
-
     &--img {
       width: 100%;
       object-fit: cover;
+      height: 330px;
+
+      @include break($lg) {
+        height: 200px;
+      }
+      @include break($md) {
+        height: 280px;
+      }
+      @include break($sm) {
+        height: 250px;
+      }
     }
   }
 
   &__title,
   &__date {
     width: 92%;
-    margin: 0 auto;
+    margin: 2em 0 1em 10px;
   }
 
   &__title {
     font-size: 14px;
-    font-family: $baseFont;
+    font-family: $titleFont;
     letter-spacing: 1px;
-    margin: 2em 0 0.5em 0;
   }
 
   &__date {
     color: #9e9e9e;
     font-size: 14px;
-    font-family: $Font;
+    font-family: $titleFont;
   }
 
   &__review {
@@ -126,32 +158,42 @@
       top: 50%;
     }
   }
+
+  &__moreButton {
+    position: absolute;
+    bottom: 1%;
+    right: 7px;
+    border-radius: 50%;
+  }
 } //XsliderBox
 
 .slider__arrows {
+  color: rgba(228, 228, 228, 0.418);
+  background: #000;
+  font-size: 27px;
   display: flex;
   justify-content: center;
   padding: 0.3em 1em;
-  width: 100%;
-  background: #000;
-  color: rgba(228, 228, 228, 0.418);
-  font-size: 27px;
   text-shadow: 0px 0px 3px #01011be0;
+  margin: 5px 0 0 0;
+  width: 100%;
 }
 
 .castSliderBox {
+  position: relative;
   flex-direction: column;
   display: flex;
-  min-width: 125px;
-  max-width: 190px;
+  min-width: 135px;
+  max-width: 200px;
   min-height: 190px;
   margin: 0 0px 18px;
-  width: calc(100% / 5);
   text-align: left;
+  background-color: #141313;
 
   &--img {
     box-shadow: 0px 0px 4px $boxShadowColor;
     border-radius: 1px;
+    cursor: pointer;
     display: inline-block;
     height: 200px;
     width: 100%;
@@ -161,9 +203,23 @@
     }
   }
 
-  &--name {
-    margin: 0.4em;
-    font-size: 15px;
-    font-family: $Font;
+  &__moreButton {
+    bottom: 0px;
+    right: 3px;
+    position: absolute;
+    z-index: 21;
   }
+
+  &--name {
+    cursor: pointer;
+    font-size: 15px;
+    font-family: $titleFont;
+    position: relative;
+    margin: 0.5em;
+  }
+}
+
+.flex-alignCenter {
+  display: flex;
+  align-items: center;
 }

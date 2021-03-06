@@ -16,9 +16,9 @@ export default function ClearButton(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <IconButton aria-label="delete" onClick={props.onClick}>
-        <ClearSharpIcon fontSize="large"/>
+    <div className={`${classes.root} ${props.className}`}>
+      <IconButton aria-label='delete' onClick={props.onClick}>
+        <ClearSharpIcon fontSize='large' />
       </IconButton>
     </div>
   );

@@ -85,11 +85,11 @@ const tv = (state = tvState, action) => {
 
     case "GET_GENRES_TV":
       const _tv = action.genres;
-      console.log(_tv);
       return {
         ...state,
         words: {
           id: action.id,
+          keyword: "",
           page: _tv.page,
           results: _tv.results,
           totalPage: _tv.total_pages,
@@ -107,6 +107,34 @@ const tv = (state = tvState, action) => {
           results: state.words.results.concat(_addTv.results),
           totalPage: _addTv.total_pages,
           totalResult: _addTv.total_results,
+        },
+      };
+
+    case "GET_KEYWORD_TV":
+      const _keyword = action.keyword;
+      return {
+        ...state,
+        words: {
+          id: action.id,
+          keyword: action.key,
+          page: _keyword.page,
+          results: _keyword.results,
+          totalPage: _keyword.total_pages,
+          totalResult: _keyword.total_results,
+        },
+      };
+
+    case "ADD_KEYWORD_TV":
+      const _addKey = action.keyword;
+      return {
+        ...state,
+        words: {
+          id: state.words.id,
+          keyword: state.words.keyword,
+          page: _addKey.page,
+          results: state.words.results.concat(_addKey.results),
+          totalPage: _addKey.total_pages,
+          totalResult: _addKey.total_results,
         },
       };
 

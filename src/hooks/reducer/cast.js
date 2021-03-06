@@ -53,7 +53,6 @@ const tv = (state = castState, action) => {
       };
 
     case "GET_CAST_WORK":
-      console.log(action.work);
       return {
         ...state,
         viewItem: {

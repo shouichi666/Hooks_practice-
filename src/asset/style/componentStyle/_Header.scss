@@ -4,22 +4,26 @@ HeaderSearch style
 */
 
 .header {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 0;
   background-color: $headerBkColor;
   border-bottom: $primaryBorderColor solid 0.5px;
   box-shadow: 0px 1px 2px $boxShadowColor;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 50;
 
   &__wrap {
-    background-color: $headerBkColor;
-    position: relative;
-    padding: 0px 20px;
     align-items: center;
+    background-color: $headerBkColor;
     display: flex;
     justify-content: center;
+    position: relative;
+    padding: 0px 20px;
+    @include break($sm) {
+      padding: 0px 10px;
+      justify-content: space-between;
+    }
   }
 
   &__logoWrap {
@@ -31,9 +35,15 @@ HeaderSearch style
     &--logo {
       color: $primaryColor;
       font-family: $logoFont;
-      font-size: 30px;
+      font-size: 40px;
       font-weight: 700;
       padding: 0 0 0 19px;
+      letter-spacing: 3px;
+
+      @include break($md) {
+        font-size: 20px;
+        padding: 0 0 0 5px;
+      }
     }
     //logo
   } //__logoWrap
@@ -44,21 +54,49 @@ HeaderSearch style
     justify-content: space-around;
     margin: 0 0 0 auto;
     width: 19%;
-    min-width: 340px;
+    min-width: 320px;
 
     &--link {
       border-radius: 4px;
-      // border: white 0.7px solid;
-      padding: 0.4em 0.7em;
-      font-size: 13px;
       color: $blueColor;
+      font-size: 13px;
+      padding: 0.4em 0.7em;
+      position: relative;
+      font-family: $logoFont;
 
       &:hover {
         background-color: #e7dada77;
         box-shadow: 0px 1px 10px #6e6e6ea6;
         transition: $changeTime;
-        // color: $primaryColor;
       }
+
+      &-userName {
+        font-size: 5px;
+        bottom: 5px;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        // color: black;
+      }
+    }
+    @include break($md) {
+      display: none;
+    }
+  }
+
+  &__nav--sp {
+    background-color: $headerBkColor;
+    bottom: 0;
+    display: none;
+    height: 45px;
+    position: fixed;
+    left: 0;
+    width: 100%;
+
+    @include break($md) {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 } //header
@@ -73,6 +111,10 @@ HeaderSearch style
   box-shadow: 0px 0px 30px $boxShadowColor;
   border: $primaryBorderColor solid;
   z-index: 100;
+
+  @include break($md) {
+    top: 40px;
+  }
 
   &__form {
     align-items: center;
@@ -102,6 +144,10 @@ HeaderSearch style
       color: #ffffff96;
       transition: $changeTime;
       font-size: 15px;
+
+      @include break($md) {
+        font-size: 14px;
+      }
     }
 
     &:focus::placeholder {
@@ -123,13 +169,11 @@ HeaderSearch style
 } //HeaderSearch
 
 .HeaderSearch__candidateList li {
+  cursor: pointer;
+  border-bottom: 0.1px solid rgba(238, 238, 238, 0.26);
   padding: 0.4em 2em;
   text-align: left;
-  border-bottom: 0.1px solid rgba(238, 238, 238, 0.26);
   &:hover {
-    background: rgb(190, 190, 190);
+    background: rgb(131, 131, 131);
   }
 }
-// .MuiSvgIcon-root {
-//   font-size: 30px !important;
-// }

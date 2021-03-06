@@ -1,13 +1,17 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import { Popular, Rated } from ".";
+import { _windowTop } from "../../../../hooks/hoge";
 
 const ArchiveTv = () => {
   const { state } = useContext(AppContext);
   const [view, setView] = useState("popular");
 
+  useEffect(_windowTop, []);
+
   const selectView = useCallback((e) => {
+    _windowTop();
     const id = e.target.id;
     switch (id) {
       case "popular":
@@ -17,12 +21,14 @@ const ArchiveTv = () => {
       default:
         return;
     }
-  },[]);
+  }, []);
 
   return (
     <>
       <div className='SearchResult'></div>
-      <h2 className='page_heading'>{view === "popular" ? "人気" : "高評価"}の作品</h2>
+      <h2 className='page_heading'>
+        {view === "popular" ? "人気" : "高評価"}の作品
+      </h2>
       <div className='archiveContainer twoColoum'>
         {/* サイド */}
         <div className='twoColoum__side'>

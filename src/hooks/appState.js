@@ -1,9 +1,8 @@
 const appState = {
   users: {
-    email: "", //eamil
     isSignIn: false, //ログイン状況
-    password: "", //password
     userName: "", // ユーザー名
+    id: "",
   },
 
   search: {
@@ -38,6 +37,7 @@ const appState = {
 
     words: {
       id: 0,
+      keyword: "",
       page: 0,
       results: [],
       totalPage: 0,
@@ -74,6 +74,7 @@ const appState = {
 
     words: {
       id: 0,
+      keyword: "",
       page: 0,
       results: [],
       totalPage: 0,
@@ -115,6 +116,7 @@ const appState = {
     },
     favoriteList: [],
     keyword: [],
+    youtubekey: "",
   },
 };
 

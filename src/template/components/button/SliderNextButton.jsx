@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import ChevronRightSharpIcon from "@material-ui/icons/ChevronRightSharp";
 
 const SlideNextButton = (props) => {
   let toggleClass = props.disabled ? "buttonOFF" : "buttonON";
@@ -11,7 +10,7 @@ const SlideNextButton = (props) => {
       className={`SliderBackButton ${toggleClass}`}
       disabled={props.disabled}
     >
-      <FontAwesomeIcon icon={faChevronRight} />
+      <ChevronRightSharpIcon />
     </button>
   );
 };

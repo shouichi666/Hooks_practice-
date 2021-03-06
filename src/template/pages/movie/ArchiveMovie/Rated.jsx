@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
-import { _MapXsliderBox } from "../../../../hooks/hoge";
+import { _mapXsliderBox } from "../../../../hooks/hoge";
 import InfiniteScroll from "react-infinite-scroller";
 
 const Rated = () => {
@@ -29,7 +29,7 @@ const Rated = () => {
         pageStart={state.movie.rated.page}
       >
         <div className='flexWrap'>
-          {_MapXsliderBox(state.movie.rated.results, "movie")}
+          {_mapXsliderBox(state.movie.rated.results, "movie")}
         </div>
       </InfiniteScroll>
     </>

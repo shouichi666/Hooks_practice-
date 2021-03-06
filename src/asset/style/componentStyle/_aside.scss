@@ -3,18 +3,28 @@ aside
 */
 
 .fixed-aside {
+  top: 100px;
+  position: sticky;
   background: rgb(14, 14, 14);
   border-radius: 9px;
   margin: 0 10px 0 0;
   padding: 10px 10px;
+  font-family: $logoFont;
+  border-radius: 13px;
+  background: #231f1f;
+  box-shadow: inset 5px 5px 10px #0e0c0c, inset -5px -5px 10px #383232;
+
+  @include break($md) {
+    margin: 0 auto;
+  }
 
   h3 {
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
     margin: 0 0 1.5em 0;
     color: rgb(219, 219, 219);
   }
-  
+
   &__list--row {
     font-size: 15px;
     position: relative;

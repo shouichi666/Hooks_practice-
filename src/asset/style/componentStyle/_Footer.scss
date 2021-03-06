@@ -9,14 +9,20 @@ Footer style
   bottom: 0;
   left: 0;
   width: 100%;
+  text-align: center;
+
+  @include break($sm) {
+    display: none;
+  }
 
   // &__wrap {  }
 
   &__button {
     background-color: rgba(235, 146, 30, 0.192);
-    padding: 40px;
-    border: rgba(235, 146, 30, 0.829) 2px solid;
+    padding: 20px;
+    border: rgba(235, 146, 30, 0.829) 1px solid;
     border-radius: 50px;
+    margin: 1em;
   }
 
   p {

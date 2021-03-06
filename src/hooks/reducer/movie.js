@@ -94,6 +94,7 @@ const movie = (state = movieState, action) => {
         ...state,
         words: {
           id: action.id,
+          keyword: "",
           page: _words.page,
           results: _words.results,
           totalPage: _words.total_pages,
@@ -107,10 +108,40 @@ const movie = (state = movieState, action) => {
         ...state,
         words: {
           id: state.words.id,
+          keyword: "",
           page: _AddWords.page,
           results: state.words.results.concat(_AddWords.results),
           totalPage: _AddWords.total_pages,
           totalResult: _AddWords.total_results,
+        },
+      };
+
+    case "GET_KEYWORD_MOVIE":
+      const _keyword = action.keyword;
+      console.log(_keyword);
+      return {
+        ...state,
+        words: {
+          id: action.id,
+          keyword: action.key,
+          page: _keyword.page,
+          results: _keyword.results,
+          totalPage: _keyword.total_pages,
+          totalResult: _keyword.total_results,
+        },
+      };
+
+    case "ADD_KEYWORD_MOVIE":
+      const _addKey = action.keyword;
+      return {
+        ...state,
+        words: {
+          id: state.words.id,
+          keyword: state.words.keyword,
+          page: _addKey.page,
+          results: state.words.results.concat(_addKey.results),
+          totalPage: _addKey.total_pages,
+          totalResult: _addKey.total_results,
         },
       };
 
