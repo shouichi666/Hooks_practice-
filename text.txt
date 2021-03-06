@@ -53,4 +53,3 @@ users: {
   .
 }
 
-YOUTUBE_API_KEY = AIzaSyBqqWmZQ0VHLE7Jni-GEgHYpJJONSrWSRY
