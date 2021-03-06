@@ -1,14 +1,11 @@
 .SliderBackButton,
 .SliderNextButton {
   display: inline-block;
-  padding: 0;
   margin: 0 10px;
-  color: rgba(228, 228, 228, 0.418);
-  font-size: 27px;
-  text-shadow: 0px 0px 3px #01011be0;
-  &:hover {
-    color: #afa5caa4;
-    text-shadow: 0px 0px 10px #dedef7c7;
+
+  .MuiSvgIcon-root {
+    color: #5859b6;
+    font-size: 27px;
   }
 }
 
@@ -25,29 +22,42 @@
 }
 
 .buttonOFF {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .buttonON {
   opacity: 1;
+
+  &:hover {
+    color: #afa5caa4;
+    text-shadow: 0px 0px 10px #dedef7c7;
+  }
 }
 
 .conversion {
-  display: inline-block;
-  background: rgba(114, 116, 219, 0.061);
   border-radius: 2px;
-  border: 0.1px solid white;
-  padding: 5px 0;
+  background: #25204b;
+  box-shadow: inset 5px 5px 9px #0f0d1e, inset -5px -5px 9px #3b3378;
+  border-radius: 2px;
+  display: flex;
+  height: 40px;
+  perspective: 500px;
   position: relative;
-  overflow: hidden;
+  padding: 3px;
+  transform-style: preserve-3d;
+  width: 160px;
 
   &__label {
+    border-radius: 8px;
+    color: #bebebee0;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 35px;
     position: relative;
-    z-index: 5;
-    width: 50%;
-    padding: 1em;
-    color: rgba(71, 80, 87, 0.479);
-    font-size: 14px;
+    text-align: center;
+    transition: 0.1s;
+    text-shadow: 1px 1px 1px black;
+    width: 49%;
   }
 
   input[type="radio"] {
@@ -55,8 +65,24 @@
   }
 
   input[type="radio"]:checked + label {
-    color: black;
-    background: white;
+    color: rgb(189, 219, 253);
+    transform: translate3d(0px, 0px, 25px);
+    transition: 0.1s;
+    width: 50%;
+    font-size: 14px;
+    border-radius: 2px;
+    background: linear-gradient(145deg, #24213b, #1f1c32);
+    box-shadow: 1px 1px 1px #0e0c16, -1px -1px 1px #363258;
+    text-shadow: 1px 0.9px 1px rgb(0, 0, 0);
   }
 }
 
+.MoreButton {
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.116);
+  }
+
+  &:active {
+    animation: vaiblation infinite 0.2s ease-in;
+  }
+}

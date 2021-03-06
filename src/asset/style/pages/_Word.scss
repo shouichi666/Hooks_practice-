@@ -21,4 +21,13 @@ Word
       font-size: 60px;
     }
   }
+
+  &__container {
+    width: 100%;
+    padding: 10px;
+
+    .sliderBox {
+      width: calc(100% / 9);
+    }
+  }
 }

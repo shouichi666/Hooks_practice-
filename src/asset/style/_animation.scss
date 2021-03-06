@@ -80,3 +80,23 @@
     // transition: $changeTime;
   }
 }
+
+@keyframes vaiblation {
+  0% {
+    transform: rotate(10deg);
+    color: rgb(205, 255, 154);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    color: rgb(128, 255, 0);
+    transform: rotate(0deg);
+  }
+}

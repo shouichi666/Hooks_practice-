@@ -1,6 +1,11 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../hooks/contexts/AppContext";
-import SwiperCore, { Autoplay, Navigation, EffectCoverflow, Pagination } from "swiper";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  EffectCoverflow,
+  Pagination,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
@@ -13,6 +18,7 @@ const SlidShow = () => {
   const [count, setCount] = useState(0);
   const { state } = useContext(AppContext);
   const gStateTopItem = state.movie.popular.results.slice(0, 19);
+  const width = window.innerWidth;
 
   const isMapImgs = gStateTopItem.map((item, i) => {
     return (
@@ -33,7 +39,9 @@ const SlidShow = () => {
   const style =
     gStateTopItem.length > 0
       ? {
-          backgroundImage: `url(${BACKDROP_780 + gStateTopItem[count]["backdrop_path"]})`,
+          backgroundImage: `url(${
+            BACKDROP_780 + gStateTopItem[count]["backdrop_path"]
+          })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }
@@ -61,8 +69,8 @@ const SlidShow = () => {
           clickable: true,
           type: "progressbar",
         }}
-        spaceBetween={95}
-        slidesPerView={2.5}
+        spaceBetween={width > 400 ? 95 : 20}
+        slidesPerView={width > 400 ? 2.5 : 1}
       >
         <p className='SlideShow__movieTitle'>{movieTitle}</p>
         {isMapImgs}

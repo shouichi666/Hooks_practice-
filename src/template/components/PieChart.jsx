@@ -37,6 +37,7 @@ const PieChartComponent = (props) => {
             strokeWidth={0}
           />
         ))}
+        
       </Pie>
     </PieChart>
   );

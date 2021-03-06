@@ -37,6 +37,17 @@ const common = (state = commonState, action) => {
       };
       return { ...state, searchItems: newSearchItems };
 
+    case "SET_YOUTUBE_KEY":
+      return {
+        ...state,
+        youtubekey: action.key,
+      };
+    case "DELETE_YOUTUBE_KEY":
+      return {
+        ...state,
+        youtubekey: "",
+      };
+
     default:
       return state;
   }

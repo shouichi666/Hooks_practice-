@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AppContext from "../../../../hooks/contexts/AppContext";
-import { _MapXsliderBox } from "../../../../hooks/hoge";
+import { _mapXsliderBox } from "../../../../hooks/hoge";
 
 const Favorite = (props) => {
   const { state } = useContext(AppContext);
@@ -8,7 +8,9 @@ const Favorite = (props) => {
   return (
     <>
       {/* メイン */}
-      <div className='flexWrap'>{_MapXsliderBox(state.movie.week, "movie")}</div>
+      <div className='flexWrap'>
+        {_mapXsliderBox(state.movie.week, "movie")}
+      </div>
     </>
   );
 };

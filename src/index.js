@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./reset.css";
 import "./style.css";
-import AppTop from "./template/AppTop";
+import App from "./template/App";
 import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(<AppTop />, document.getElementById("container"));
+ReactDOM.render(<App />, document.getElementById("container"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

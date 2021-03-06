@@ -7,8 +7,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: 0,
-      fontSize: "30px",
+      fontSize: "25px",
       color: "white",
+      height: "50px",
+      width: "50px",
     },
   },
 }));
@@ -18,8 +20,8 @@ export default function ClearButton(props) {
 
   return (
     <div className={classes.root}>
-      <IconButton aria-label="delete">
-        <AccountBoxIcon fontSize="large"/>
+      <IconButton aria-label='delete'>
+        <AccountBoxIcon fontSize='large' />
       </IconButton>
     </div>
   );

@@ -1,42 +1,57 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import AppContext from "../../hooks/contexts/AppContext";
-import { InputName, InputPassword } from "./";
+import { InputPassword, InputEmail } from "./";
 import { SignButton } from "./button";
+import { auth } from "../../firebase/";
 
 const SignIn = () => {
+  const history = useHistory();
   const { dispatch } = useContext(AppContext);
-  const [name, setName] = useState(""),
+  const [email, setEmail] = useState(""),
     [values, setValues] = useState({
       password: "",
       showPassword: false,
     });
 
   //setState onChange
-  const handleChangeName = (e) => setName(e.target.value),
-    handleChangePassword = (e) =>
-      setValues({ ...values, password: e.target.value }),
-    handleClickShowPassword = () =>
-      setValues({ ...values, showPassword: !values.showPassword }),
-    handleMouseDownPassword = (e) => e.preventDefault(),
-    signIn = () => {
-      dispatch({ type: "SIGN_IN", userName: name, password: values.password });
-    };
-  //
-  //
-  //
+  const signIn = () => {
+    if (email !== "" && values.password !== "") {
+      auth
+        .signInWithEmailAndPassword(email, values.password)
+        .then((user) => {
+          dispatch({
+            type: "SIGN_IN",
+            isSignIn: true,
+            id: user.user.uid,
+          });
+          setEmail("");
+          setValues({ ...values, password: "" });
+          history.push("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("shit");
+    }
+  };
+
   return (
-    <form className="form" noValidate autoComplete="off">
-      <InputName onChange={handleChangeName} value={name} />
+    <form className='form' noValidate autoComplete='off'>
+      <InputEmail onChange={(e) => setEmail(e.target.value)} value={email} />
 
       <InputPassword
-        onChange={handleChangePassword}
         password={values.password}
         value={values.showPassword}
-        handleClickShowPassword={handleClickShowPassword}
-        handleMouseDownPassword={handleMouseDownPassword}
+        onChange={(e) => setValues({ ...values, password: e.target.value })}
+        handleClickShowPassword={() =>
+          setValues({ ...values, showPassword: !values.showPassword })
+        }
+        handleMouseDownPassword={(e) => e.preventDefault()}
       />
 
-      <SignButton label="SIGN IN" onClick={signIn} />
+      <SignButton label='SIGN IN' onClick={signIn} />
     </form>
   );
 };

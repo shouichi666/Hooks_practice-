@@ -9,19 +9,49 @@ const userState = initialState.users;
 const users = (state = userState, action) => {
   switch (action.type) {
     case "SIGN_IN":
-      const name = action.userName;
-      const password = action.password;
       return {
         ...state,
-        userName: name,
-        password: password,
+        isSignIn: action.isSignIn,
+        id: action.id,
       };
-    case "SIGN_OUT":
-      alert("SING_OUT");
-      return state;
+
     case "SIGN_UP":
-      alert("SING_UP");
-      return state;
+      return {
+        ...state,
+        userName: action.name,
+        isSignIn: action.isSignIn,
+        id: action.id,
+      };
+
+    case "SIGN_OUT":
+      console.log("じゃあね");
+      return {
+        ...state,
+        userName: "",
+        isSignIn: false,
+        id: "",
+      };
+
+    case "SET_USERS_NAME":
+      return {
+        ...state,
+        userName: action.useName,
+      };
+
+    case "ANONYMOUSE":
+      return {
+        ...state,
+        userName: "匿名",
+        isSignIn: true,
+        id: action.id,
+      };
+
+    case "SET_UID":
+      return {
+        ...state,
+        id: action.id,
+      };
+
     default:
       return state;
   }

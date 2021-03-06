@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { SignIn, SignUp } from "../components";
+import { useHistory } from "react-router-dom";
 import SwipeableViews from "react-swipeable-views";
-// import React,{useContext,useState,useReducer} from 'react';
+import { auth, db } from "../../firebase";
+import AppContext from "../../hooks/contexts/AppContext";
 //
 //
 
 const Sign = () => {
   const [index, setIndex] = useState(0);
   const [tab, setTab] = useState(true);
+  const { dispatch } = useContext(AppContext);
+  const history = useHistory();
 
   const onClickSetIndexTab = (e) => {
     const value = e.target.value;
@@ -23,10 +27,25 @@ const Sign = () => {
     setIndex(index);
   };
 
+  const onClickAnonymous = () => {
+    auth
+      .signInAnonymously()
+      .then((user) => {
+        dispatch({ type: "ANONYMOUSE", id: user.user.uid });
+        db.ref("users/").child(user.user.uid).child("userName").set("匿名");
+        history.push("/");
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage, errorCode);
+      });
+  };
+
   return (
-    <main className="Sign">
+    <main className='Sign'>
       <ul
-        className="tabBar"
+        className='tabBar'
         onChange={onChangeTab}
         onClick={onClickSetIndexTab}
       >
@@ -51,6 +70,10 @@ const Sign = () => {
           <SignUp />
         </div>
       </SwipeableViews>
+
+      <div className='Sign__anonymous'>
+        <button onClick={onClickAnonymous}>匿名でサインアップする</button>
+      </div>
     </main>
   );
 };

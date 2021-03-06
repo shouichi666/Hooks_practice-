@@ -1,17 +1,17 @@
 @import "variable";
 @import "mixin";
 
-// google fonts
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Condensed&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
-
 body {
-  width: 100%;
   background: $baseBkColor;
   color: white;
   font-family: $baseFont;
+  font-size: 16px;
   margin: 0 auto;
+  width: 100%;
+
+  @include break($sm) {
+    font-size: 14px;
+  }
 }
 
 #container {
@@ -20,6 +20,10 @@ body {
   padding: 60px 0 250px;
   width: 100%;
   min-height: 100vh;
+
+  @include break($md) {
+    padding: 45px 0 50px;
+  }
 }
 
 main {
@@ -36,10 +40,20 @@ small {
   padding: 50px 20px;
   width: 100%;
 
+  @include break($md) {
+    flex-direction: column;
+    padding: 50px 5px;
+    align-items: center;
+  }
+
   &__main {
     width: 80%;
-    // border: 1px solid rgb(112, 138, 138);
     padding: 0 20px;
+
+    @include break($md) {
+      width: 100%;
+      padding: 0;
+    }
   }
 
   &__side {
@@ -47,20 +61,21 @@ small {
     width: 20%;
     max-width: 350px;
     min-width: 200px;
+
+    @include break($md) {
+      width: 100%;
+      padding: 0;
+      margin: 0 0 20px;
+    }
   }
 } //twoColoum
 
 .flexBox {
-  position: relative;
-  z-index: 0;
   display: flex;
   margin: 0 0 10px 0;
   overflow: hidden;
+  width: 100%;
   @include _SHADOW(0px);
-
-  &:before {
-    @include _BEFORE(#161622e0);
-  }
 
   &__left {
     position: relative;
@@ -74,57 +89,107 @@ small {
       width: 100%;
     }
   }
-
-  &__right {
-    position: relative;
-    z-index: 5;
-    padding: 1em 1.5em;
-    width: 80%;
-  }
-
-  &__title {
-    font-size: 20px;
-    font-weight: 600;
-    width: 90%;
-  }
-
-  &__date {
-    margin: 1em 0;
-    display: inline-block;
-    color: rgb(118, 158, 158);
-  }
-
   &__review {
     display: inline-block;
+    position: relative;
+    margin: 0 0 0 2em;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    bottom: 5%;
+    right: 5%;
+    background: rgb(49, 49, 49);
+    border-radius: 50%;
 
     &--num {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      @include break($md) {
+        font-size: 10px;
+      }
+    }
+  }
+
+  &__right {
+    position: relative;
+    z-index: 5;
+    width: 80%;
+
+    &:before {
+      @include _BEFORE(#161622cc);
+    }
+
+    @include break($md) {
+      padding: 0.5em 1em;
+    }
+
+    &--moreButton {
+      position: absolute;
+      top: 15px;
+      right: 5px;
+    }
+
+    &--inner {
+      position: relative;
+      z-index: 10;
+      padding: 1em 1.5em;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    width: 90%;
+    margin: 0 0 0.5em 0;
+
+    @include break($md) {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0.5em 0 0.5em 0;
+    }
+  }
+
+  &__date {
+    margin: 0 1em 0 0;
+
+    display: inline-block;
+    color: rgb(118, 158, 158);
+
+    @include break($md) {
+      font-size: 12px;
     }
   }
 
   &__lang {
     color: rgb(118, 158, 158);
-    margin: 0 0 0 1em;
+    margin: 0 1em 0 0;
+
+    @include break($md) {
+      font-size: 10px;
+    }
   }
 
   &__text {
+    color: rgb(224, 224, 224);
     display: -webkit-box;
+    font-size: 15px;
+    line-height: 1.5em;
+    overflow: hidden;
+    margin: 2em 0 0 0;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 15px;
+
+    @include break($md) {
+      margin: 1em 0 0 0;
+      font-size: 10px;
+    }
   }
 
   &__knowFor {
-    font-size: 12px;
     color: #929299e0;
     display: inline-block;
+    font-size: 12px;
     padding: 0.3em 0.6em;
   }
 }
@@ -133,14 +198,23 @@ small {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  justify-content: space-between;
+  justify-content: left;
+
+  @include break($md) {
+    justify-content: space-between;
+  }
 }
 
 .page_heading {
   font-size: $pageHeading;
   font-family: $logoFont;
   text-align: center;
-  margin: 2em 0 1em 0;
+  margin: 1.5em 0 1em 0;
+
+  @include break($md) {
+    font-size: 26px;
+    margin: 2em 0 1em 0;
+  }
 }
 
 .pageNation {
@@ -150,10 +224,11 @@ small {
   align-items: center;
   margin: 0 auto;
   text-align: center;
-  max-width: 365px;
+  max-width: 375px;
 
   &__num {
-    padding: 4px 2px;
+    height: 30px;
+    width: 25px;
     margin: 0 2px;
     cursor: pointer;
 
@@ -169,7 +244,9 @@ small {
     font-size: 12px;
     margin: 0 3px;
     letter-spacing: -1px;
-    padding: 3px 0;
+    padding: 3px 5px;
+    height: 30px;
+    line-height: 25px;
 
     &:hover {
       background-color: #6d6d6de0;
@@ -187,16 +264,61 @@ small {
   color: black;
 }
 
+.archive__wrap {
+  width: 90%;
+  justify-content: space-between;
+}
+
+.gridFiveColum {
+  margin: auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    ". . . . ."
+    ". . . . ."
+    ". . . . .";
+
+  @include break($md) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      " . ."
+      " . ."
+      " . .";
+  }
+}
+
+@include break($md) {
+  .MuiSvgIcon-fontSizeLarge {
+    font-size: 20px !important;
+  }
+}
+
+.coverSheets {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 20;
+}
+
+@import "./componentStyle/Header";
+@import "./componentStyle/footer";
 @import "./pages/Home";
 @import "./pages/Movie";
 @import "./pages/Sign";
 @import "./pages/Search";
 @import "./pages/Cast";
 @import "./pages/Word";
-@import "./componentStyle/Header";
-@import "./componentStyle/footer";
+@import "./pages/Favorite";
 @import "./componentStyle/form";
 @import "./componentStyle/slider";
 @import "./componentStyle/aside";
+@import "./componentStyle/other";
 @import "./buttonStyle/button";
 @import "animation";

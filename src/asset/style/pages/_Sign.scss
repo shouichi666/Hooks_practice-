@@ -12,6 +12,24 @@
   margin: 65px auto 0 auto;
   max-width: 550px;
   min-width: 290px;
+
+  @include break($sm) {
+    margin: 35px auto 0 auto;
+    width: 90%;
+  }
+
+  &__anonymous {
+    text-align: right;
+    padding: 0 0 10px;
+    button {
+      color: #585858;
+      margin: 0 auto;
+      font-size: 13px;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
 }
 
 .tabBar {
@@ -27,6 +45,9 @@
     text-align: center;
     transition: $changeTime;
     width: 50%;
+    @include break($sm) {
+      font-size: 14px;
+    }
 
     &::after {
       background-color: #8b8a8a2f;

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
-import { _MapCastSliderBox, _WindowTop } from "../../../hooks/hoge";
+import { _mapCastSliderBox, _windowTop } from "../../../hooks/hoge";
 import theMovieDb from "themoviedb-javascript-library";
 
 const ArchiveCast = () => {
@@ -12,7 +12,7 @@ const ArchiveCast = () => {
 
   const pageClick = (e) => {
     const value = Number(e.target.value);
-    _WindowTop();
+    _windowTop();
     setPage(value);
     theMovieDb.people.getPopular(
       { page: value },
@@ -34,7 +34,9 @@ const ArchiveCast = () => {
   return (
     <>
       <h2 className='page_heading'>人気の出演スタッフ</h2>
-      <div className='flexWrap'>{_MapCastSliderBox(state.cast.people.results)}</div>
+      <div className='gridFiveColum'>
+        {_mapCastSliderBox(state.cast.people.results)}
+      </div>
 
       <ul className='pageNation'>
         <li className={`pageNation__first ${prevClass}`}>
@@ -44,7 +46,7 @@ const ArchiveCast = () => {
         </li>
         <li className={`pageNation__prev ${prevClass}`}>
           <button onClick={pageClick} value={pageN - 1}>
-            ≪ PREV
+            ≪
           </button>
         </li>
 
@@ -53,7 +55,7 @@ const ArchiveCast = () => {
           const crrentClass = crrentPage === page ? "crrentPage" : "otherPage";
 
           return pageN + 5 > page && pageN - 3 < page ? (
-            <li>
+            <li key={i}>
               <button
                 className={`pageNation__num ${crrentClass}`}
                 key={i}
@@ -69,7 +71,7 @@ const ArchiveCast = () => {
         })}
         <li className={`pageNation__next ${nextClass}`}>
           <button onClick={pageClick} value={pageN + 1}>
-            NEXT ≫
+            ≫
           </button>
         </li>
         <li className={`pageNation__last ${nextClass}`}>

@@ -2,21 +2,22 @@
 variable list
 */
 
+// google fonts
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@400;700&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+
 ////////////
 // -> color <-
 //background
 $baseBkColor: #000;
 $headerBkColor: #0c0c0c;
-$footerBkColor: #df0c0c1c;
-$boxShadowColor: #7a717169;
+$footerBkColor: #3535351c;
+$boxShadowColor: #00000069;
 $headerSearchBkColor: #000000f5;
 
 //font
 $primaryColor: #fc1717;
 $blueColor: rgb(225, 228, 255);
-// $textColor    : ;
-// $headerFontColor          : ;
-// $footerFontCOlor           : ;
 
 //border
 $primaryBorderColor: #363636;
@@ -24,8 +25,8 @@ $primaryBorderColor: #363636;
 ////////////////
 // -> fontStyle <-
 $baseFont: "Helvetica Neue", helvetica, arial, sans-serif;
-$Font: "Cinzel Decorative", cursive;
-$logoFont: "Russo One", sans-serif;
+$titleFont: "Jura", sans-serif;
+$logoFont: "DotGothic16", sans-serif;
 
 ////////////////
 // -> transitin <-
@@ -33,4 +34,11 @@ $changeTime: 0.2s;
 
 ////////////////
 // -> Size <-
-$pageHeading: 40px;
+$pageHeading: 50px;
+
+/////////////////
+// レスポンシブ
+$sm: 400px;
+$md: 768px;
+$lg: 1000px;
+$xl: 1200px;

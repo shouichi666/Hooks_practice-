@@ -2,17 +2,18 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, Route } from "react-router-dom";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import { Rated, Popular, Today, Week } from "./";
-import { _WindowTop } from "../../../../hooks/hoge";
+import { _windowTop } from "../../../../hooks/hoge";
 
 const ArchiveMovie = () => {
   const { state } = useContext(AppContext);
   const [view, setView] = useState("popular");
 
   useEffect(() => {
-    _WindowTop();
+    _windowTop();
   }, []);
 
   const selectView = useCallback((e) => {
+    _windowTop();
     const id = e.target.id;
     switch (id) {
       case "popular":
@@ -51,7 +52,11 @@ const ArchiveMovie = () => {
             <h3>MOVIE</h3>
             <ul className='fixed-aside__list'>
               <li className='fixed-aside__list--row'>
-                <Link to='/movie/list/popular' id='popular' onClick={selectView}>
+                <Link
+                  to='/movie/list/popular'
+                  id='popular'
+                  onClick={selectView}
+                >
                   人気の作品
                 </Link>
                 <span>{state.movie.popular.totalPage || "0"}</span>

@@ -30,3 +30,27 @@ search
 
 ・映画情報、ログイン状況はglobal-state
 ・モーダル、クラスの付け替えによるイベントは各コンポーネントでstateを持つ
+
+
+https://github.com/cavestri/themoviedb-javascript-library/wiki/Discover
+
+
+
+DB 構造
+users: {
+  uid_1: {
+    name: hoge,
+    tv:[],
+    movie:[],
+    cast:[]
+  },
+  uid_2:{
+    ....
+    ....
+  },
+  .
+  .
+  .
+}
+
+YOUTUBE_API_KEY = AIzaSyBqqWmZQ0VHLE7Jni-GEgHYpJJONSrWSRY

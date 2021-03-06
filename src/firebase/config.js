@@ -1,9 +1,10 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCC2pq7t0WtFJ6abOJnlmjA0I6_MGPdHxY",
-  authDomain: "app-movie-2c220.firebaseapp.com",
-  projectId: "app-movie-2c220",
-  storageBucket: "app-movie-2c220.appspot.com",
-  messagingSenderId: "273674075440",
-  appId: "1:273674075440:web:ae844c9cda3965dab25cf5",
-  measurementId: "G-ZG18MVW2NQ",
+  apiKey: "AIzaSyACgKImOj6-m919UpbsC2SEL1Ft68nR6FI",
+  authDomain: "movie-and-tv-83376.firebaseapp.com",
+  databaseURL: "https://movie-and-tv-83376-default-rtdb.firebaseio.com",
+  projectId: "movie-and-tv-83376",
+  storageBucket: "movie-and-tv-83376.appspot.com",
+  messagingSenderId: "107197632636",
+  appId: "1:107197632636:web:e2b048b4f6fd83fdd3f9f9",
+  measurementId: "G-Y0Q918SCTJ",
 };
