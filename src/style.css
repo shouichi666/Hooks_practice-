@@ -900,7 +900,7 @@ Cast style
 .Cast__left {
   position: relative;
   width: 30%; }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 768px) {
     .Cast__left {
       width: 100%; } }
   .Cast__left--nameBox {
@@ -915,7 +915,7 @@ Cast style
 .Cast__right {
   width: 70%;
   padding: 10px 20px; }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 768px) {
     .Cast__right {
       width: 100%; } }
   .Cast__right--nameBox {
@@ -964,7 +964,7 @@ Cast style
   font-family: "Jura", sans-serif;
   font-weight: 600;
   position: relative; }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 768px) {
     .Cast__name {
       font-size: 22px;
       margin: 1em auto; } }

@@ -25,7 +25,7 @@ Cast style
   position: relative;
   width: 30%;
 
-  @include break($sm) {
+  @include break($md) {
     width: 100%;
   }
 
@@ -44,7 +44,7 @@ Cast style
   width: 70%;
   padding: 10px 20px;
 
-  @include break($sm) {
+  @include break($md) {
     width: 100%;
   }
 
@@ -113,7 +113,7 @@ Cast style
   font-weight: 600;
   position: relative;
 
-  @include break($sm) {
+  @include break($md) {
     font-size: 22px;
     margin: 1em auto;
   }
