@@ -4,7 +4,8 @@ Favorite page style
 
 .Favorite {
   position: relative;
-  padding: 30px 0 0 0;
+  padding: 30px auto 0 auto;
+  max-width: 1200px;
 
   &__container {
     padding: 10px;
@@ -46,7 +47,8 @@ Favorite page style
       }
 
       &--item {
-        width: calc(100% / 9);
+        min-width: calc(100% / 12);
+        max-width: calc(100% / 12);
 
         @include break($md) {
           width: calc(100% / 4);

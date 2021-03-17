@@ -11,12 +11,17 @@ const Search = () => {
   const location = useLocation();
   const string = state.search.string;
 
+  console.log("rendder");
+
   const getData = () => {
     if (string !== "") {
       theMovieDb.search.getMovie(
         { query: string, include_adult: true },
         (result) => {
-          dispatch({ type: "SET_MOVIE_SEARTCH_ITEMS", data: JSON.parse(result) });
+          dispatch({
+            type: "SET_MOVIE_SEARTCH_ITEMS",
+            data: JSON.parse(result),
+          });
         },
         (error) => {
           console.log(error);
@@ -34,7 +39,10 @@ const Search = () => {
       theMovieDb.search.getPerson(
         { query: string, include_adult: true },
         (result) => {
-          dispatch({ type: "SET_CAST_SEARTCH_ITEMS", data: JSON.parse(result) });
+          dispatch({
+            type: "SET_CAST_SEARTCH_ITEMS",
+            data: JSON.parse(result),
+          });
         },
         (error) => {
           console.log(error);

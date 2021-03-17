@@ -26,6 +26,7 @@ const Favorite = () => {
     });
     setFavoriteDatas(favorite);
   };
+
   const getWatchLater = () => {
     const watchLaterDatas = [];
     db.ref("users/" + state.users.id + "/watchLater").on("value", (datas) => {
@@ -36,6 +37,7 @@ const Favorite = () => {
     });
     setWatchLaterDatas(watchLaterDatas);
   };
+
   const getCast = () => {
     const pepoleDatas = [];
     db.ref("users/" + state.users.id + "/pepole").on("value", (datas) => {
@@ -58,7 +60,8 @@ const Favorite = () => {
     sethistoryDatas(historyDatas);
   };
 
-  const getRecent = () => {
+
+  useEffect(() => {
     const recentDatas = [];
     db.ref("users/" + state.users.id + "/recent").on("value", (datas) => {
       datas.forEach((data) => {
@@ -66,10 +69,16 @@ const Favorite = () => {
       });
       return recentDatas;
     });
+    console.log(recentDatas);
+    recentDatas.sort((a, b) => {
+      if (a.time_stamp < b.time_stamp) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
     setRecentDatas(recentDatas);
-  };
-
-  useEffect(getRecent, [state]);
+  }, [state, history.location]);
 
   const switchView = (e) => {
     const target = e.target.value;

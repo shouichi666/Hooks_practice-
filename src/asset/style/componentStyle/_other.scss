@@ -132,9 +132,11 @@ LogOutModal style
 .ItemBox {
   width: calc(100% / 5);
   position: relative;
+  cursor: pointer;
 
   &__img {
     width: 100%;
+    min-width: 100px;
     object-fit: cover;
   }
 

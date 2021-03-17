@@ -5,6 +5,7 @@ import AppContext from "../../../hooks/contexts/AppContext";
 import { PieChart } from "../";
 import {
   POSTER_342,
+  TIMESTAMP,
   _registerDataFavorite,
   _registerDataWatchLater,
   _registerDataRecent,
@@ -22,6 +23,7 @@ const XsliderBox = (props) => {
   const [open, setOpen] = useState(true);
   const history = useHistory();
   const data = props.data;
+  // console.log(data);
 
   useEffect(() => {
     setFavorite(false);
@@ -29,7 +31,8 @@ const XsliderBox = (props) => {
 
   const onClick = useCallback(
     (e) => {
-      _registerDataRecent(db, state.users.id, data);
+      data.time_stamp = TIMESTAMP;
+      if (state.users.isSignIn) _registerDataRecent(db, state.users.id, data);
       const id = e.target.id;
       if (data.adult === false || data.adult) {
         theMovieDb.movies.getById(
@@ -73,7 +76,7 @@ const XsliderBox = (props) => {
         );
       }
     },
-    [history, data, dispatch, state.users.id]
+    [history, data, dispatch, state.users]
   );
 
   useEffect(() => {

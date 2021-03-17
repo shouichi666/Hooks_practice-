@@ -34,7 +34,7 @@ const SearchMovie = () => {
     >
       <ul>
         {state.movie.searchItems.results.map((result, i) => {
-          return <ResultCard i={i} result={result} />;
+          return <ResultCard key={i} result={result} />;
         })}
       </ul>
     </InfiniteScroll>

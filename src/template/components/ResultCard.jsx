@@ -47,7 +47,7 @@ const ResultCard = (props) => {
   const onClickOpenDialog = () => setOpen(false);
   const onClickCloseDialog = () => setOpen(true);
   const jumpToMovie = useCallback(() => {
-    _registerDataRecent(db, state.users.id, result);
+    if (state.users.isSignIn) _registerDataRecent(db, state.users.id, result);
     theMovieDb.movies.getById(
       { id: result.id },
       (movie) => {
@@ -57,7 +57,7 @@ const ResultCard = (props) => {
         console.log(error);
       }
     );
-  }, [dispatch, result, state.users.id]);
+  }, [dispatch, result, state.users]);
 
   const jumpToTvView = useCallback(() => {
     _registerDataRecent(db, state.users.id, result);

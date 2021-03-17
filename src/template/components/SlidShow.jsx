@@ -11,7 +11,7 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
 import "swiper/components/pagination/pagination.scss";
-import { POSTER_780, BACKDROP_780 } from "../../hooks/hoge";
+import { POSTER_780, BACKDROP_1280 } from "../../hooks/hoge";
 SwiperCore.use([Autoplay, EffectCoverflow, Navigation, Pagination]);
 
 const SlidShow = () => {
@@ -40,7 +40,7 @@ const SlidShow = () => {
     gStateTopItem.length > 0
       ? {
           backgroundImage: `url(${
-            BACKDROP_780 + gStateTopItem[count]["backdrop_path"]
+            BACKDROP_1280 + gStateTopItem[count]["backdrop_path"]
           })`,
           backgroundSize: "cover",
           backgroundPosition: "center",

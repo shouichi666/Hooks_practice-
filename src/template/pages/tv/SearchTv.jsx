@@ -31,7 +31,7 @@ const SearchTv = () => {
     >
       <ul>
         {state.tv.searchItems.results.map((result, i) => {
-          return <ResultCard i={i} result={result} />;
+          return <ResultCard key={i} result={result} />;
         })}
       </ul>
     </InfiniteScroll>

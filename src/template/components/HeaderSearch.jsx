@@ -62,6 +62,7 @@ const HeaderSearch = (props) => {
 
   foucs();
 
+
   return (
     <div className={`HeaderSearch ${animationClassName}`}>
       <form className='HeaderSearch__form' onSubmit={onClickSearch}>

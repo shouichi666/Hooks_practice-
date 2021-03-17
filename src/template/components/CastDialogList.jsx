@@ -9,10 +9,12 @@ const CastDialogList = ({
   like,
   top,
   bottom,
+  left,
 }) => {
   const style = {
     bottom: bottom,
     top: top,
+    left: left,
   };
 
   return (

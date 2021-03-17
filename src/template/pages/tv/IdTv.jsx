@@ -9,7 +9,8 @@ import PlaylistAddTwoToneIcon from "@material-ui/icons/PlaylistAddTwoTone";
 import { db } from "../../../firebase";
 import {
   POSTER_342,
-  BACKDROP_780,
+  GOOGLE_JUMP,
+  BACKDROP_1280,
   changeLanguage,
   _windowTop,
   _getGenresTv,
@@ -36,7 +37,7 @@ const IdTv = () => {
     window.innerWidth > 400 ? "right -200px top" : " left 0px bottom 0px";
 
   const style = {
-    backgroundImage: `url(${BACKDROP_780 + data.backdrop_path})`,
+    backgroundImage: `url(${BACKDROP_1280 + data.backdrop_path})`,
     backgroundSize: backgroundSize,
     backgroundRepeat: "no-repeat",
     backgroundPosition: backgroundPosition,
@@ -115,7 +116,10 @@ const IdTv = () => {
         <div className='Movie__discriptionWrap'>
           <div className='Movie__discriptionWrap--top'>
             <h2 className='Movie__discriptionWrap--top--title'>
-              {data.title || data.name}
+              <a href={`${GOOGLE_JUMP}${data.name}`} target='_brank'>
+                {data.title || data.name}
+              </a>
+
               {/* 作品タイトル */}
             </h2>
             <h3 className='Movie__discriptionWrap--top--tanline'>

@@ -20,7 +20,7 @@ HeaderSearch style
     justify-content: center;
     position: relative;
     padding: 0px 20px;
-    @include break($sm) {
+    @include break($md) {
       padding: 0px 10px;
       justify-content: space-between;
     }

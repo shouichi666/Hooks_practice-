@@ -2,6 +2,7 @@ import theMovieDb from "themoviedb-javascript-library";
 import { XsliderBox, CastSliderBox } from "../template/components/slider";
 
 //backdrop_path
+export const BACKDROP_1280 = theMovieDb.common.images_uri + "w1280/";
 export const BACKDROP_780 = theMovieDb.common.images_uri + "w780/";
 export const BACKDROP_300 = theMovieDb.common.images_uri + "w300/";
 
@@ -9,6 +10,12 @@ export const BACKDROP_300 = theMovieDb.common.images_uri + "w300/";
 export const POSTER_780 = theMovieDb.common.images_uri + "w780/";
 export const POSTER_342 = theMovieDb.common.images_uri + "w342/";
 export const POSTER_185 = theMovieDb.common.images_uri + "w185/";
+
+//google
+export const GOOGLE_JUMP = "https://www.google.com/search?q=";
+
+//timestamp
+export const TIMESTAMP = new Date().getTime();
 
 //言語変換
 export const changeLanguage = (lang) => {
@@ -289,10 +296,10 @@ export const _registerDataPepole = (db, usersId, data, callback) => {
         callback();
       }
     }
-  );
+  ); 
 };
 
-//fbdb Pepole に追加
+//fbdb recent history に追加
 export const _registerDataRecent = (db, userId, data) => {
   db.ref("users/" + userId + "/history/" + (data.title || data.name)).set(data);
   db.ref("users/" + userId + "/recent/" + (data.title || data.name)).set(data);
@@ -308,6 +315,7 @@ export const _findFromFavoriteId = (db, usersId, thisData, callback) => {
     });
   });
 };
+
 //fbdb に同じIDがないか判定
 export const _findFromWatchLaterId = (db, usersId, thisData, callback) => {
   db.ref("users/" + usersId + "/watchLater").on("value", (arg) => {
@@ -318,6 +326,7 @@ export const _findFromWatchLaterId = (db, usersId, thisData, callback) => {
     });
   });
 };
+
 //fbdb に同じIDがないか判定
 export const _findFromPepoleId = (db, usersId, thisData, callback) => {
   db.ref("users/" + usersId + "/pepole").on("value", (data) => {
@@ -341,4 +350,3 @@ export const _deleteDbData = (db, usersId, path, thisData, callback) => {
   return callback();
 };
 
-export const YOUTUBE_API_KEY = "AIzaSyBqqWmZQ0VHLE7Jni-GEgHYpJJONSrWSRY";

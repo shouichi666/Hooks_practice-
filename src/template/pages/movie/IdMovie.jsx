@@ -8,7 +8,8 @@ import PlayCircleOutlineTwoToneIcon from "@material-ui/icons/PlayCircleOutlineTw
 import PlaylistAddTwoToneIcon from "@material-ui/icons/PlaylistAddTwoTone";
 import {
   POSTER_342,
-  BACKDROP_780,
+  BACKDROP_1280,
+  GOOGLE_JUMP,
   changeLanguage,
   _mapXsliderBox,
   _windowTop,
@@ -38,7 +39,7 @@ const Movie_Id = () => {
     window.innerWidth > 400 ? "right -200px top" : " left 0px bottom 0px";
 
   const style = {
-    backgroundImage: `url(${BACKDROP_780 + data.backdrop_path})`,
+    backgroundImage: `url(${BACKDROP_1280 + data.backdrop_path})`,
     backgroundSize: backgroundSize,
     backgroundRepeat: "no-repeat",
     backgroundPosition: backgroundPosition,
@@ -47,6 +48,10 @@ const Movie_Id = () => {
   useEffect(() => {
     _findFromFavoriteId(db, state.users.id, data, () => setFavorite(true));
     _findFromWatchLaterId(db, state.users.id, data, () => setWatch(true));
+
+    return () => () => {
+      return;
+    };
   }, [data, state.users.id]);
 
   useEffect(() => {
@@ -60,6 +65,10 @@ const Movie_Id = () => {
         console.log(error);
       }
     );
+
+    return () => () => {
+      return;
+    };
   }, [data.id]);
 
   const getMovie = () => {
@@ -118,7 +127,9 @@ const Movie_Id = () => {
         <div className='Movie__discriptionWrap'>
           <div className='Movie__discriptionWrap--top'>
             <h2 className='Movie__discriptionWrap--top--title'>
-              {data.title || data.name}
+              <a href={`${GOOGLE_JUMP}${data.title}`} target='_brank'>
+                {data.title}
+              </a>
               {/* 作品タイトル */}
             </h2>
             <h3 className='Movie__discriptionWrap--top--tanline'>

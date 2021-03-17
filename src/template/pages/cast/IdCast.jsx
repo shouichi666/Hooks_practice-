@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import {
   POSTER_342,
+  GOOGLE_JUMP,
   _windowTop,
   _mapXsliderBox,
   _registerDataPepole,
@@ -36,7 +37,9 @@ const IdCast = () => {
               className='Cast__left--nameBox'
               hidden={window.innerWidth > 400 ? true : false}
             >
-              <h2 className='Cast__name'>{_cast.name}</h2>
+              <h2 className='Cast__name'>
+                <a href={`${GOOGLE_JUMP}${_cast.name}`}>{_cast.name}</a>
+              </h2>
               <PlaylistAddTwoToneIcon
                 onClick={onClickOpenDialog}
                 className='Cast__icon'
@@ -61,8 +64,8 @@ const IdCast = () => {
             </dl>
           </div>
           <CastDialogList
-            top={window.innerWidth > 400 ? "100px" : "40%"}
-            left={window.innerWidth > 400 ? "100%" : "40%"}
+            top={window.innerWidth > 400 ? "50px" : "35%"}
+            left={window.innerWidth > 400 ? "140%" : "40%"}
             data={_cast}
             open={open}
             onClose={onClickCloseDialog}
@@ -77,7 +80,11 @@ const IdCast = () => {
             className='Cast__right--nameBox'
             hidden={window.innerWidth > 400 ? false : true}
           >
-            <h2 className='Cast__name'>{_cast.name}</h2>
+            <h2 className='Cast__name'>
+              <a href={`${GOOGLE_JUMP}${_cast.name}`} target='_brank'>
+                {_cast.name}
+              </a>
+            </h2>
             <PlaylistAddTwoToneIcon
               onClick={onClickOpenDialog}
               className='Cast__icon'

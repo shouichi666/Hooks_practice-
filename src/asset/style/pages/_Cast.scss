@@ -6,7 +6,7 @@ Cast style
   display: flex;
   padding: 30px 10px;
 
-  @include break($sm) {
+  @include break($md) {
     flex-direction: column;
     padding: 10px 10px;
   }
