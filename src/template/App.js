@@ -8,7 +8,7 @@ import appState from "../hooks/appState";
 import theMovieDb from "themoviedb-javascript-library";
 import { auth, db } from "../firebase";
 
-const App = () => {
+const App = React.memo(() => {
   const localData = localStorage.getItem("data_on_movie");
   const State = localData ? JSON.parse(localData) : appState;
   const [state, dispatch] = useReducer(reducer, State);
@@ -109,6 +109,6 @@ const App = () => {
       </HashRouter>
     </AppContext.Provider>
   );
-};
+});
 
 export default App;

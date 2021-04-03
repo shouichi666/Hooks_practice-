@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 import InfiniteScroll from "react-infinite-scroller";
-import { CastCard } from "../../components";
+import { CastCard, Loading } from "../../components";
 
 const SearchCast = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -26,6 +26,7 @@ const SearchCast = () => {
       // hasMore={false}
       hasMore={state.cast.searchItems.results.length < 19 ? false : true}
       loadMore={onScrollAddSearch}
+      loader={<Loading/>}
     >
       <ul>
         {state.cast.searchItems.results.map((result, i) => {

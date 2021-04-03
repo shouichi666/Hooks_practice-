@@ -26,7 +26,7 @@ const CastCard = React.memo((props) => {
 
   const onClickOpenDialog = () => setOpen(false);
   const onClickCloseDialog = () => setOpen(true);
-  const jumpToCast = (e) => {
+  const jumpToCast = () => {
     const id = result.id;
     theMovieDb.people.getById(
       { id: id },
@@ -35,7 +35,6 @@ const CastCard = React.memo((props) => {
           type: "GET_CAST",
           cast: JSON.parse(cast),
         });
-        console.log(JSON.parse(cast));
       },
       (error) => {
         console.error(error);

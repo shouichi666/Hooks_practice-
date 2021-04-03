@@ -3,6 +3,7 @@ import AppContext from "../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 import InfiniteScroll from "react-infinite-scroller";
 import ResultCard from "../../components/ResultCard";
+import { Loading } from "../../components";
 
 const SearchMovie = React.memo(() => {
   const { state, dispatch } = useContext(AppContext);
@@ -31,6 +32,7 @@ const SearchMovie = React.memo(() => {
       pageStart={1}
       hasMore={state.movie.searchItems.results.length === 0 ? false : true}
       loadMore={onScrollAddSearch}
+      loader={<Loading/>}
     >
       <ul>
         {state.movie.searchItems.results.map((result, i) => {

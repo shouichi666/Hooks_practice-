@@ -12,8 +12,9 @@ import {
   _windowTop,
 } from "../../hooks/hoge";
 import InfiniteScroll from "react-infinite-scroller";
+import { Loading } from "../components";
 
-const Word = () => {
+const Word = React.memo(() => {
   const { state, dispatch } = useContext(AppContext);
   const location = useLocation().pathname;
   const wordMovie = state.movie.words;
@@ -45,7 +46,7 @@ const Word = () => {
   const pageHeadingJudge = useCallback(() => {
     if (view === "movie") {
       if (_checkGenreMovie(wordMovie.id) === false) {
-        return wordMovie.keyeord;
+        return wordMovie.keyword;
       } else {
         return _checkGenreMovie(wordMovie.id);
       }
@@ -85,6 +86,7 @@ const Word = () => {
             hasMore={toggleMovie}
             loadMore={addMovie}
             pageStart={wordMovie.page}
+            loader={<Loading/>}
           >
             <div className='flexWrap'>{_mapXsliderBox(wordMovie.results)}</div>
           </InfiniteScroll>
@@ -95,6 +97,7 @@ const Word = () => {
             hasMore={toggleTv}
             loadMore={addTv}
             pageStart={wordTv.page}
+            loader={<Loading/>}
           >
             <div className='flexWrap'>{_mapXsliderBox(wordTv.results)}</div>
           </InfiniteScroll>
@@ -105,6 +108,7 @@ const Word = () => {
             hasMore={toggleMovie}
             loadMore={addKeywordMovie}
             pageStart={1}
+            loader={<Loading/>}
           >
             <div className='flexWrap'>{_mapXsliderBox(wordMovie.results)}</div>
           </InfiniteScroll>
@@ -114,6 +118,7 @@ const Word = () => {
           <InfiniteScroll
             hasMore={toggleTv}
             loadMore={addKeywordTv}
+            loader={<Loading/>}
             pageStart={1}
           >
             <div className='flexWrap'>{_mapXsliderBox(wordTv.results)}</div>
@@ -122,6 +127,6 @@ const Word = () => {
       </div>
     </>
   );
-};
+});
 
 export default Word;

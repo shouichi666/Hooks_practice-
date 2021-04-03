@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "../../../../hooks/contexts/AppContext";
 import { _mapXsliderBox } from "../../../../hooks/hoge";
 
-const Favorite = (props) => {
+const Favorite = () => {
   const { state } = useContext(AppContext);
 
   return (

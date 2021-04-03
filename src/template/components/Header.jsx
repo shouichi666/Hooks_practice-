@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import { Link } from "react-router-dom";
-import { HeaderSearch, LogOutModal } from "./";
+import { HeaderSearch, LogOutModal} from "./";
 import { SearchButton, ClearButton, AccountButton } from "./button";
 import AppContext from "../../hooks/contexts/AppContext";
 import { auth, db } from "../../firebase/";

@@ -3,6 +3,7 @@ import AppContext from "../../../../hooks/contexts/AppContext";
 import theMovieDb from "themoviedb-javascript-library";
 import { _mapXsliderBox } from "../../../../hooks/hoge";
 import InfiniteScroll from "react-infinite-scroller";
+import Loading from "../../../components/Loading";
 
 const Favorite = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -27,6 +28,7 @@ const Favorite = () => {
         loadMore={onClickAddRecest}
         hasMore={state.tv.popular.results.length > 0 ? true : false}
         pageStart={state.tv.popular.page}
+        loader={<Loading/>}
       >
         <div className='flexWrap'>
           {_mapXsliderBox(state.tv.popular.results, "tv")}

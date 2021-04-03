@@ -22,26 +22,29 @@ const HeaderSearch = (props) => {
 
   const onChangeSearch = useCallback(
     (e) => {
+      e.preventDefault();
       const value = e.target.value;
       dispatch({ type: "SET_SEARCH_STRING", string: value });
-      theMovieDb.search.getMulti(
-        { query: value },
-        (result) => {
-          const getMovies = JSON.parse(result);
-          const newArray = getMovies.results.slice(0, 10);
-          setCandidate(newArray);
-          console.log("rende");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      if (value.length > 1) {
+        theMovieDb.search.getMulti(
+          { query: value },
+          (result) => {
+            const getMovies = JSON.parse(result);
+            const newArray = getMovies.results.slice(0, 10);
+            setCandidate(newArray);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
     },
     [dispatch]
   );
 
   const onClickCandidate = useCallback(
     (e) => {
+      e.preventDefault();
       const value = e.target.id;
       dispatch({ type: "SET_SEARCH_STRING", string: value });
       setCandidate([]);

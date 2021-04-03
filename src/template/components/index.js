@@ -17,6 +17,7 @@ import MovieDialogList from "./MovieDialogList";
 import DeleteDialogList from "./DeleteDialogList";
 import PieChart from "./PieChart";
 import Player from "./Player";
+import Loading from "./Loading";
 
 export {
   Header,
@@ -38,4 +39,5 @@ export {
   CastCard,
   Player,
   DeleteDialogList,
+  Loading,
 };

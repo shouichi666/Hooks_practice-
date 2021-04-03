@@ -1336,6 +1336,9 @@ aside
     justify-content: space-between;
     transition: 0.1s;
     cursor: pointer; }
+    .fixed-aside__list--row a {
+      display: inline-block;
+      width: 100%; }
     .fixed-aside__list--row span {
       background: #0a9191;
       border-radius: 10px;

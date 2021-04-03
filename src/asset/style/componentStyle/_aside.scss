@@ -34,6 +34,11 @@ aside
     transition: 0.1s;
     cursor: pointer;
 
+    a{
+      display: inline-block;
+      width: 100%;
+    }
+
     span {
       background: #0a9191;
       border-radius: 10px;
