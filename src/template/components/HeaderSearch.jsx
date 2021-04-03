@@ -1,4 +1,10 @@
-import React, { useState, useContext, useRef } from "react";
+import React, {
+  useState,
+  useContext,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 import { SearchIcon, ClearSharpIcon } from "../../asset/icons";
 import theMovieDb from "themoviedb-javascript-library";
 import AppContext from "../../hooks/contexts/AppContext";
@@ -14,40 +20,39 @@ const HeaderSearch = (props) => {
     ? "HeaderSearch-enter-done"
     : "HeaderSearch-exit-done";
 
-  const onChangeSearch = (e) => {
-    const value = e.target.value;
-    dispatch({ type: "SET_SEARCH_STRING", string: value });
-    theMovieDb.search.getMulti(
-      { query: value },
-      (result) => {
-        const getMovies = JSON.parse(result);
-        const newArray = getMovies.results.slice(0, 10);
-        setCandidate(newArray);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
+  const onChangeSearch = useCallback(
+    (e) => {
+      const value = e.target.value;
+      dispatch({ type: "SET_SEARCH_STRING", string: value });
+      theMovieDb.search.getMulti(
+        { query: value },
+        (result) => {
+          const getMovies = JSON.parse(result);
+          const newArray = getMovies.results.slice(0, 10);
+          setCandidate(newArray);
+          console.log("rende");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    [dispatch]
+  );
 
-  const onClickCandidate = (e) => {
-    const value = e.target.id;
-    dispatch({ type: "SET_SEARCH_STRING", string: value });
-    setCandidate([]);
-  };
+  const onClickCandidate = useCallback(
+    (e) => {
+      const value = e.target.id;
+      dispatch({ type: "SET_SEARCH_STRING", string: value });
+      setCandidate([]);
+    },
+    [dispatch]
+  );
 
   const onClickSearch = (e) => {
     e.preventDefault();
-    const value = state.search.string;
-    theMovieDb.search.getMulti(
-      { query: value, include_adult: true },
-      (result) => {
-        dispatch({ type: "SET_ALL_SEARCH_ITEMS", data: JSON.parse(result) });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    const string = state.search.string;
+    dispatch({ type: "SET_SEARCH_WORDS", words: string });
     setCandidate([]);
     history.push("/search/movie");
   };
@@ -56,12 +61,9 @@ const HeaderSearch = (props) => {
     dispatch({ type: "DELETE_SEARCH_STRING", string: "" });
   };
 
-  const foucs = () => {
+  useEffect(() => {
     if (props.open) inputRef.current.focus();
-  };
-
-  foucs();
-
+  });
 
   return (
     <div className={`HeaderSearch ${animationClassName}`}>

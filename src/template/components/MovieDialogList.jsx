@@ -2,7 +2,7 @@ import React from "react";
 import ThumbUpTwoToneIcon from "@material-ui/icons/ThumbUpTwoTone";
 import BookmarkTwoToneIcon from "@material-ui/icons/BookmarkTwoTone";
 
-const MovieDialogList = ({
+const MovieDialogList = React.memo(({
   data,
   open,
   onClose,
@@ -38,6 +38,6 @@ const MovieDialogList = ({
       </ul>
     </>
   );
-};
+});
 
 export default MovieDialogList;

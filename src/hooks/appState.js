@@ -7,9 +7,7 @@ const appState = {
 
   search: {
     string: "", //検索名
-    junle: "", //検索ジャンル
-    acter: "", //検索俳優
-    rating: "", //検索評価
+    searchWords: "",
   },
 
   //映画

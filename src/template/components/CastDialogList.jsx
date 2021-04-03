@@ -1,7 +1,7 @@
 import React from "react";
 import PeopleAltTwoToneIcon from "@material-ui/icons/PeopleAltTwoTone";
 
-const CastDialogList = ({
+const CastDialogList = React.memo(({
   data,
   open,
   onClose,
@@ -11,6 +11,7 @@ const CastDialogList = ({
   bottom,
   left,
 }) => {
+
   const style = {
     bottom: bottom,
     top: top,
@@ -30,6 +31,6 @@ const CastDialogList = ({
       </ul>
     </>
   );
-};
+});
 
 export default CastDialogList;

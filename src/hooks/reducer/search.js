@@ -9,7 +9,8 @@ const search = (state = searchState, action) => {
   switch (action.type) {
     case "SET_SEARCH_STRING":
       return { ...state, string: action.string };
-
+    case "SET_SEARCH_WORDS":
+      return { ...state, searchWords: action.words };
     case "DELETE_SEARCH_STRING":
       return { ...state, string: "" };
 

@@ -16,7 +16,7 @@ import { db } from "../../../firebase";
 import { MoreButton } from "../button";
 import { MovieDialogList, FavoriteConditionalIcon } from "../";
 
-const XsliderBox = (props) => {
+const XsliderBox = React.memo((props) => {
   const { state, dispatch } = useContext(AppContext);
   const [favorite, setFavorite] = useState(false);
   const [watch, setWatch] = useState(false);
@@ -155,6 +155,6 @@ const XsliderBox = (props) => {
       </time>
     </div>
   );
-};
+});
 
 export default XsliderBox;

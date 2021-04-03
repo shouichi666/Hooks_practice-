@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../hooks/contexts/AppContext";
-import theMovieDb from "themoviedb-javascript-library";
 import { useHistory } from "react-router-dom";
 
 const SearchForm = () => {
@@ -13,17 +12,9 @@ const SearchForm = () => {
   const handleChangeText = (e) => setString(e.target.value);
 
   const onSubmit = (e) => {
+    console.log('click')
     e.preventDefault();
-    dispatch({ type: "SET_SEARCH_STRING", string: string });
-    theMovieDb.search.getMulti(
-      { query: string },
-      (result) => {
-        dispatch({ type: "SET_SEARCH_ITEMS", data: JSON.parse(result) });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    dispatch({ type: "SET_SEARCH_WORDS", words: string });
     history.push("/search/movie");
   };
 

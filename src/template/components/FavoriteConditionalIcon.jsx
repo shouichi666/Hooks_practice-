@@ -3,7 +3,7 @@ import StarTwoToneIcon from "@material-ui/icons/StarTwoTone";
 import { makeStyles } from "@material-ui/core/styles";
 import AppContext from "../../hooks/contexts/AppContext";
 
-const FavoriteConditionalIcon = (props) => {
+const FavoriteConditionalIcon = React.memo((props) => {
   const { state } = useContext(AppContext);
   const [color, setColor] = useState(false);
   const useStyles = makeStyles((theme) => ({
@@ -31,6 +31,6 @@ const FavoriteConditionalIcon = (props) => {
       <StarTwoToneIcon className={`${classes.root} ${props.className}`} />
     </>
   );
-};
+});
 
 export default FavoriteConditionalIcon;

@@ -1357,7 +1357,7 @@ aside
 LogOutModal style
 */
 .LogOutModal {
-  background-color: black;
+  background-color: #313131;
   height: 160px;
   left: 50%;
   min-width: 200px;
@@ -1381,9 +1381,9 @@ LogOutModal style
       padding: 1em 0;
       color: white; }
     .LogOutModal__button--agree {
-      background-color: rgba(0, 132, 255, 0.171); }
+      background-color: #0084ff; }
     .LogOutModal__button--disAgree {
-      background-color: rgba(63, 32, 3, 0.1004); }
+      background-color: #ff7b00; }
 
 .DialogList {
   position: absolute;
@@ -1499,24 +1499,26 @@ LogOutModal style
   padding: 3px;
   transform-style: preserve-3d;
   width: 160px; }
-  .conversion__label {
+  .conversion__wrap {
     border-radius: 8px;
     color: #bebebee0;
     display: inline-block;
+    width: 49%; }
+  .conversion__label {
     font-size: 13px;
     line-height: 35px;
     position: relative;
     text-align: center;
     transition: 0.1s;
+    width: 100%;
     text-shadow: 1px 1px 1px black;
-    width: 49%; }
+    display: inline-block; }
   .conversion input[type="radio"] {
     display: none; }
   .conversion input[type="radio"]:checked + label {
     color: #bddbfd;
     transform: translate3d(0px, 0px, 25px);
     transition: 0.1s;
-    width: 50%;
     font-size: 14px;
     border-radius: 2px;
     background: linear-gradient(145deg, #24213b, #1f1c32);

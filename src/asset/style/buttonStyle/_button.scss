@@ -47,17 +47,22 @@
   transform-style: preserve-3d;
   width: 160px;
 
-  &__label {
+  &__wrap {
     border-radius: 8px;
     color: #bebebee0;
     display: inline-block;
+    width: 49%;
+  }
+
+  &__label {
     font-size: 13px;
     line-height: 35px;
     position: relative;
     text-align: center;
     transition: 0.1s;
+    width: 100%;
     text-shadow: 1px 1px 1px black;
-    width: 49%;
+    display: inline-block;
   }
 
   input[type="radio"] {
@@ -68,7 +73,6 @@
     color: rgb(189, 219, 253);
     transform: translate3d(0px, 0px, 25px);
     transition: 0.1s;
-    width: 50%;
     font-size: 14px;
     border-radius: 2px;
     background: linear-gradient(145deg, #24213b, #1f1c32);

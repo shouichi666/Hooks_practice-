@@ -38,6 +38,8 @@ const Movie_Id = () => {
   let backgroundPosition =
     window.innerWidth > 400 ? "right -200px top" : " left 0px bottom 0px";
 
+  // console.log(data);
+
   const style = {
     backgroundImage: `url(${BACKDROP_1280 + data.backdrop_path})`,
     backgroundSize: backgroundSize,

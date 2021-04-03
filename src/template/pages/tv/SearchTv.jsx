@@ -9,7 +9,7 @@ const SearchTv = () => {
 
   const onScrollAddSearch = useCallback(
     (num) => {
-      const value = state.search.string;
+      const value = state.search.searchWords;
       theMovieDb.search.getTv(
         { query: value, page: num, include_adult: true },
         (result) => {

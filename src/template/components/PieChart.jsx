@@ -1,7 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-const PieChartComponent = (props) => {
+const PieChartComponent = React.memo((props) => {
   const review = Number(props.review);
   const unKnowun = 10 - review;
   const COLORS = ["#abff74", "#352c2c7e"];
@@ -41,6 +41,6 @@ const PieChartComponent = (props) => {
       </Pie>
     </PieChart>
   );
-};
+});
 
 export default PieChartComponent;

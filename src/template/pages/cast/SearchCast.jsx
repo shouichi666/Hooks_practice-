@@ -8,7 +8,7 @@ const SearchCast = () => {
   const { state, dispatch } = useContext(AppContext);
 
   const onScrollAddSearch = (num) => {
-    const value = state.search.string;
+    const value = state.search.searchWords;
     theMovieDb.search.getPerson(
       { query: value, page: num },
       (result) => {
@@ -23,7 +23,8 @@ const SearchCast = () => {
   return (
     <InfiniteScroll
       pageStart={state.cast.searchItems.page}
-      hasMore={true}
+      // hasMore={false}
+      hasMore={state.cast.searchItems.results.length < 19 ? false : true}
       loadMore={onScrollAddSearch}
     >
       <ul>

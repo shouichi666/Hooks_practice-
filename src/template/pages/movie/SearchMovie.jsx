@@ -4,12 +4,12 @@ import theMovieDb from "themoviedb-javascript-library";
 import InfiniteScroll from "react-infinite-scroller";
 import ResultCard from "../../components/ResultCard";
 
-const SearchMovie = () => {
+const SearchMovie = React.memo(() => {
   const { state, dispatch } = useContext(AppContext);
 
   const onScrollAddSearch = useCallback(
     (num) => {
-      const value = state.search.string;
+      const value = state.search.searchWords;
       theMovieDb.search.getMovie(
         { query: value, page: num, include_adult: true },
         (result) => {
@@ -39,6 +39,6 @@ const SearchMovie = () => {
       </ul>
     </InfiniteScroll>
   );
-};
+});
 
 export default SearchMovie;

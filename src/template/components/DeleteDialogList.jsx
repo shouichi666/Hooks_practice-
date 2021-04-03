@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const DeleteDialogList = ({
+const DeleteDialogList = React.memo(({
   data,
   open,
   onClose,
@@ -32,6 +32,6 @@ const DeleteDialogList = ({
       </ul>
     </>
   );
-};
+});
 
 export default DeleteDialogList;

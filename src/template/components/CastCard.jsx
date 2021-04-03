@@ -5,7 +5,7 @@ import {
   _findFromPepoleId,
   _registerDataPepole,
 } from "../../hooks/hoge";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CastDialogList } from ".";
 import theMovieDb from "themoviedb-javascript-library";
 import { PieChart } from ".";
@@ -13,7 +13,7 @@ import noPhoto from "../../asset/imags/no_500.png";
 import AppContext from "../../hooks/contexts/AppContext";
 import { db } from "../../firebase";
 
-const CastCard = (props) => {
+const CastCard = React.memo((props) => {
   const result = props.result;
   const history = useHistory();
   const { state, dispatch } = useContext(AppContext);
@@ -27,7 +27,7 @@ const CastCard = (props) => {
   const onClickOpenDialog = () => setOpen(false);
   const onClickCloseDialog = () => setOpen(true);
   const jumpToCast = (e) => {
-    const id = e.target.id;
+    const id = result.id;
     theMovieDb.people.getById(
       { id: id },
       (cast) => {
@@ -57,9 +57,13 @@ const CastCard = (props) => {
     <li className='flexBox'>
       <div className='flexBox__left'>
         {result.profile_path !== null ? (
-          <a href={`/cast/${result.name}`} onClick={jumpToCast}>
-            <img src={POSTER_342 + result.profile_path} alt='' />
-          </a>
+          <Link to={`/cast/${result.name}`} onClick={jumpToCast}>
+            <img
+              src={POSTER_342 + result.profile_path}
+              alt=''
+              name={result.id}
+            />
+          </Link>
         ) : (
           <img src={noPhoto} alt='no' />
         )}
@@ -103,7 +107,7 @@ const CastCard = (props) => {
             className={"flexBox__right--moreButton"}
             onClick={onClickOpenDialog}
           />
-          <h3 className='flexBox__title'>
+          <h3 className='flexBox__title' name={result.id}>
             <div onClick={jumpToCast}>{result.name}</div>
           </h3>
           <div className='flex-alignCenter'>
@@ -117,6 +121,6 @@ const CastCard = (props) => {
       </div>
     </li>
   );
-};
+});
 
 export default CastCard;

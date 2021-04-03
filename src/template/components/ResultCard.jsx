@@ -18,7 +18,7 @@ import noPhoto from "../../asset/imags/no_500.png";
 import AppContext from "../../hooks/contexts/AppContext";
 import { db } from "../../firebase";
 
-const ResultCard = (props) => {
+const ResultCard = React.memo((props) => {
   const result = props.result;
   const { state, dispatch } = useContext(AppContext);
   const [path, setPath] = useState("");
@@ -163,6 +163,6 @@ const ResultCard = (props) => {
       </div>
     </li>
   );
-};
+});
 
 export default ResultCard;

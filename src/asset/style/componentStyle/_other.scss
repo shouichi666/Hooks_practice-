@@ -3,7 +3,7 @@ LogOutModal style
 */
 
 .LogOutModal {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(49, 49, 49);
   height: 160px;
   left: 50%;
   min-width: 200px;
@@ -34,11 +34,11 @@ LogOutModal style
     }
 
     &--agree {
-      background-color: rgba(0, 132, 255, 0.171);
+      background-color: rgb(0, 132, 255);
     }
 
     &--disAgree {
-      background-color: rgba(63, 32, 3, 0.1004);
+      background-color: rgb(255, 123, 0);
     }
   }
 }

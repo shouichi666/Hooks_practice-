@@ -9,14 +9,12 @@ import theMovieDb from "themoviedb-javascript-library";
 const Search = () => {
   const { state, dispatch } = useContext(AppContext);
   const location = useLocation();
-  const string = state.search.string;
-
-  console.log("rendder");
+  const searchWords = state.search.searchWords;
 
   const getData = () => {
-    if (string !== "") {
+    if (searchWords !== "") {
       theMovieDb.search.getMovie(
-        { query: string, include_adult: true },
+        { query: searchWords, include_adult: true },
         (result) => {
           dispatch({
             type: "SET_MOVIE_SEARTCH_ITEMS",
@@ -28,7 +26,7 @@ const Search = () => {
         }
       );
       theMovieDb.search.getTv(
-        { query: string, include_adult: true },
+        { query: searchWords, include_adult: true },
         (result) => {
           dispatch({ type: "SET_TV_SEARTCH_ITEMS", data: JSON.parse(result) });
         },
@@ -37,7 +35,7 @@ const Search = () => {
         }
       );
       theMovieDb.search.getPerson(
-        { query: string, include_adult: true },
+        { query: searchWords, include_adult: true },
         (result) => {
           dispatch({
             type: "SET_CAST_SEARTCH_ITEMS",
@@ -65,7 +63,7 @@ const Search = () => {
     }
   };
 
-  useEffect(getData, [string, dispatch]);
+  useEffect(getData, [searchWords, dispatch]);
 
   return (
     <main id='Search' className='Search'>

@@ -12,7 +12,7 @@ import { db } from "../../../firebase";
 import { MoreButton } from "../button";
 import { CastDialogList } from "../";
 
-const CastSliderBox = (props) => {
+const CastSliderBox = React.memo((props) => {
   const { state, dispatch } = useContext(AppContext);
   const [open, setOpen] = useState(true);
   const [like, setLike] = useState(false);
@@ -86,7 +86,7 @@ const CastSliderBox = (props) => {
       />
     </div>
   );
-};
+});
 
 export default CastSliderBox;
 //
